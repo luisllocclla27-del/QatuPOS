@@ -2,7 +2,7 @@ $ node scripts/release/check.mjs
 {
   "passed": true,
   "files": 583,
-  "bytes": 8555616,
+  "bytes": 8556120,
   "issues": [],
   "migrations": 11,
   "reviewed_synthetic_exceptions": 2,
