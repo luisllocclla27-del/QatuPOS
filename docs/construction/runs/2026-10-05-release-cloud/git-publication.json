@@ -1,0 +1,12 @@
+{
+  "published": true,
+  "repository": "https://github.com/luisllocclla27-del/QatuPOS",
+  "branch": "main",
+  "first_publication_commit": "cec5ea8e1d991acec356fdff97cf5af90fed438e",
+  "remote_commit_verified": "cec5ea8e1d991acec356fdff97cf5af90fed438e",
+  "workflow_active": false,
+  "workflow_limitation": "Token lacks workflow scope; configuration retained as deployment/github-verify.template.yml",
+  "supabase_connected": false,
+  "vercel_deployed": false,
+  "checked_at_utc": "2026-10-05T17:15:53.488955+00:00"
+}

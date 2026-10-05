@@ -1,8 +1,8 @@
-[main (root-commit) 72905c8] Prepare restaurant POS pilot and Supabase Vercel release kit
- 578 files changed, 42917 insertions(+)
+[main cec5ea8] Prepare restaurant POS pilot and Supabase Vercel release kit
+ Date: Mon Oct 5 12:12:13 2026 -0500
+ 581 files changed, 43507 insertions(+)
  create mode 100644 .env.example
  create mode 100644 .gitattributes
- create mode 100644 .github/workflows/verify.yml
  create mode 100644 .gitignore
  create mode 100644 .specify/feature.json
  create mode 100644 .vercelignore
@@ -58,6 +58,7 @@
  create mode 100644 database/migrations/012_money_bigint.sql
  create mode 100644 database/migrations/013_cloud_security.sql
  create mode 100644 deployment/cloud-settings.example.json
+ create mode 100644 deployment/github-verify.template.yml
  create mode 100644 deployment/migrations.manifest.json
  create mode 100644 deployment/scan-exceptions.json
  create mode 100644 deployment/supabase/000-precheck.sql
@@ -262,6 +263,9 @@
  create mode 100644 docs/construction/runs/2026-10-05-release-cloud/clean-copy.json
  create mode 100644 docs/construction/runs/2026-10-05-release-cloud/document-check.json
  create mode 100644 docs/construction/runs/2026-10-05-release-cloud/documental.txt
+ create mode 100644 docs/construction/runs/2026-10-05-release-cloud/git-commit.txt
+ create mode 100644 docs/construction/runs/2026-10-05-release-cloud/git-push-retry.txt
+ create mode 100644 docs/construction/runs/2026-10-05-release-cloud/git-push.txt
  create mode 100644 docs/construction/runs/2026-10-05-release-cloud/preflight-final.txt
  create mode 100644 docs/construction/runs/2026-10-05-release-cloud/preflight-first.txt
  create mode 100644 docs/construction/runs/2026-10-05-release-cloud/protected-tests-final.txt

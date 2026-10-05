@@ -9,6 +9,9 @@
   "previous_writer_ended_evidence": "018 writer_finished=true;535 hashes comprobados sin diferencias",
   "writer_finished": true,
   "acceptance_scope": "Preparación local; secretos/configuración y revisiones sensibles anteriores requieren aceptación independiente; cloud real pendiente",
-  "checked_at_utc": "2026-10-05T17:12:12.141881+00:00",
-  "evidence": "docs/evidence/ACTUALIZACION-2026-10-05-release-cloud.md"
+  "checked_at_utc": "2026-10-05T17:15:53.488955+00:00",
+  "evidence": "docs/evidence/ACTUALIZACION-2026-10-05-release-cloud.md",
+  "git_repository": "https://github.com/luisllocclla27-del/QatuPOS",
+  "git_first_publication_commit": "cec5ea8e1d991acec356fdff97cf5af90fed438e",
+  "git_workflow_active": false
 }
