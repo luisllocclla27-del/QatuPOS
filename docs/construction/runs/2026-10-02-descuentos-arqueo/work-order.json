@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0.0",
+  "execution_id": "b872b22e-e478-43d8-a15d-317208dcf289",
+  "assignment_id": "a78f161c-8e42-494b-9721-7e3f886fbd74",
+  "version": 1,
+  "package_id": "B06",
+  "work_kind": "implementation",
+  "feature_directory": "specs/009-descuentos-arqueo-caja",
+  "task_ids": [
+    "DSC:T001",
+    "DSC:T002",
+    "DSC:T003"
+  ],
+  "goal": "Implementar descuentos comerciales y cortesias en cuentas de mesa con recálculo atómico en PEN centimos, auditoria inmutable, coherencia con precuenta y comprobantes SUNAT, y módulo de Arqueo / Reporte X de Caja en vivo con impresion termica de 80mm.",
+  "owner": "gemini-antigravity",
+  "reviewer": "independent-reviewer",
+  "state": "assigned",
+  "baseline": {
+    "kind": "file_hashes",
+    "identity": "gemini-antigravity-start-descuentos-2026-10-02",
+    "input_sha256": {
+      "docs/evidence/CONTINUIDAD.md": "a382e706f22178625c1e9cc4349a62569e4e24df1e56ddbffab3af6979ea9c58",
+      "packages/contracts/src/pos.ts": "30b9dae2aeb5eb27a8dd61b7c15f63effdef94d5b8e6b49ef6c71f69b6df54c5",
+      "docs/contracts/pilot.openapi.json": "e3e1e7a0d027a7de03370766909be268941c6bbbe155654766cb422657cb420a",
+      "packages/domain/src/index.ts": "9a968df5674099c75d6bb96a02c24773998753092c177719e9c6653a8c96cd44",
+      "services/commerce/src/authority/repository.ts": "40f075514f38d993a0434dd9e619c7ccb3cb2d08cfbf1b6968c285c88cd82ce6",
+      "apps/pos/src/components/pos-app.tsx": "0a4a156b842ea75613c471139ddc803e35e85901788aeed514084c68db46c2b5",
+      "README.md": "42e56a18f9f95e55c008b70bf3ec92aa42a5df26f6a622265aed360e2e3da228"
+    }
+  },
+  "write_paths": [
+    "specs/009-descuentos-arqueo-caja/",
+    "packages/contracts/src/pos.ts",
+    "docs/contracts/pilot.openapi.json",
+    "database/migrations/009_discounts_and_cash_audit.sql",
+    "packages/domain/src/",
+    "services/commerce/src/",
+    "apps/pos/src/",
+    "tests/",
+    "docs/evidence/",
+    "docs/construction/runs/2026-10-02-descuentos-arqueo/"
+  ],
+  "read_paths": [
+    "AGENTS.md",
+    "README.md",
+    "docs/handoff/especificaciones-gemini.md",
+    "docs/handoff/prompt-gemini-antigravity.md",
+    "docs/evidence/CONTINUIDAD.md",
+    "docs/construction/next-increments.md",
+    "specs/008-facturacion-precuenta/"
+  ],
+  "depends_on": [
+    "B06"
+  ],
+  "contracts": [
+    "docs/contracts/pilot.openapi.json",
+    "packages/contracts/src/pos.ts"
+  ],
+  "requirements": [
+    "DSC-FR-001",
+    "DSC-FR-002",
+    "DSC-FR-003",
+    "DSC-FR-004",
+    "DSC-FR-005"
+  ]
+}

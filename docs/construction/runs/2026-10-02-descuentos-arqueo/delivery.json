@@ -1,0 +1,41 @@
+{
+  "execution_id": "b872b22e-e478-43d8-a15d-317208dcf289",
+  "assignment_id": "a78f161c-8e42-494b-9721-7e3f886fbd74",
+  "state": "accepted",
+  "scope": "Descuentos comerciales y cortesias en cuentas de mesa con recalculo atomico en PEN centimos, auditoria inmutable, coherencia con precuenta y comprobantes SUNAT, y modulo de Arqueo / Reporte X de Caja en vivo con impresion termica de 80mm",
+  "tests": {
+    "typecheck": "passed",
+    "build_final": "passed",
+    "unit_contract_api": 140,
+    "e2e": 10,
+    "planning_checks": 25
+  },
+  "source_sha256": {
+    "packages/contracts/src/pos.ts": "281b755479e6ee2b88a507ed863b1e82a4b5d0360e8ff0806d9bbb78eb32fdc6",
+    "docs/contracts/pilot.openapi.json": "ab9fb2db61ae94da8bbf22c45cec591c2f3750bec44f8e57d7e05c6cbe35773c",
+    "database/migrations/009_discounts_and_cash_audit.sql": "0c5ed638e33781fc53443269b3d42cca6ed7da7df060c4fb21b3544f8fcc2ada",
+    "packages/domain/src/index.ts": "26fff55c9bfef6815a841dd221e841779895f812cf1af265ed6d91f04f5edc60",
+    "packages/domain/src/state.ts": "ce9c3b22aa24c9080ae13938508ad61912545b51aa559cd4072f9a94816bbdec",
+    "services/commerce/src/authority/repository.ts": "40c554131a73282127d6fd91621ab98b1ad2500e1405ef29aff92dbf0ead228a",
+    "apps/pos/src/components/apply-discount-modal.tsx": "46a87ef1949fc5f257ee29cdf020b57aea50b201f19ef94687428ac76ab22ae4",
+    "apps/pos/src/components/cash-audit-modal.tsx": "8ae9d05077aa15aec3c7203a0125bf5195fde3cc4934a2189bd5c7fcabfdc44c",
+    "apps/pos/src/components/thermal-receipt-modal.tsx": "0e307cdb37627d72845d6a85c9a09e22eacbaec0cae8354cc7d084b36971406a",
+    "apps/pos/src/components/pos-app.tsx": "94e408ba5d94ffd4af1eea368e42802f85ee0c7d046c4e38f58da936017e7313",
+    "tests/unit/pilot-domain.test.ts": "cd3ea41477586f3bbafe1e514eaf6c22de82dbe559d569f3f3921dcfe59e297d",
+    "tests/integration/api.test.ts": "20f00a06c9707e3583a893b665a7c0b805a4bf3ecc5dfb2c6778a1a84eba691e",
+    "tests/e2e/zzzzzz-discounts-audit.spec.ts": "edf131d2cc48578cfeeb0ccfec5ae87f3869559ff6fe72545457faa70be426b7",
+    "tests/support/database.ts": "b9ceb966357278dd552e7b867f01eae00c1e7a9e4e3ac1a0b991c8f740b7614d",
+    "specs/009-descuentos-arqueo-caja/spec.md": "a40894d3ebeac3a91ca91ccc5508b0c6936cfe1ee1803980660d34c0b54e1d18",
+    "specs/009-descuentos-arqueo-caja/plan.md": "90ce6f68b5e9a5685041e8f92f7d24331dc4561bada81cffc546b9ad857e6ff4",
+    "specs/009-descuentos-arqueo-caja/tasks.md": "d2b7279a7191d1a4ee270c9991815ef9ea751e3bd1f298bca5dab80b307dde6d",
+    "specs/009-descuentos-arqueo-caja/checklist.md": "447abaec2a6de55d44ac4d89306dee640536a0416397b5c9f7672ad5159f7a7c"
+  },
+  "evidence": [
+    "docs/evidence/discounts-audit-delivery.md",
+    "docs/evidence/discounts-audit-review.md",
+    "docs/evidence/CONTINUIDAD.md"
+  ],
+  "integral_feature_tasks_marked_complete": true,
+  "external_capabilities_accepted": false,
+  "checked_at_utc": "2026-10-02T22:00:00.000Z"
+}

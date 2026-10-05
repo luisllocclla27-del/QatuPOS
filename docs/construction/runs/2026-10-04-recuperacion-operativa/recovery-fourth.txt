@@ -1,0 +1,10 @@
+$ vitest run "tests/unit/recovery.test.ts" "tests/integration/recovery.test.ts"
+
+ RUN  v5.0.3 F:/PROYECTOS/QatuPOS/el-encanto-huamanguino
+
+
+ Test Files  2 passed (2)
+      Tests  19 passed (19)
+   Start at  13:52:33
+   Duration  10.51s (tests 91%, import 7%, transform 2%)
+

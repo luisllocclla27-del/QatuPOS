@@ -1,0 +1,53 @@
+[WebServer] (node:6688) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:16400) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:5636) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:15084) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 3 tests using 1 worker
+
+(node:18164) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 tests\e2e\zzzzzzzzzz-operations.spec.ts:19:1 › touch queue keeps FIFO, urgency aviso and paper-only preparation separate from pickup (7.1s)
+  ok 2 tests\e2e\zzzzzzzzzz-operations.spec.ts:38:1 › night menu restricts tablets and QR and final stock/cash closes independently from fiscal (9.6s)
+  x  3 tests\e2e\zzzzzzzzzz-operations.spec.ts:59:1 › night cashier retains a cash shortage and another admin signs the exact final count (1.0m)
+
+
+  1) tests\e2e\zzzzzzzzzz-operations.spec.ts:59:1 › night cashier retains a cash shortage and another admin signs the exact final count 
+
+    Test timeout of 60000ms exceeded.
+
+    Error: browserContext.close: Protocol error (Target.disposeBrowserContext): Failed to find context with id B74C77E2CB3AE420B92422642EE5A71B
+
+      73 |     const final = await snapshot(night!); expect(final.day_closes.at(-1)).toMatchObject({ operational_status: 'reconciled', cash_difference_minor: -100, counted_final_cash_minor: 9900 }); expect(final.day_closes.at(-1)!.cash_approval_id).toBeTruthy(); expect(final.cash_close_approvals!.at(-1)!.actor_id).not.toBe(final.user.id);
+      74 |     await mkdir('docs/evidence/screens', { recursive: true }); await night!.screenshot({ path: 'docs/evidence/screens/cierre-diferencia-aprobada-014.png', fullPage: true });
+    > 75 |   } finally { for (const c of contexts) await c.close(); }
+         |                                         ^
+      76 | });
+      77 |
+        at F:\PROYECTOS\QatuPOS\el-encanto-huamanguino\tests\e2e\zzzzzzzzzz-operations.spec.ts:75:41
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\zzzzzzzzzz-operations-nigh-b15bc-signs-the-exact-final-count\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\zzzzzzzzzz-operations-nigh-b15bc-signs-the-exact-final-count\test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\zzzzzzzzzz-operations-nigh-b15bc-signs-the-exact-final-count\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\zzzzzzzzzz-operations-nigh-b15bc-signs-the-exact-final-count\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\zzzzzzzzzz-operations-nigh-b15bc-signs-the-exact-final-count\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\zzzzzzzzzz-operations.spec.ts:59:1 › night cashier retains a cash shortage and another admin signs the exact final count 
+  2 passed (1.4m)

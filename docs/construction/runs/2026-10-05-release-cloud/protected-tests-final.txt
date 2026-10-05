@@ -1,0 +1,9 @@
+
+ RUN  v5.0.3 F:/PROYECTOS/QatuPOS/el-encanto-huamanguino
+
+
+ Test Files  2 passed (2)
+      Tests  23 passed (23)
+   Start at  12:10:38
+   Duration  617ms (transform 43%, import 30%, tests 19%, worker 7%)
+

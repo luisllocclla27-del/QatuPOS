@@ -1,0 +1,12 @@
+{
+  "prepared": true,
+  "directory": "C:\\Users\\luisg\\AppData\\Local\\Temp\\QatuPOS-release-ytszntzz",
+  "files": 575,
+  "exact_bytes": true,
+  "parent_present": false,
+  "frozen_install_exit_code": 0,
+  "release_check_exit_code": 0,
+  "typecheck_exit_code": 0,
+  "build_cloud_exit_code": 0,
+  "source_kind": "Git staged exact-byte export before final evidence/tests-only additions"
+}

@@ -1,0 +1,13 @@
+$ vitest run
+
+ RUN  v5.0.3 F:/PROYECTOS/QatuPOS/el-encanto-huamanguino
+
+
+ Test Files  13 passed (13)
+      Tests  237 passed (237)
+   Start at  13:32:28
+   Duration  21.26s (tests 82%, import 16%, transform 2%)
+
+    Isolate  13 workers spawned · ~170ms startup each (spawn + environment, per file)
+             at least ~2.05s faster with isolate: false — reuses workers across files instead of one per file
+

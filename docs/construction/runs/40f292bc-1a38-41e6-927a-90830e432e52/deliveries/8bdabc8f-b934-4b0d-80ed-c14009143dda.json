@@ -1,0 +1,23 @@
+{
+  "assignment_id": "8bdabc8f-b934-4b0d-80ed-c14009143dda",
+  "execution_id": "40f292bc-1a38-41e6-927a-90830e432e52",
+  "increment": "local laboratory",
+  "owner": "commerce-domain",
+  "state": "ready_for_review",
+  "integrated_by": "root",
+  "workspace_root": "F:\\PROYECTOS\\QatuPOS\\el-encanto-huamanguino",
+  "evidence": [
+    "docs/evidence/delivery.md",
+    "docs/evidence/independent-review.md",
+    "docs/evidence/planning-integrity.json"
+  ],
+  "tests": {
+    "domain_contract_api_passed": 89,
+    "e2e_passed": 2,
+    "typecheck": "passed",
+    "build": "passed"
+  },
+  "external_capabilities_accepted": false,
+  "integral_feature_tasks_marked_complete": false,
+  "worker_completion_note": "Persisted code from stopped workers integrated by coordinator; acceptance limited to tested laboratory controls, no G2."
+}

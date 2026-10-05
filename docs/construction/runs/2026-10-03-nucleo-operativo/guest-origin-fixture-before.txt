@@ -1,0 +1,28 @@
+
+ RUN  v5.0.3 F:/PROYECTOS/QatuPOS/el-encanto-huamanguino
+
+ ❯ tests/integration/operational-core.test.ts (14 tests | 1 failed) 6109ms
+   × operational guest quotes require origin and CSRF, and guest reads cannot cross installation modes 171ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/operational-core.test.ts > operational guest quotes require origin and CSRF, and guest reads cannot cross installation modes
+AssertionError: expected 403 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 403
+
+ ❯ tests/integration/operational-core.test.ts:43:555
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 13 passed (14)
+   Start at  17:23:01
+   Duration  7.53s (tests 84%, import 12%, transform 4%)
+

@@ -1,0 +1,48 @@
+{
+  "execution_id": "444db644-5c07-4516-b50c-2624ce1aff7f",
+  "owner": "root",
+  "transitions": [
+    {
+      "from": "assigned",
+      "to": "running",
+      "evidence": "014 baseline96 hashes checked; WorkOrder before code"
+    },
+    {
+      "from": "running",
+      "to": "running",
+      "version": 2,
+      "evidence": "guest repository grant before edit"
+    },
+    {
+      "from": "running",
+      "to": "running",
+      "version": 3,
+      "evidence": "inventory paths and stock receipt contract before implementation"
+    },
+    {
+      "from": "running",
+      "to": "running",
+      "version": 4,
+      "evidence": "legacy SQL test expectations grant before adapting bigint types"
+    },
+    {
+      "from": "running",
+      "to": "running",
+      "version": 5,
+      "evidence": "isolated operational fixture grant before TLS production startup proof"
+    },
+    {
+      "from": "running",
+      "to": "running",
+      "version": 6,
+      "evidence": "guest client grant before securing operational quote writes"
+    },
+    {
+      "from": "running",
+      "to": "ready_for_review",
+      "checked_at_utc": "2026-10-03T22:30:25.379157+00:00",
+      "evidence": "verification.json"
+    }
+  ],
+  "independent_acceptance": "pending"
+}

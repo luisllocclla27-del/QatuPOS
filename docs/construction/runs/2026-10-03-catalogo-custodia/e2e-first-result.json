@@ -1,0 +1,5 @@
+{
+  "passed": 11,
+  "failed": 1,
+  "cause": "New test locator expected exact accessible name Carta; navigation includes symbol and hint. Timed out before entering catalogue; fixed to same navigation locator as existing tests. No business assertions removed."
+}

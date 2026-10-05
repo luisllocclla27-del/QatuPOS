@@ -1,0 +1,27 @@
+$ vitest run "tests/unit/recovery.test.ts" "tests/integration/recovery.test.ts"
+
+ RUN  v5.0.3 F:/PROYECTOS/QatuPOS/el-encanto-huamanguino
+
+ ❯ tests/integration/recovery.test.ts (10 tests | 1 failed) 9577ms
+   × rejects wrong-key before any target SQL effects 366ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/recovery.test.ts > rejects wrong-key before any target SQL effects
+AssertionError: expected [Function] to throw error including 'ARCHIVE_AUTHENTICATION_FAILED' but got 'EBADF: bad file descriptor, close'
+
+Expected: "ARCHIVE_AUTHENTICATION_FAILED"
+Received: "EBADF: bad file descriptor, close"
+
+ ❯ tests/integration/recovery.test.ts:49:126
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 18 passed (19)
+   Start at  13:49:45
+   Duration  10.80s (tests 91%, import 6%, transform 2%)
+
+[ELIFECYCLE] Test failed. See above for more details.

@@ -1,0 +1,11 @@
+import { it, expect } from 'vitest';
+import type { Order } from '@qatu/contracts';
+import { guestOrderProgress } from '../../apps/pos/src/lib/guest-order-progress.js';
+const order=(lines:unknown[])=>({lines} as Order);
+const line=(extra:object={})=>({quantity:3,voided_quantity:0,prepared_quantity:0,fulfilled_quantity:0,station:'cocina',...extra});
+it('full cancellation is not physical delivery or pending preparation',()=>{expect(guestOrderProgress(order([line({voided_quantity:3})]))).toMatchObject({active:0,voided:3,pending:0,ready:0,toPrepare:0,delivered:0,status:'annulled',label:'Anulado',footer:'Pedido anulado · sin unidades por entregar'});});
+it('a partial cancellation counts only active prepared units',()=>{expect(guestOrderProgress(order([line({voided_quantity:1,prepared_quantity:1})]))).toMatchObject({active:2,voided:1,pending:2,ready:1,toPrepare:1,status:'pending',label:'En proceso'});});
+it('delivered active units with voids remain distinguishable',()=>{expect(guestOrderProgress(order([line({voided_quantity:1,prepared_quantity:2,fulfilled_quantity:2})]))).toMatchObject({status:'delivered',delivered:2,footer:'Unidades activas entregadas · incluye anulaciones'});});
+it('mixed cancelled and Caja units remain ready for direct delivery',()=>{expect(guestOrderProgress(order([line({voided_quantity:3}),line({station:'caja',quantity:1})]))).toMatchObject({active:1,pending:1,ready:1,toPrepare:0,label:'Listo para entregar',status:'pending'});});
+it('all active units delivered are genuinely delivered',()=>{expect(guestOrderProgress(order([line({prepared_quantity:3,fulfilled_quantity:3})]))).toMatchObject({status:'delivered',footer:'Todas las unidades entregadas'});});
+it('an empty invalid batch does not assert a delivery',()=>{expect(guestOrderProgress(order([])).status).toBe('pending');});

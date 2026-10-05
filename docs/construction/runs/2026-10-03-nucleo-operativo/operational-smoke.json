@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "fixture": "generated qatupos_prod_test database + individual role, removed after execution",
+  "bootstrap_empty": true,
+  "repeat_bootstrap_rejected": true,
+  "https_chain_and_hostname_verified_with_explicit_test_ca": true,
+  "secure_cookie": true,
+  "origin_required": true,
+  "host_fence": true,
+  "production_build_runtime": true,
+  "real_restaurant_activated": false,
+  "device_certificate_trust": "not validated",
+  "public_lan": "not activated",
+  "provider_calls": 0
+}

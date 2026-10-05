@@ -1,0 +1,96 @@
+
+ RUN  v5.0.3 F:/PROYECTOS/QatuPOS/el-encanto-huamanguino
+
+ ❯ tests/integration/counts-day.test.ts (5 tests | 5 failed) 2160ms
+   ❯ 013 PG atomic review (5)
+     × holds stock after count and rejects effect with no operation/outbox 281ms
+     × preserves shortage count and original reservations on denied approval 250ms
+     × serializes count vs existing quote and never delivers a held SKU 296ms
+     × recounts once, supersedes history and restores available only after independent review 235ms
+     × does not alter prior day check or close through ordinary discount 263ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/counts-day.test.ts > 013 PG atomic review > holds stock after count and rejects effect with no operation/outbox
+AssertionError: expected 200 to be 409 // Object.is equality
+
+- Expected
++ Received
+
+- 409
++ 200
+
+ ❯ tests/integration/counts-day.test.ts:23:92
+     21|   it('holds stock after count and rejects effect with no operation/out…
+     22|     const t = await setup(); expect((await count(t.c, 2)).statusCode).…
+     23|     const r = await send(t.w, { ...orderBody(t), operation_id: id }); …
+       |                                                                                            ^
+     24|     for (const table of ['command_operations', 'outbox']) expect(Numbe…
+     25|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  tests/integration/counts-day.test.ts > 013 PG atomic review > preserves shortage count and original reservations on denied approval
+AssertionError: expected 200 to be 409 // Object.is equality
+
+- Expected
++ Received
+
+- 409
++ 200
+
+ ❯ tests/integration/counts-day.test.ts:28:190
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  tests/integration/counts-day.test.ts > 013 PG atomic review > serializes count vs existing quote and never delivers a held SKU
+AssertionError: expected 200 to be 409 // Object.is equality
+
+- Expected
++ Received
+
+- 409
++ 200
+
+ ❯ tests/integration/counts-day.test.ts:34:170
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+ FAIL  tests/integration/counts-day.test.ts > 013 PG atomic review > recounts once, supersedes history and restores available only after independent review
+AssertionError: expected 'declared' to be 'superseded' // Object.is equality
+
+Expected: "superseded"
+Received: "declared"
+
+ ❯ tests/integration/counts-day.test.ts:39:42
+     37|   it('recounts once, supersedes history and restores available only af…
+     38|     const t = await setup(); const first = await count(t.c, 2); expect…
+     39|     expect(s.inventory_counts[0].status).toBe('superseded'); expect(s.…
+       |                                          ^
+     40|     expect((await send(t.w, orderBody(t))).statusCode).toBe(409);
+     41|     const body = { type: 'inventory.adjust', operation_id: randomUUID(…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/5]⎯
+
+ FAIL  tests/integration/counts-day.test.ts > 013 PG atomic review > does not alter prior day check or close through ordinary discount
+AssertionError: expected 200 to be 409 // Object.is equality
+
+- Expected
++ Received
+
+- 409
++ 200
+
+ ❯ tests/integration/counts-day.test.ts:49:232
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/5]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  5 failed (5)
+   Start at  13:09:58
+   Duration  3.05s (tests 75%, import 18%, transform 6%)
+

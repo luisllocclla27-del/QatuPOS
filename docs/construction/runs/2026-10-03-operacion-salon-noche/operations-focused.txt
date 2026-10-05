@@ -1,0 +1,12 @@
+
+ RUN  v5.0.3 F:/PROYECTOS/QatuPOS/el-encanto-huamanguino
+
+
+ Test Files  3 passed (3)
+      Tests  40 passed (40)
+   Start at  14:47:53
+   Duration  4.17s (tests 77%, import 17%, transform 6%)
+
+    Isolate  3 workers spawned · ~164ms startup each (spawn + environment, per file)
+             at least ~328ms faster with isolate: false — reuses workers across files instead of one per file
+

@@ -1,0 +1,77 @@
+
+ RUN  v5.0.3 F:/PROYECTOS/QatuPOS/el-encanto-huamanguino
+
+ ❯ tests/integration/money-persistence.test.ts (4 tests | 4 failed) 1533ms
+   × persists and reads quotes above int32 without truncation 194ms
+   × persists high-value void audit transactionally 162ms
+   × persists high-value discount without int32 overflow 153ms
+   × stores exact safeinteger maximum and rejects SQL beyond that domain 154ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/money-persistence.test.ts > persists and reads quotes above int32 without truncation
+AssertionError: expected 503 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 503
+
+ ❯ large tests/integration/money-persistence.test.ts:11:616
+
+ ❯ tests/integration/money-persistence.test.ts:12:78
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  tests/integration/money-persistence.test.ts > persists high-value void audit transactionally
+AssertionError: expected 503 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 503
+
+ ❯ large tests/integration/money-persistence.test.ts:11:616
+
+ ❯ tests/integration/money-persistence.test.ts:13:78
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  tests/integration/money-persistence.test.ts > persists high-value discount without int32 overflow
+AssertionError: expected 503 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 503
+
+ ❯ large tests/integration/money-persistence.test.ts:11:616
+
+ ❯ tests/integration/money-persistence.test.ts:14:83
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  tests/integration/money-persistence.test.ts > stores exact safeinteger maximum and rejects SQL beyond that domain
+AssertionError: expected 503 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 503
+
+ ❯ large tests/integration/money-persistence.test.ts:11:616
+
+ ❯ tests/integration/money-persistence.test.ts:15:89
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed (4)
+   Start at  16:28:58
+   Duration  2.49s (tests 67%, import 25%, transform 8%)
+

@@ -1,0 +1,9 @@
+{
+  "planning_checks_passed": 25,
+  "planning_inputs": 212,
+  "mismatches": [],
+  "planning_runtime_claim": false,
+  "pilot_openapi": "valid",
+  "work_orders_errors": {},
+  "note": "Parent report and its inputs verified without writing parent files. Runtime evidence belongs to isolated pilot."
+}

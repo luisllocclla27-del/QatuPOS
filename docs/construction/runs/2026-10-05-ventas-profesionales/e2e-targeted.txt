@@ -1,0 +1,62 @@
+[WebServer] (node:10232) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:10912) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:13516) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:14196) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 3 tests using 1 worker
+
+(node:22972) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 tests\e2e\zzzzzzzzzzzz-sales.spec.ts:21:1 › lost reserve and committed payment survive reload with one effect and accurate sales history (7.5s)
+  ok 2 tests\e2e\zzzzzzzzzzzz-sales.spec.ts:41:1 › precuenta distinguishes all-held balance and refreshes while another terminal orders (9.1s)
+  x  3 tests\e2e\zzzzzzzzzzzz-sales.spec.ts:50:1 › unavailable session storage prevents a financial request before sending (3.1s)
+
+
+  1) tests\e2e\zzzzzzzzzzzz-sales.spec.ts:50:1 › unavailable session storage prevents a financial request before sending 
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: getByRole('alert')
+    Expected substring: "La operación no se envió"
+    Error: strict mode violation: getByRole('alert') resolved to 2 elements:
+        1) <div role="alert" class="alert error">…</div> aka getByText('No pudimos guardar la')
+        2) <div role="alert" aria-live="assertive" id="__next-route-announcer__"></div> aka locator('[id="__next-route-announcer__"]')
+
+    Call log:
+      - Expect "toContainText" getByRole('alert') with timeout 12000ms
+      - waiting for getByRole('alert')
+
+
+      50 | test('unavailable session storage prevents a financial request before sending',async({browser})=>{
+      51 |   const cc=await browser.newContext(),wc=await browser.newContext();const cash=await cc.newPage(),waiter=await wc.newPage();
+    > 52 |   try{const {check}=await setup(cash,waiter);let sent=0;await cash.route('**/v1/pos/commands',route=>{if(route.request().postDataJSON()?.type==='collection.authorize')sent++;return route.continue();});await cash.evaluate(()=>{const original=Storage.prototype.setItem;Storage.prototype.setItem=function(key,value){if(key.startsWith('qatu-order-recovery:'))throw new DOMException('blocked');return original.call(this,key,value);};});await cash.getByRole('button',{name:/Reservar importe/}).click();await expect(cash.getByRole('alert')).toContainText('La operación no se envió');expect(sent).toBe(0);expect((await snapshot(cash)).authorizations.filter(a=>a.check_id===check.id)).toHaveLength(0);}finally{await cc.close();await wc.close();}
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ^
+      53 | });
+      54 |
+        at F:\PROYECTOS\QatuPOS\el-encanto-huamanguino\tests\e2e\zzzzzzzzzzzz-sales.spec.ts:52:535
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\zzzzzzzzzzzz-sales-unavail-cdbfe-cial-request-before-sending\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\zzzzzzzzzzzz-sales-unavail-cdbfe-cial-request-before-sending\test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\zzzzzzzzzzzz-sales-unavail-cdbfe-cial-request-before-sending\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\zzzzzzzzzzzz-sales-unavail-cdbfe-cial-request-before-sending\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\zzzzzzzzzzzz-sales-unavail-cdbfe-cial-request-before-sending\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\zzzzzzzzzzzz-sales.spec.ts:50:1 › unavailable session storage prevents a financial request before sending 
+  2 passed (43.6s)

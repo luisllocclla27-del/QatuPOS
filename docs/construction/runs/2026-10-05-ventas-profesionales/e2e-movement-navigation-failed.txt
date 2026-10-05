@@ -1,0 +1,247 @@
+$ playwright test
+[WebServer] (node:22676) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:18224) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:20648) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:13548) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 24 tests using 1 worker
+
+(node:5304) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 tests\e2e\pos.spec.ts:10:1 › two touch terminals share a mixed table order and cashier records exact cash change (59.9s)
+  ok  2 tests\e2e\pos.spec.ts:116:1 › mobile layout stays inside the viewport with accessible table controls (4.2s)
+  ok  3 tests\e2e\zz-guest.spec.ts:22:1 › waiter monitors private customer orders and paid delivery stays independent (44.8s)
+  ok  4 tests\e2e\zz-guest.spec.ts:79:1 › customer recovers a lost response after reload once and waiter rotation ends the old browser (16.3s)
+  ok  5 tests\e2e\zz-guest.spec.ts:98:1 › browser storage failures never send an untracked order or discard a confirmed result (15.0s)
+  ok  6 tests\e2e\zz-guest.spec.ts:121:1 › fully cancelled customer batch stays out of delivered and preserves cancellation detail (15.5s)
+  ok  7 tests\e2e\zzz-catalog.spec.ts:27:1 › admin manages catalog and price change from 35 to 38 rejects stale quote with alert and accepts updated price (20.7s)
+  ok  8 tests\e2e\zzz-catalog.spec.ts:122:1 › admin catalog mobile view stays within viewport (4.8s)
+  ok  9 tests\e2e\zzzz-voids.spec.ts:12:1 › granular order line voiding recalculates check, audits reason, and allows releasing held collections (16.2s)
+STEP 8.1: verifying thermal receipt text
+STEP 8.2: taking factura screenshot
+STEP 8.3: closing thermal receipt modal
+STEP 9: verifying check row and alert
+STEP 10: verifying fiscal documents panel
+STEP 10.1: testing reprint
+STEP 10.2: taking caja fiscal panel screenshot
+  ok 10 tests\e2e\zzzzz-fiscal.spec.ts:12:1 › pre-cuenta, electronic invoice issuance (F001/B001), 80mm thermal receipt, and fiscal history in Caja (12.2s)
+[E2E DEBUG] Step 7: Starting payment of S/ 36.00
+[E2E DEBUG] Step 7: Waiting for reserved alert
+[E2E DEBUG] Step 7: Waiting for Cobro registrado status
+[E2E DEBUG] Step 7: Payment finished
+[E2E DEBUG] Step 8: Looking for Emitir Boleta / Factura button
+[E2E DEBUG] Step 8: Clicking Emitir Boleta / Factura
+[E2E DEBUG] Step 8: Waiting for fiscal modal
+[E2E DEBUG] Step 8: Submitting Boleta B001 directly
+[E2E DEBUG] Step 8: Submitted fiscal doc successfully
+[E2E DEBUG] Step 9: Waiting for BOLETA DE VENTA ELECTRÓNICA modal
+[E2E DEBUG] Step 9: Fiscal ticket verified and closed
+[E2E DEBUG] Step 10: Looking for Arqueo Corte X button
+[E2E DEBUG] Step 10: Waiting for Arqueo modal
+[E2E DEBUG] Step 10: Arqueo modal verified and closed
+[E2E DEBUG] Step 11: Checking discount audit table
+[E2E DEBUG] Step 11: All done!
+  ok 11 tests\e2e\zzzzzz-discounts-audit.spec.ts:12:1 › commercial discounts, courtesy audit, 80mm pre-cuenta discount breakdown, and live cash audit (Corte X) (13.2s)
+  ok 12 tests\e2e\zzzzzzz-credit-notes.spec.ts:12:1 › electronic credit notes (BC01), formal annulment, 80mm thermal receipt, and live cash audit reconciliation (Corte X) (12.7s)
+  ok 13 tests\e2e\zzzzzzzz-catalog-custody.spec.ts:4:1 › Carta guides compatible stock selection, audits route before first sale (5.0s)
+  ok 14 tests\e2e\zzzzzzzzz-inventory.spec.ts:15:1 › cashier declares, shortage remains held, recount preserves observation and another admin approves (20.4s)
+  ok 15 tests\e2e\zzzzzzzzzz-operations.spec.ts:19:1 › touch queue keeps FIFO, urgency aviso and paper-only preparation separate from pickup (12.9s)
+  ok 16 tests\e2e\zzzzzzzzzz-operations.spec.ts:38:1 › night menu restricts tablets and QR and final stock/cash closes independently from fiscal (15.9s)
+  ok 17 tests\e2e\zzzzzzzzzz-operations.spec.ts:59:1 › night cashier retains a cash shortage and another admin signs the exact final count (12.0s)
+  ok 18 tests\e2e\zzzzzzzzzz-operations.spec.ts:79:1 › independent admin cancels declared custody cut without erasing original observation (5.8s)
+  ok 19 tests\e2e\zzzzzzzzzzz-staff.spec.ts:5:1 › admin provisions individual tablet account and rotates credential without storing passwords in drafts (6.7s)
+  ok 20 tests\e2e\zzzzzzzzzzz-staff.spec.ts:18:1 › physical receiving creates zero-stock SKU then increases stock without cash movement (3.2s)
+  ok 21 tests\e2e\zzzzzzzzzzzz-sales.spec.ts:34:1 › lost reserve and committed payment survive reload with one effect and accurate sales history (17.7s)
+  ok 22 tests\e2e\zzzzzzzzzzzz-sales.spec.ts:54:1 › precuenta distinguishes all-held balance and refreshes while another terminal orders (15.0s)
+  ok 23 tests\e2e\zzzzzzzzzzzz-sales.spec.ts:63:1 › unavailable session storage prevents a financial request before sending (9.3s)
+  x  24 tests\e2e\zzzzzzzzzzzz-sales.spec.ts:67:1 › cash movement response lost after commit is recovered without doubling cash or sales (1.0m)
+
+
+  1) tests\e2e\zzzzzzzzzzzz-sales.spec.ts:67:1 › cash movement response lost after commit is recovered without doubling cash or sales 
+
+    Test timeout of 60000ms exceeded.
+
+    Error: browserContext.close: Test ended.
+    Browser logs:
+
+    [pid=6668][err] [1005/105959.690:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110004.007:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110004.339:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110010.768:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110011.199:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110020.802:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110020.901:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110033.172:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110033.459:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110038.009:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110038.278:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110040.302:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110040.580:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110044.348:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110044.389:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110046.480:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110046.756:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110050.948:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110051.432:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110101.947:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110102.335:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110113.626:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110113.948:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110122.628:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110122.997:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110126.135:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110126.417:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110129.050:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110129.079:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110134.623:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110134.947:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110138.464:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110138.814:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110141.654:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110141.993:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110146.199:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110146.231:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110150.775:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110150.820:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110154.270:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110154.647:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110157.685:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110158.012:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110200.515:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110200.867:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110209.565:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110209.913:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110215.177:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110215.571:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110218.890:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110219.152:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110230.487:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110230.839:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110235.713:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110236.081:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110238.046:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110238.354:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110245.403:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110245.731:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110250.724:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110250.960:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110252.358:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110252.617:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110302.999:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110303.266:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110305.290:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110305.570:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110316.105:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110316.263:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110317.484:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110317.703:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110329.677:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110330.000:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110334.200:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110334.390:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110335.789:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110335.987:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110346.297:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110346.547:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110354.480:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110354.665:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110355.682:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110355.825:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110400.056:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110400.330:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110407.717:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110408.026:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110409.432:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110409.738:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110412.083:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110412.283:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110413.585:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110413.947:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110423.554:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110423.931:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110426.210:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110426.570:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110435.555:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110435.862:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110437.319:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110437.596:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110438.756:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110438.785:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110441.634:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110441.831:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110443.144:INFO:CONSOLE:0] "Pattern attribute value [a-z][a-z0-9_.-]{2,49} is not a valid regular expression: Uncaught SyntaxError: Invalid regular expression: /[a-z][a-z0-9_.-]{2,49}/v: Invalid character in character class", source: http://127.0.0.1:3100/ (0)
+    [pid=6668][err] [1005/110444.694:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110444.950:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110448.086:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110448.374:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110449.633:INFO:CONSOLE:0] "Pattern attribute value [A-Z0-9][A-Z0-9_-]{1,49} is not a valid regular expression: Uncaught SyntaxError: Invalid regular expression: /[A-Z0-9][A-Z0-9_-]{1,49}/v: Invalid character in character class", source: http://127.0.0.1:3100/ (0)
+    [pid=6668][err] [1005/110451.551:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110451.838:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110453.343:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110453.387:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110454.971:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110455.197:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110457.008:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110457.091:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110459.548:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110459.777:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110501.635:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110501.805:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110504.245:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110504.265:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110509.304:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110509.571:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110510.935:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110510.973:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110512.337:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110512.598:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110514.184:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110514.218:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110515.826:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110515.856:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110524.311:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110524.618:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110525.944:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110525.984:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110527.530:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110527.805:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110529.117:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110529.147:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110530.697:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110530.857:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110533.554:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110533.817:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110535.130:INFO:CONSOLE:777] "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668][err] [1005/110535.161:INFO:CONSOLE:777] "[HMR] connected", source: http://127.0.0.1:3100/_next/static/chunks/06ws_next_dist_03swfrl._.js (777)
+    [pid=6668] <gracefully close start>
+
+      75 |     await cash.reload();await expect(cash.getByText('Respuesta pendiente de confirmación')).toBeVisible();await cash.getByRole('button',{name:'Consultar y recuperar'}).click();await expect(cash.getByRole('status')).toContainText('Operación recuperada');
+      76 |     const after=await snapshot(cash);expect(ids).toHaveLength(2);expect(new Set(ids).size).toBe(1);expect(after.cash_movements.filter(m=>m.reason===reason)).toHaveLength(1);expect(after.cash_sessions.find(c=>c.id===owner.id)!.expected_minor).toBe(before.cash_sessions.find(c=>c.id===owner.id)!.expected_minor!+1000);expect(after.payments).toEqual(before.payments);expect(after.checks).toEqual(before.checks);
+    > 77 |   }finally{await context.close();}
+         |            ^
+      78 | });
+      79 |
+        at F:\PROYECTOS\QatuPOS\el-encanto-huamanguino\tests\e2e\zzzzzzzzzzzz-sales.spec.ts:77:12
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\zzzzzzzzzzzz-sales-cash-mo-7a4a0-hout-doubling-cash-or-sales\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\zzzzzzzzzzzz-sales-cash-mo-7a4a0-hout-doubling-cash-or-sales\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\zzzzzzzzzzzz-sales-cash-mo-7a4a0-hout-doubling-cash-or-sales\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\zzzzzzzzzzzz-sales-cash-mo-7a4a0-hout-doubling-cash-or-sales\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\zzzzzzzzzzzz-sales.spec.ts:67:1 › cash movement response lost after commit is recovered without doubling cash or sales 
+  23 passed (7.4m)
+[ELIFECYCLE] Command failed with exit code 1.

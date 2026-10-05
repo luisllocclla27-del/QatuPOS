@@ -1,0 +1,44 @@
+{
+  "migrations": [
+    "001_core_scope.sql",
+    "004_lab_state_metadata.sql",
+    "005_guest_access.sql",
+    "006_catalog_and_quotes.sql",
+    "007_voids_and_releases.sql",
+    "008_fiscal_documents.sql",
+    "009_discounts_and_cash_audit.sql",
+    "010_credit_notes.sql"
+  ],
+  "money_columns": [
+    {
+      "table_name": "check_discount_audit",
+      "column_name": "discount_minor",
+      "data_type": "integer"
+    },
+    {
+      "table_name": "fiscal_documents",
+      "column_name": "igv_minor",
+      "data_type": "integer"
+    },
+    {
+      "table_name": "fiscal_documents",
+      "column_name": "op_gravada_minor",
+      "data_type": "integer"
+    },
+    {
+      "table_name": "fiscal_documents",
+      "column_name": "total_minor",
+      "data_type": "integer"
+    },
+    {
+      "table_name": "order_quotes",
+      "column_name": "total_minor",
+      "data_type": "integer"
+    },
+    {
+      "table_name": "order_void_audit",
+      "column_name": "amount_minor",
+      "data_type": "integer"
+    }
+  ]
+}

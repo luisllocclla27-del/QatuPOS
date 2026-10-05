@@ -1,0 +1,14 @@
+{
+  "api": {
+    "status": "ok",
+    "environment": "laboratory"
+  },
+  "public_mode": {
+    "environment": "laboratory"
+  },
+  "staff_status": 200,
+  "domain_increment": "015-nucleo-operativo",
+  "customer_status": 200,
+  "interactive_data_reset": false,
+  "development_session": 73612
+}

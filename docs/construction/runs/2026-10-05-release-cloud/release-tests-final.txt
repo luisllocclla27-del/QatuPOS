@@ -1,0 +1,16 @@
+$ node --test tests/release/*.test.mjs
+✔ private paths are blocked including tracked files (1.1469ms)
+✔ findings report rules without values; loopback is synthetic (1.0624ms)
+✔ manifest enforces exact names and bytes, including CRLF (16.4765ms)
+✔ inventory blocks followed sensitive files despite ignore rules (3.6786ms)
+✔ canonical migrations match the committed manifest (1.9667ms)
+✔ synthetic exception requires exact source hash; changed file blocks (8.3654ms)
+✔ Supabase queries are read-only (1.8812ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 145.1892

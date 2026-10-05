@@ -1,0 +1,17 @@
+{
+  "name": "@qatu/commerce",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": { "./serverless": "./src/platform/serverless.ts" },
+  "scripts": { "dev": "tsx watch src/main.ts", "start": "tsx src/main.ts" },
+  "dependencies": {
+    "@qatu/contracts": "workspace:*",
+    "@qatu/domain": "workspace:*",
+    "@fastify/cookie": "11.1.2",
+    "fastify": "5.12.5",
+    "pg": "8.23.1",
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1"
+  }
+}

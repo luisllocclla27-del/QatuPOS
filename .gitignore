@@ -1,0 +1,34 @@
+# Herramientas locales de validación del SDD
+.venv-sdd/
+__pycache__/
+*.pyc
+
+# Runtime and private local data
+node_modules/
+.next/
+.next-e2e/
+.next-production/
+.next-cloud/
+.vercel/
+dist/
+coverage/
+.runtime/
+.env*
+!.env.example
+*.log
+test-results/
+playwright-report/
+.pnpm-store/
+*.qatubak
+
+# Build caches, protected configuration, certificates and database exports
+*.tsbuildinfo
+*.key
+*.pem
+*.p12
+*.pfx
+*.dump
+*.backup
+*.protected.json
+.DS_Store
+Thumbs.db

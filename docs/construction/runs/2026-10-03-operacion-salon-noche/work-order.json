@@ -1,0 +1,119 @@
+{
+  "schema_version": "1.0.0",
+  "execution_id": "744f35d9-fb9e-4095-9f4d-a161e04fe465",
+  "assignment_id": "d368aad2-b93a-46b6-b798-803988838dc1",
+  "version": 3,
+  "package_id": "B21",
+  "work_kind": "implementation",
+  "feature_directory": "specs/014-operacion-salon-noche",
+  "task_ids": [
+    "MAR:T061",
+    "MAR:T062",
+    "MAR:T063",
+    "MAR:T064",
+    "MAR:T065",
+    "MAR:T066",
+    "MAR:T067"
+  ],
+  "goal": "Orden de preparación por llegada y prioridad auditada, responsable de mesa y reserva de retiro; noche solo bebidas de Caja, cierre operativo final con saldos/entregas/reservas resueltos, diferencias revisadas por otro responsable y fiscalidad separada.",
+  "owner": "root",
+  "reviewer": "future-independent-reviewer",
+  "state": "ready_for_review",
+  "baseline": {
+    "kind": "file_hashes",
+    "identity": "013-delivered-73-hashes-verified-2026-10-03",
+    "input_sha256": {
+      "packages/domain/src/index.ts": "77700fc9a0b4f3821eda89b48ec4e1cf866871bade15e9a469e9944cba86ea72",
+      "packages/domain/src/state.ts": "ce9c3b22aa24c9080ae13938508ad61912545b51aa559cd4072f9a94816bbdec",
+      "packages/contracts/src/pos.ts": "d6b346b84fd3892f40e99d4c04e6f7abfc6f15b0aec2b786123d7dbc2686b92e",
+      "docs/contracts/pilot.openapi.json": "a648944b43de32f13035c6e280c086e5f0d6ff5935fcec8d9f00c883f908445e",
+      "services/commerce/src/tables/guest-repository.ts": "97a35ef5e7a68265cb28636fb31d2d3e58619d587ca128a66fee612fb76dfcd4",
+      "apps/pos/src/components/pos-app.tsx": "20be7c7a4a5194b9bc0f75f67849e40c3b3e8bc83ad7b27c447b64dbcf7feda9",
+      "docs/construction/current-run.json": "09715da96cb7b45e0833357411c34e87da8631e52ad1e1acb6146c9e3b580e39",
+      "docs/evidence/CONTINUIDAD.md": "225ec52669249baac208f24d8ad332624e97b36df9da293aa667943873d9dea0",
+      "docs/evidence/planning-validation.json": "9972b85c28f11b6b38d9d1a240698f412dd9851ee93e83614f5ec39cffb26e3d",
+      "README.md": "8407412014806b0160c9fe89982ad4011e3e255609f84ccdf94db1be3394c27c",
+      "apps/pos/tsconfig.json": "3072e8bc8cd0dcff7a44d8318f54153dc2ce91fd404508cf5c942e480449aa76",
+      "apps/pos/next-env.d.ts": "b8b3a344484b959af5e4e3fc1a1609dac3cb9ece0cdeb6c145be29bc4c491000",
+      "apps/pos/src/components/guest-app.tsx": "2352302a1da8704e534b5c743f3dd514d8fc92c6cfdf0604136c55bfd4b13331",
+      "tests/e2e/pos.spec.ts": "8a27a889cce71fde0e195a2aec1e89164433a41aa1ed29c85e8b79cda98da9e2"
+    }
+  },
+  "write_paths": [
+    "packages/domain/src/index.ts",
+    "packages/domain/src/state.ts",
+    "packages/domain/src/operations.ts",
+    "packages/contracts/src/pos.ts",
+    "docs/contracts/pilot.openapi.json",
+    "services/commerce/src/tables/guest-repository.ts",
+    "apps/pos/src/components/pos-app.tsx",
+    "apps/pos/src/components/production-panel.tsx",
+    "apps/pos/src/components/night-close-panel.tsx",
+    "apps/pos/src/lib/operations.ts",
+    "tests/unit/restaurant-operations.test.ts",
+    "tests/unit/operations-view.test.ts",
+    "tests/integration/restaurant-operations.test.ts",
+    "tests/e2e/zzzzzzzzzz-operations.spec.ts",
+    "specs/014-operacion-salon-noche/",
+    "docs/construction/runs/2026-10-03-operacion-salon-noche/",
+    "docs/construction/current-run.json",
+    "docs/evidence/ACTUALIZACION-2026-10-03-operacion-salon-noche.md",
+    "docs/evidence/CONTINUIDAD.md",
+    "docs/evidence/planning-validation.json",
+    "docs/evidence/screens/",
+    "README.md",
+    "apps/pos/tsconfig.json",
+    "apps/pos/next-env.d.ts",
+    "apps/pos/src/components/guest-app.tsx",
+    "tests/e2e/pos.spec.ts"
+  ],
+  "read_paths": [
+    "packages/",
+    "services/",
+    "apps/",
+    "tests/",
+    "specs/013-conteos-y-dia-operativo/",
+    "docs/"
+  ],
+  "depends_on": [],
+  "contracts": [
+    "docs/contracts/pilot.openapi.json",
+    "specs/014-operacion-salon-noche/contracts/changes.md"
+  ],
+  "requirements": [
+    "MAR-FR-003",
+    "MAR-FR-004",
+    "MAR-FR-005",
+    "MAR-FR-009",
+    "MAR-FR-011",
+    "MAR-FR-018",
+    "MAR-FR-019"
+  ],
+  "acceptance": [
+    "MAR-AT-003",
+    "MAR-AT-004",
+    "MAR-AT-005",
+    "MAR-AT-009",
+    "MAR-AT-011",
+    "MAR-AT-018",
+    "MAR-AT-019"
+  ],
+  "test_plan": [
+    "Regresiones FIFO/prioridad/claim/impresión, QR y cotización anterior a noche; cierre exacto, reserva/saldo/unknown/conteo/diferencia bloqueados, aprobación distinta sellada con versiones, carreras/rollback PG; tipos/suite/E2E/build/documentos."
+  ],
+  "permitted_effects": [
+    "documentation",
+    "local_files",
+    "local_processes",
+    "local_database",
+    "synthetic_data",
+    "simulated_providers"
+  ],
+  "output_path": "docs/construction/runs/2026-10-03-operacion-salon-noche/delivery.json",
+  "shared_paths_grant": [
+    "packages/contracts/src/pos.ts",
+    "docs/contracts/pilot.openapi.json",
+    "apps/pos/tsconfig.json",
+    "apps/pos/next-env.d.ts"
+  ]
+}

@@ -1,0 +1,313 @@
+
+ RUN  v5.0.3 F:/PROYECTOS/QatuPOS/el-encanto-huamanguino
+
+ ❯ tests/unit/catalog-custody.test.ts (20 tests | 12 failed) 53ms
+   ❯ 012 catalog identity and route integrity (12)
+     × rejects duplicate identity even when inactive=false 13ms
+     × rejects duplicate identity even when inactive=true 1ms
+     × rejects stock from another station 1ms
+     × does not silently discard a stock binding on none policy 1ms
+     × changes and audits SKU even if stock_policy is omitted 3ms
+     × audits the entire operational binding before changing it 3ms
+     × clears and audits omitted SKU when unit changes to none 1ms
+     × rejects contradictory update without changing state 1ms
+   ❯ 012 cancellations during beverage custody handover (8)
+     × blocks reserve release during prepared 2ms
+     × blocks reserve release during declared 2ms
+     × blocks reserve release during disputed 2ms
+     × blocks physical stock return during a count 2ms
+ ❯ tests/integration/catalog-custody.test.ts (4 tests | 4 failed) 1611ms
+   ❯ 012 catalog/custody PostgreSQL (4)
+     × serializes competing product IDs and recovers the winner without another effect 228ms
+     × rejects incompatible SKU with no durable effect and protects another tenant 157ms
+     × persists complete binding audit and rejects stale edits atomically 154ms
+     × blocks reservation void during handover and leaves operations/outbox untouched 224ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 16 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/catalog-custody.test.ts > 012 catalog/custody PostgreSQL > serializes competing product IDs and recovers the winner without another effect
+AssertionError: expected [ 200, 200 ] to deeply equal [ 200, 409 ]
+
+- Expected
++ Received
+
+  [
+    200,
+-   409,
++   200,
+  ]
+
+ ❯ tests/integration/catalog-custody.test.ts:21:51
+     19|     const a = await login(), s = await raw(), id = randomUUID(), bodie…
+     20|     const results = await Promise.all(bodies.map(body => send(a, body)…
+     21|     expect(results.map(r => r.statusCode).sort()).toEqual([200, 409]);
+       |                                                   ^
+     22|     const loser = results.find(r => r.statusCode === 409)!; expect(los…
+     23|     const winnerIndex = results.findIndex(r => r.statusCode === 200), …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/16]⎯
+
+ FAIL  tests/integration/catalog-custody.test.ts > 012 catalog/custody PostgreSQL > rejects incompatible SKU with no durable effect and protects another tenant
+AssertionError: expected 200 to be 400 // Object.is equality
+
+- Expected
++ Received
+
+- 400
++ 200
+
+ ❯ tests/integration/catalog-custody.test.ts:30:93
+     28|   it('rejects incompatible SKU with no durable effect and protects ano…
+     29|     const a = await login(), before = await raw();
+     30|     const r = await send(a, create(before, { station: 'heladeria' }));…
+       |                                                                                             ^
+     31|     expect(await raw()).toEqual(before);
+     32|     expect(Number((await db.pool.query('SELECT count(*) FROM outbox'))…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/16]⎯
+
+ FAIL  tests/integration/catalog-custody.test.ts > 012 catalog/custody PostgreSQL > persists complete binding audit and rejects stale edits atomically
+AssertionError: expected {} to deeply equal { …(3) }
+
+- Expected
++ Received
+
+- {
+-   "station": {
+-     "new": "heladeria",
+-     "old": "cocina",
+-   },
+-   "stock_item_id": {
+-     "new": "30000000-0000-4000-8000-000000000004",
+-     "old": null,
+-   },
+-   "stock_policy": {
+-     "new": "unit",
+-     "old": "none",
+-   },
+- }
++ {}
+
+ ❯ tests/integration/catalog-custody.test.ts:44:21
+     42|     expect((await send(a, body)).statusCode).toBe(200);
+     43|     const changes = (await db.pool.query('SELECT changes FROM catalog_…
+     44|     expect(changes).toEqual({ station: { old: 'cocina', new: 'heladeri…
+       |                     ^
+     45|     const before = await raw(), stale = await send(a, body); expect(st…
+     46|     expect(Number((await db.pool.query('SELECT count(*) FROM catalog_a…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/16]⎯
+
+ FAIL  tests/integration/catalog-custody.test.ts > 012 catalog/custody PostgreSQL > blocks reservation void during handover and leaves operations/outbox untouched
+AssertionError: expected 200 to be 409 // Object.is equality
+
+- Expected
++ Received
+
+- 409
++ 200
+
+ ❯ tests/integration/catalog-custody.test.ts:58:26
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/16]⎯
+
+ FAIL  tests/unit/catalog-custody.test.ts > 012 catalog identity and route integrity > rejects duplicate identity even when inactive=false
+ FAIL  tests/unit/catalog-custody.test.ts > 012 catalog identity and route integrity > rejects duplicate identity even when inactive=true
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ tests/unit/catalog-custody.test.ts:32:50
+     30|     const h = harness(), p = h.state.products[3]!; p.active = !inactiv…
+     31|     const before = structuredClone(h.state);
+     32|     expect(() => h.create({ product_id: p.id })).toThrow('identificado…
+       |                                                  ^
+     33|   });
+     34|   it('rejects stock from another station', () => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/16]⎯
+
+ FAIL  tests/unit/catalog-custody.test.ts > 012 catalog identity and route integrity > rejects stock from another station
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ tests/unit/catalog-custody.test.ts:35:75
+     33|   });
+     34|   it('rejects stock from another station', () => {
+     35|     const h = harness(); expect(() => h.create({ station: 'heladeria' …
+       |                                                                           ^
+     36|   });
+     37|   it('does not silently discard a stock binding on none policy', () =>…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/16]⎯
+
+ FAIL  tests/unit/catalog-custody.test.ts > 012 catalog identity and route integrity > does not silently discard a stock binding on none policy
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ tests/unit/catalog-custody.test.ts:38:75
+     36|   });
+     37|   it('does not silently discard a stock binding on none policy', () =>…
+     38|     const h = harness(); expect(() => h.create({ stock_policy: 'none' …
+       |                                                                           ^
+     39|   });
+     40|   it('accepts stocked ice cream at Heladería', () => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/16]⎯
+
+ FAIL  tests/unit/catalog-custody.test.ts > 012 catalog identity and route integrity > changes and audits SKU even if stock_policy is omitted
+AssertionError: expected '30000000-0000-4000-8000-000000000001' to be '30000000-0000-4000-8000-000000000002' // Object.is equality
+
+Expected: "30000000-0000-4000-8000-000000000002"
+Received: "30000000-0000-4000-8000-000000000001"
+
+ ❯ tests/unit/catalog-custody.test.ts:47:48
+     45|     const h = harness(), p = h.state.products[3]!, old = p.stock_item_…
+     46|     h.update(p, { stock_item_id: next });
+     47|     expect(h.state.products[3]!.stock_item_id).toBe(next);
+       |                                                ^
+     48|     expect(h.state.catalog_audit[0]!.changes).toEqual({ stock_item_id:…
+     49|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/16]⎯
+
+ FAIL  tests/unit/catalog-custody.test.ts > 012 catalog identity and route integrity > audits the entire operational binding before changing it
+AssertionError: expected {} to deeply equal { …(3) }
+
+- Expected
++ Received
+
+- {
+-   "station": {
+-     "new": "heladeria",
+-     "old": "cocina",
+-   },
+-   "stock_item_id": {
+-     "new": "30000000-0000-4000-8000-000000000004",
+-     "old": null,
+-   },
+-   "stock_policy": {
+-     "new": "unit",
+-     "old": "none",
+-   },
+- }
++ {}
+
+ ❯ tests/unit/catalog-custody.test.ts:53:47
+     51|     const h = harness(), p = h.state.products[0]!, stock = h.state.sto…
+     52|     h.update(p, { station: 'heladeria', stock_policy: 'unit', stock_it…
+     53|     expect(h.state.catalog_audit[0]!.changes).toEqual({ station: { old…
+       |                                               ^
+     54|   });
+     55|   it('clears and audits omitted SKU when unit changes to none', () => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/16]⎯
+
+ FAIL  tests/unit/catalog-custody.test.ts > 012 catalog identity and route integrity > clears and audits omitted SKU when unit changes to none
+AssertionError: expected {} to deeply equal { stock_policy: { …(2) }, …(1) }
+
+- Expected
++ Received
+
+- {
+-   "stock_item_id": {
+-     "new": null,
+-     "old": "30000000-0000-4000-8000-000000000001",
+-   },
+-   "stock_policy": {
+-     "new": "none",
+-     "old": "unit",
+-   },
+- }
++ {}
+
+ ❯ tests/unit/catalog-custody.test.ts:58:47
+     56|     const h = harness(), p = h.state.products[3]!, old = p.stock_item_…
+     57|     expect(h.state.products[3]!.stock_item_id).toBeNull();
+     58|     expect(h.state.catalog_audit[0]!.changes).toEqual({ stock_policy: …
+       |                                               ^
+     59|   });
+     60|   it('preserves binding when all route fields are omitted', () => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/16]⎯
+
+ FAIL  tests/unit/catalog-custody.test.ts > 012 catalog identity and route integrity > rejects contradictory update without changing state
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ tests/unit/catalog-custody.test.ts:65:113
+     63|   it('rejects contradictory update without changing state', () => {
+     64|     const h = harness(), before = structuredClone(h.state);
+     65|     expect(() => h.update(h.state.products[3]!, { stock_policy: 'none'…
+       |                                                                                                                 ^
+     66|   });
+     67|   it('locks routing after a completely voided commercial order', () =>…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/16]⎯
+
+ FAIL  tests/unit/catalog-custody.test.ts > 012 cancellations during beverage custody handover > blocks reserve release during prepared
+ FAIL  tests/unit/catalog-custody.test.ts > 012 cancellations during beverage custody handover > blocks reserve release during declared
+ FAIL  tests/unit/catalog-custody.test.ts > 012 cancellations during beverage custody handover > blocks reserve release during disputed
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ tests/unit/catalog-custody.test.ts:84:73
+     82|     if (phase === 'disputed') h.run({ type: 'handover.reject', handove…
+     83|     expect(h.state.handovers[0]!.state).toBe(phase);
+     84|     const before = structuredClone(h.state); expect(() => h.voidLine()…
+       |                                                                         ^
+     85|   });
+     86|   it('blocks physical stock return during a count', () => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/16]⎯
+
+ FAIL  tests/unit/catalog-custody.test.ts > 012 cancellations during beverage custody handover > blocks physical stock return during a count
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ tests/unit/catalog-custody.test.ts:88:80
+     86|   it('blocks physical stock return during a count', () => {
+     87|     const h = harness(); h.order(); h.cash(); h.run({ type: 'line.fulf…
+     88|     const before = structuredClone(h.state); expect(() => h.voidLine(0…
+       |                                                                                ^
+     89|   });
+     90|   it('allows commercial void of an entirely delivered beverage without…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/16]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  16 failed | 8 passed (24)
+   Start at  00:51:07
+   Duration  2.97s (tests 68%, import 22%, transform 9%, worker 1%)
+

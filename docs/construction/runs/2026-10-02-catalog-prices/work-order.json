@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0.0",
+  "execution_id": "9b1cb5b8-53e3-4d40-97ef-5fe5c862bc2a",
+  "assignment_id": "a1c2e3f4-b5d6-4789-9012-34567890abcd",
+  "version": 1,
+  "package_id": "B21",
+  "work_kind": "implementation",
+  "feature_directory": "specs/006-carta-precios",
+  "task_ids": [
+    "MAR:T004",
+    "MAR:T025",
+    "MAR:T027"
+  ],
+  "goal": "Construir carta configurable con revisión de precios antes de aceptar pedidos, cotización inmutable en servidor, rechazo por cambio de precio o versión comercial, migración aditiva y verificación completa en laboratorio.",
+  "owner": "gemini-antigravity",
+  "reviewer": "independent-reviewer",
+  "state": "assigned",
+  "baseline": {
+    "kind": "file_hashes",
+    "identity": "gemini-antigravity-start-2026-10-02",
+    "input_sha256": {
+      "docs/evidence/CONTINUIDAD.md": "c5f21d46b797e14adccb44710109f4800224d8108ae92ee4dac2034b16e73452",
+      "packages/contracts/src/pos.ts": "c4e1f0093762b23ce15686dce339e2fcdb37bdaae5b617017a42add4248231ae",
+      "pnpm-lock.yaml": "72e2bea3c4cc0e4f1a9ab36b400aa9225499549ae5d05f735eb02e1f10ae754e",
+      "services/commerce/src/authority/repository.ts": "71e6f851839d5542c05ea162e5d73adc78b01dd68065b186c6dbd9c90043c788",
+      "packages/domain/src/index.ts": "5335fcd6f693f934e7913377807340edbd04c6917613cd33886f13691e82e3fa",
+      "docs/contracts/pilot.openapi.json": "5038f9a97687739b9e75cc31766ad8645292d7c53a276b56bd60cbc0a3e0bc11",
+      "apps/pos/src/components/pos-app.tsx": "80304f099641d29533658850f119252523f2d6cef92af05667fe796226cdead6",
+      "apps/pos/src/components/guest-app.tsx": "f5b690c1fbb403b5a447bf22fb9f583e2b03f9f9a12664bd25b71b1ffb93abd3",
+      "README.md": "42e56a18f9f95e55c008b70bf3ec92aa42a5df26f6a622265aed360e2e3da228"
+    }
+  },
+  "write_paths": [
+    "specs/006-carta-precios/",
+    "packages/contracts/src/pos.ts",
+    "docs/contracts/pilot.openapi.json",
+    "database/migrations/006_catalog_and_quotes.sql",
+    "packages/domain/src/",
+    "services/commerce/src/",
+    "apps/pos/src/",
+    "tests/",
+    "docs/evidence/",
+    "docs/construction/runs/2026-10-02-catalog-prices/"
+  ],
+  "read_paths": [
+    "AGENTS.md",
+    "README.md",
+    "docs/handoff/especificaciones-gemini.md",
+    "docs/handoff/prompt-gemini-antigravity.md",
+    "docs/evidence/CONTINUIDAD.md",
+    "docs/construction/next-increments.md",
+    "specs/005-clave-mesa/"
+  ],
+  "depends_on": [
+    "B03"
+  ],
+  "contracts": [
+    "docs/contracts/pilot.openapi.json",
+    "packages/contracts/src/pos.ts"
+  ],
+  "requirements": [
+    "MAR-FR-002"
+  ],
+  "acceptance": [
+    "MAR-AT-002"
+  ],
+  "test_plan": [
+    "Verificar contratos OpenAPI y tipos TypeScript con pnpm typecheck.",
+    "Ejecutar pruebas unitarias de dominio, exactitud monetaria y contratos con vitest.",
+    "Ejecutar pruebas de integración PostgreSQL con cotizaciones, expiración a 120s, rechazo de cambio de precio S/35 a S/38, concurrencia y recuperación.",
+    "Ejecutar escenarios de navegador Playwright en tablet 1024x768 y móvil 390x844 para administración de carta y revisión de precios.",
+    "Ejecutar pnpm build y pnpm validate:sdd para verificar coherencia sin regresiones."
+  ],
+  "permitted_effects": [
+    "documentation",
+    "local_files",
+    "local_processes",
+    "local_database",
+    "synthetic_data"
+  ],
+  "output_path": "docs/construction/runs/2026-10-02-catalog-prices/delivery.json",
+  "shared_paths_grant": []
+}

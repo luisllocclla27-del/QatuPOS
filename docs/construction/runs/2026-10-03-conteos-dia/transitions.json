@@ -1,0 +1,18 @@
+[
+  {
+    "state": "running",
+    "version": 1,
+    "evidence": "Baseline01265 hashes verificados; único escritor root; asignación previa a edición"
+  },
+  {
+    "state": "running",
+    "version": 2,
+    "evidence": "Coordinador concedió inventory-panel.tsx antes de creación; observación concurrente especificada antes de correctivo UI"
+  },
+  {
+    "state": "ready_for_review",
+    "version": 3,
+    "at": "2026-10-03T18:45:14.156316+00:00",
+    "evidence": "237 tests,13 E2E, tipos/build/contratos/documentos; aceptación independiente pendiente"
+  }
+]

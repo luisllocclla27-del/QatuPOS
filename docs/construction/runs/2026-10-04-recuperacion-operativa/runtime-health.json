@@ -1,0 +1,19 @@
+{
+  "local_network_exposed": false,
+  "captured_at": "2026-10-04T19:19:59.0219208Z",
+  "pages": [
+    {
+      "path": "/",
+      "status": 200
+    },
+    {
+      "path": "/cliente",
+      "status": 200
+    }
+  ],
+  "api": {
+    "status": "ok",
+    "environment": "laboratory"
+  },
+  "mode": "laboratory"
+}

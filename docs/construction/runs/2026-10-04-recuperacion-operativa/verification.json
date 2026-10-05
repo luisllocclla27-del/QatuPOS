@@ -1,0 +1,10 @@
+{
+  "checked_at_utc": "2026-10-04T19:22:33.263010+00:00",
+  "passed": true,
+  "files": 172,
+  "previous_baseline_verified": 116,
+  "unassigned_mutations": [],
+  "writer_finished": true,
+  "sensitive_acceptance": "pending independent review",
+  "interactive_hash_unchanged": true
+}

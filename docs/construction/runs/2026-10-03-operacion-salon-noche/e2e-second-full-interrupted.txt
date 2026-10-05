@@ -1,0 +1,17 @@
+$ playwright test
+[WebServer] (node:1704) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:12472) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:13552) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:5208) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 17 tests using 1 worker
+
+(node:15036) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 tests\e2e\pos.spec.ts:10:1 › two touch terminals share a mixed table order and cashier records exact cash change (23.1s)
+  ok  2 tests\e2e\pos.spec.ts:116:1 › mobile layout stays inside the viewport with accessible table controls (990ms)
+  ok  3 tests\e2e\zz-guest.spec.ts:21:1 › waiter monitors private customer orders and paid delivery stays independent (19.1s)

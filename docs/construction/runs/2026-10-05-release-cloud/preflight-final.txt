@@ -1,0 +1,12 @@
+$ node scripts/release/check.mjs
+{
+  "passed": true,
+  "files": 581,
+  "bytes": 8554193,
+  "issues": [],
+  "migrations": 11,
+  "reviewed_synthetic_exceptions": 2,
+  "scope": "packaging-only",
+  "database_contacted": false,
+  "secret_scan": "limited patterns; human review required"
+}

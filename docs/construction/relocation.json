@@ -1,0 +1,9 @@
+{
+  "restaurant": "El Encanto Huamanguino",
+  "authorization": "Usuario solicita carpeta independiente para desarrollo del restaurante",
+  "implementation_root": "F:\\PROYECTOS\\QatuPOS\\el-encanto-huamanguino",
+  "planning_root": "F:\\PROYECTOS\\QatuPOS",
+  "work_order_write_paths_relative_to": "implementation_root",
+  "historical_baseline_read_paths_relative_to": "planning_root",
+  "planning_files_modified_for_relocation": false
+}

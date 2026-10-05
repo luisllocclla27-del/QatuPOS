@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "trace_manifests": 7,
+  "trace_entries": 1655,
+  "browser_js": 22,
+  "private_runtime_or_env_in_trace": 0,
+  "server_symbols_in_browser": 0,
+  "private_static_assets": 0
+}

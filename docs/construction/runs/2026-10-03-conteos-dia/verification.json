@@ -1,0 +1,51 @@
+{
+  "checked_at_utc": "2026-10-03T18:45:14.156316+00:00",
+  "unit_integration": {
+    "command": "pnpm test",
+    "exit_code": 0,
+    "passed": 237,
+    "files": 13,
+    "new_cases": 33,
+    "evidence": "tests-final.txt"
+  },
+  "e2e": {
+    "command": "pnpm test:e2e",
+    "exit_code": 0,
+    "passed": 13,
+    "evidence": "e2e-final.txt"
+  },
+  "typecheck": {
+    "command": "pnpm typecheck",
+    "exit_code": 0,
+    "evidence": "typecheck-final.txt"
+  },
+  "build": {
+    "command": "pnpm build",
+    "exit_code": 0,
+    "evidence": "build-final.txt"
+  },
+  "planning": {
+    "command": "pnpm validate:sdd",
+    "exit_code": 0,
+    "passed": 25,
+    "scope": "parent planning only"
+  },
+  "work_order_schema": "passed",
+  "openapi": "passed",
+  "interactive_branch_state_preserved": true,
+  "interactive_state_sha256": "ba929698f99805c4c91faab5a3470b20ee511ea6a86bdf8c915685cb1510b502",
+  "runtime_health": {
+    "api": {
+      "status": "ok",
+      "environment": "laboratory"
+    },
+    "customer_status": 200,
+    "development_session": 66218
+  },
+  "independent_financial_inventory_review": "pending",
+  "local_document_links": {
+    "passed": true,
+    "checked": 29,
+    "anchors": "not_checked"
+  }
+}

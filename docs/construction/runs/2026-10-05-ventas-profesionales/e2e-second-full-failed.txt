@@ -1,0 +1,174 @@
+$ playwright test
+[WebServer] (node:14484) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:21768) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:21096) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:18464) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 23 tests using 1 worker
+
+(node:6420) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 tests\e2e\pos.spec.ts:10:1 › two touch terminals share a mixed table order and cashier records exact cash change (23.5s)
+  ok  2 tests\e2e\pos.spec.ts:116:1 › mobile layout stays inside the viewport with accessible table controls (1.2s)
+  ok  3 tests\e2e\zz-guest.spec.ts:22:1 › waiter monitors private customer orders and paid delivery stays independent (20.6s)
+  ok  4 tests\e2e\zz-guest.spec.ts:79:1 › customer recovers a lost response after reload once and waiter rotation ends the old browser (8.7s)
+  ok  5 tests\e2e\zz-guest.spec.ts:98:1 › browser storage failures never send an untracked order or discard a confirmed result (7.1s)
+  ok  6 tests\e2e\zz-guest.spec.ts:121:1 › fully cancelled customer batch stays out of delivered and preserves cancellation detail (7.4s)
+  ok  7 tests\e2e\zzz-catalog.spec.ts:27:1 › admin manages catalog and price change from 35 to 38 rejects stale quote with alert and accepts updated price (8.6s)
+  ok  8 tests\e2e\zzz-catalog.spec.ts:122:1 › admin catalog mobile view stays within viewport (1.3s)
+  ok  9 tests\e2e\zzzz-voids.spec.ts:12:1 › granular order line voiding recalculates check, audits reason, and allows releasing held collections (10.0s)
+STEP 8.1: verifying thermal receipt text
+STEP 8.2: taking factura screenshot
+STEP 8.3: closing thermal receipt modal
+STEP 9: verifying check row and alert
+STEP 10: verifying fiscal documents panel
+STEP 10.1: testing reprint
+STEP 10.2: taking caja fiscal panel screenshot
+  ok 10 tests\e2e\zzzzz-fiscal.spec.ts:12:1 › pre-cuenta, electronic invoice issuance (F001/B001), 80mm thermal receipt, and fiscal history in Caja (8.9s)
+[E2E DEBUG] Step 7: Starting payment of S/ 36.00
+[E2E DEBUG] Step 7: Waiting for reserved alert
+[E2E DEBUG] Step 7: Waiting for Cobro registrado status
+[E2E DEBUG] Step 7: Payment finished
+[E2E DEBUG] Step 8: Looking for Emitir Boleta / Factura button
+[E2E DEBUG] Step 8: Clicking Emitir Boleta / Factura
+[E2E DEBUG] Step 8: Waiting for fiscal modal
+[E2E DEBUG] Step 8: Submitting Boleta B001 directly
+[E2E DEBUG] Step 8: Submitted fiscal doc successfully
+[E2E DEBUG] Step 9: Waiting for BOLETA DE VENTA ELECTRÓNICA modal
+[E2E DEBUG] Step 9: Fiscal ticket verified and closed
+[E2E DEBUG] Step 10: Looking for Arqueo Corte X button
+[E2E DEBUG] Step 10: Waiting for Arqueo modal
+[E2E DEBUG] Step 10: Arqueo modal verified and closed
+[E2E DEBUG] Step 11: Checking discount audit table
+[E2E DEBUG] Step 11: All done!
+  ok 11 tests\e2e\zzzzzz-discounts-audit.spec.ts:12:1 › commercial discounts, courtesy audit, 80mm pre-cuenta discount breakdown, and live cash audit (Corte X) (10.7s)
+  ok 12 tests\e2e\zzzzzzz-credit-notes.spec.ts:12:1 › electronic credit notes (BC01), formal annulment, 80mm thermal receipt, and live cash audit reconciliation (Corte X) (10.5s)
+  ok 13 tests\e2e\zzzzzzzz-catalog-custody.spec.ts:4:1 › Carta guides compatible stock selection, audits route before first sale (2.5s)
+  ok 14 tests\e2e\zzzzzzzzz-inventory.spec.ts:15:1 › cashier declares, shortage remains held, recount preserves observation and another admin approves (18.9s)
+  ok 15 tests\e2e\zzzzzzzzzz-operations.spec.ts:19:1 › touch queue keeps FIFO, urgency aviso and paper-only preparation separate from pickup (7.0s)
+  ok 16 tests\e2e\zzzzzzzzzz-operations.spec.ts:38:1 › night menu restricts tablets and QR and final stock/cash closes independently from fiscal (10.7s)
+  ok 17 tests\e2e\zzzzzzzzzz-operations.spec.ts:59:1 › night cashier retains a cash shortage and another admin signs the exact final count (8.1s)
+  ok 18 tests\e2e\zzzzzzzzzz-operations.spec.ts:79:1 › independent admin cancels declared custody cut without erasing original observation (3.5s)
+  ok 19 tests\e2e\zzzzzzzzzzz-staff.spec.ts:5:1 › admin provisions individual tablet account and rotates credential without storing passwords in drafts (3.8s)
+  ok 20 tests\e2e\zzzzzzzzzzz-staff.spec.ts:18:1 › physical receiving creates zero-stock SKU then increases stock without cash movement (1.7s)
+  x  21 tests\e2e\zzzzzzzzzzzz-sales.spec.ts:34:1 › lost reserve and committed payment survive reload with one effect and accurate sales history (7.5s)
+(node:9672) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  22 tests\e2e\zzzzzzzzzzzz-sales.spec.ts:54:1 › precuenta distinguishes all-held balance and refreshes while another terminal orders (3.2s)
+(node:11156) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  23 tests\e2e\zzzzzzzzzzzz-sales.spec.ts:63:1 › unavailable session storage prevents a financial request before sending (3.2s)
+
+
+  1) tests\e2e\zzzzzzzzzzzz-sales.spec.ts:34:1 › lost reserve and committed payment survive reload with one effect and accurate sales history 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+      48 |     expect(attempts['payment.confirm']).toHaveLength(2);expect(new Set(attempts['payment.confirm']).size).toBe(1);const paid=(await snapshot(cash)).payments.filter(p=>p.check_id===check.id);expect(paid).toHaveLength(1);expect(paid[0]).toMatchObject({amount_minor:check.total_minor,received_minor:check.total_minor+1500,change_minor:1500,status:'succeeded'});
+      49 |     await cash.getByRole('navigation').getByRole('button',{name:/Historial de ventas/}).click();await cash.getByLabel('Buscar mesa, cuenta o nota interna').fill(table.label);await cash.getByLabel('Situación del pago').selectOption('paid');await cash.getByRole('button',{name:`Ver atención ${table.label} ${check.id}`}).click();await expect(cash.getByRole('region',{name:'Detalle de venta'})).toContainText('15.00');
+    > 50 |     expect(await cash.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);await mkdir('docs/evidence/screens',{recursive:true});await cash.screenshot({path:'docs/evidence/screens/historial-ventas-018.png',fullPage:true});await cash.getByRole('button',{name:'Ver precuenta de esta atención'}).click();const ticket=cash.getByRole('dialog');await expect(ticket).toContainText('TOTAL CONSUMO:');await expect(ticket).toContainText('SALDO PENDIENTE:');await expect(ticket.locator('.thermal-total-row').filter({hasText:'SALDO PENDIENTE:'})).toContainText('0.00');
+         |                                                                                       ^
+      51 |     await expect(waiter.getByRole('navigation').getByRole('button',{name:/Historial de ventas/})).toHaveCount(0);await mkdir('docs/evidence/screens',{recursive:true});await cash.screenshot({path:'docs/evidence/screens/cobro-recuperado-018.png',fullPage:true});await finishOwnVisit(cash,waiter,visitId);
+      52 |   }finally{await cc.close();await wc.close();}
+      53 | });
+        at F:\PROYECTOS\QatuPOS\el-encanto-huamanguino\tests\e2e\zzzzzzzzzzzz-sales.spec.ts:50:87
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\zzzzzzzzzzzz-sales-lost-re-d2a24--and-accurate-sales-history\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\zzzzzzzzzzzz-sales-lost-re-d2a24--and-accurate-sales-history\test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\zzzzzzzzzzzz-sales-lost-re-d2a24--and-accurate-sales-history\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\zzzzzzzzzzzz-sales-lost-re-d2a24--and-accurate-sales-history\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\zzzzzzzzzzzz-sales-lost-re-d2a24--and-accurate-sales-history\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests\e2e\zzzzzzzzzzzz-sales.spec.ts:54:1 › precuenta distinguishes all-held balance and refreshes while another terminal orders 
+
+    Error: expect(received).toBeTruthy()
+
+    Received: undefined
+
+      13 |   await cash.getByRole('button',{name:'Cambiar usuario'}).click();await login(cash,name);s=await snapshot(cash);
+      14 |   if(!active)await command(cash,{type:'cash.open',shift_label:'diurno',opening_minor:0,expected_day_version:s.business_day.version});
+    > 15 |   await login(waiter,'mozo');s=await snapshot(waiter);const table=s.tables.find(t=>!t.visit_id)!;expect(table).toBeTruthy();
+         |                                                                                                                ^
+      16 |   const opened=await command(waiter,{type:'table.open',table_id:table.id,expected_version:table.version});const product=s.products.find(p=>p.active&&p.station==='cocina')!;
+      17 |   await addOrder(waiter,opened.entity_id,product.id);s=await snapshot(cash);const check=s.checks.find(c=>c.visit_id===opened.entity_id)!;
+      18 |   await cash.reload();await cash.getByRole('navigation').getByRole('button',{name:/Caja/}).click();await cash.locator('.check-row').filter({hasText:table.label}).click();
+        at setup (F:\PROYECTOS\QatuPOS\el-encanto-huamanguino\tests\e2e\zzzzzzzzzzzz-sales.spec.ts:15:112)
+        at F:\PROYECTOS\QatuPOS\el-encanto-huamanguino\tests\e2e\zzzzzzzzzzzz-sales.spec.ts:57:41
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\zzzzzzzzzzzz-sales-precuen-6e270-ile-another-terminal-orders\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\zzzzzzzzzzzz-sales-precuen-6e270-ile-another-terminal-orders\test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\zzzzzzzzzzzz-sales-precuen-6e270-ile-another-terminal-orders\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\zzzzzzzzzzzz-sales-precuen-6e270-ile-another-terminal-orders\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\zzzzzzzzzzzz-sales-precuen-6e270-ile-another-terminal-orders\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) tests\e2e\zzzzzzzzzzzz-sales.spec.ts:63:1 › unavailable session storage prevents a financial request before sending 
+
+    Error: expect(received).toBeTruthy()
+
+    Received: undefined
+
+      13 |   await cash.getByRole('button',{name:'Cambiar usuario'}).click();await login(cash,name);s=await snapshot(cash);
+      14 |   if(!active)await command(cash,{type:'cash.open',shift_label:'diurno',opening_minor:0,expected_day_version:s.business_day.version});
+    > 15 |   await login(waiter,'mozo');s=await snapshot(waiter);const table=s.tables.find(t=>!t.visit_id)!;expect(table).toBeTruthy();
+         |                                                                                                                ^
+      16 |   const opened=await command(waiter,{type:'table.open',table_id:table.id,expected_version:table.version});const product=s.products.find(p=>p.active&&p.station==='cocina')!;
+      17 |   await addOrder(waiter,opened.entity_id,product.id);s=await snapshot(cash);const check=s.checks.find(c=>c.visit_id===opened.entity_id)!;
+      18 |   await cash.reload();await cash.getByRole('navigation').getByRole('button',{name:/Caja/}).click();await cash.locator('.check-row').filter({hasText:table.label}).click();
+        at setup (F:\PROYECTOS\QatuPOS\el-encanto-huamanguino\tests\e2e\zzzzzzzzzzzz-sales.spec.ts:15:112)
+        at F:\PROYECTOS\QatuPOS\el-encanto-huamanguino\tests\e2e\zzzzzzzzzzzz-sales.spec.ts:65:21
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\zzzzzzzzzzzz-sales-unavail-cdbfe-cial-request-before-sending\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\zzzzzzzzzzzz-sales-unavail-cdbfe-cial-request-before-sending\test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\zzzzzzzzzzzz-sales-unavail-cdbfe-cial-request-before-sending\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\zzzzzzzzzzzz-sales-unavail-cdbfe-cial-request-before-sending\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\zzzzzzzzzzzz-sales-unavail-cdbfe-cial-request-before-sending\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3 failed
+    tests\e2e\zzzzzzzzzzzz-sales.spec.ts:34:1 › lost reserve and committed payment survive reload with one effect and accurate sales history 
+    tests\e2e\zzzzzzzzzzzz-sales.spec.ts:54:1 › precuenta distinguishes all-held balance and refreshes while another terminal orders 
+    tests\e2e\zzzzzzzzzzzz-sales.spec.ts:63:1 › unavailable session storage prevents a financial request before sending 
+  20 passed (3.3m)
+[ELIFECYCLE] Command failed with exit code 1.

@@ -1,0 +1,14 @@
+[
+  {
+    "path": "/",
+    "status": 200
+  },
+  {
+    "path": "/cliente",
+    "status": 200
+  },
+  {
+    "path": "/v1/pos/runtime",
+    "status": 200
+  }
+]

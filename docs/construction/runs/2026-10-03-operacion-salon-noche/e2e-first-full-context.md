@@ -1,0 +1,166 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: pos.spec.ts >> two touch terminals share a mixed table order and cashier records exact cash change
+- Location: tests\e2e\pos.spec.ts:10:1
+
+# Error details
+
+```
+Test timeout of 60000ms exceeded.
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - button "Open Next.js Dev Tools" [ref=e7] [cursor=pointer]
+  - alert [ref=e11]
+  - generic [ref=e12]:
+    - complementary [ref=e13]:
+      - generic [ref=e14]:
+        - generic [ref=e15]: q
+        - strong [ref=e16]: qatupos
+      - generic [ref=e17]: EL ENCANTOHUAMANGUINO
+      - navigation "Secciones de operación" [ref=e18]:
+        - button "▦ Mesas" [ref=e19] [cursor=pointer]:
+          - generic [ref=e20]: ▦
+          - text: Mesas
+        - button "▧ Pedidos del cliente 0" [ref=e21] [cursor=pointer]:
+          - generic [ref=e22]: ▧
+          - text: Pedidos del cliente
+          - generic [ref=e23]: "0"
+        - button "◒ Bebidas 0" [ref=e24] [cursor=pointer]:
+          - generic [ref=e25]: ◒
+          - text: Bebidas
+          - generic [ref=e26]: "0"
+        - button "▤ Estaciones" [ref=e27] [cursor=pointer]:
+          - generic [ref=e28]: ▤
+          - text: Estaciones
+      - generic [ref=e29]:
+        - text: Una sola operación
+        - generic [ref=e31]: Mesas · Estaciones · Caja
+        - generic [ref=e32]: ENTORNO DE PRUEBA
+    - generic [ref=e33]:
+      - banner [ref=e34]:
+        - generic [ref=e35]:
+          - generic [ref=e36]: El Encanto Huamanguino
+          - generic [ref=e37]: Día operativo · 2026-10-01
+        - generic [ref=e38]:
+          - button "Conectado" [ref=e39] [cursor=pointer]
+          - generic [ref=e41]: A
+          - generic [ref=e42]:
+            - strong [ref=e43]: Ana · moza
+            - generic [ref=e44]: Mozo
+          - button "Cambiar usuario" [ref=e45] [cursor=pointer]: ⇥
+      - generic [ref=e46]:
+        - text: Laboratorio
+        - generic [ref=e47]: ·
+        - text: Proveedores e impresoras simulados
+        - generic [ref=e48]: ·
+        - text: Comprobantes SUNAT pendientes de integración
+      - main [ref=e49]:
+        - generic [ref=e50]:
+          - generic [ref=e51]:
+            - generic [ref=e52]: Atender y tomar pedidos
+            - heading "Mesas" [level=1] [ref=e53]
+          - generic [ref=e54]: Mozo · Día abierto
+        - generic [ref=e56]:
+          - paragraph [ref=e57]: Selecciona una mesa para atenderla. Cada tanda conserva a su mozo.
+          - generic [ref=e58]:
+            - generic [ref=e59]: Libre
+            - generic [ref=e61]: En atención
+        - generic [ref=e63]:
+          - button "01 Libre 4 Mesa 01 Abrir mesa →" [ref=e64] [cursor=pointer]:
+            - generic [ref=e65]:
+              - generic [ref=e66]: "01"
+              - generic [ref=e67]: Libre
+            - generic [ref=e68]: "4"
+            - generic [ref=e74]:
+              - strong [ref=e75]: Mesa 01
+              - generic [ref=e76]: Abrir mesa →
+          - button "02 Libre 4 Mesa 02 Abrir mesa →" [ref=e77] [cursor=pointer]:
+            - generic [ref=e78]:
+              - generic [ref=e79]: "02"
+              - generic [ref=e80]: Libre
+            - generic [ref=e81]: "4"
+            - generic [ref=e87]:
+              - strong [ref=e88]: Mesa 02
+              - generic [ref=e89]: Abrir mesa →
+          - button "03 Libre 4 Mesa 03 Abrir mesa →" [ref=e90] [cursor=pointer]:
+            - generic [ref=e91]:
+              - generic [ref=e92]: "03"
+              - generic [ref=e93]: Libre
+            - generic [ref=e94]: "4"
+            - generic [ref=e100]:
+              - strong [ref=e101]: Mesa 03
+              - generic [ref=e102]: Abrir mesa →
+          - button "04 Libre 4 Mesa 04 Abrir mesa →" [ref=e103] [cursor=pointer]:
+            - generic [ref=e104]:
+              - generic [ref=e105]: "04"
+              - generic [ref=e106]: Libre
+            - generic [ref=e107]: "4"
+            - generic [ref=e113]:
+              - strong [ref=e114]: Mesa 04
+              - generic [ref=e115]: Abrir mesa →
+          - button "05 Libre 4 Mesa 05 Abrir mesa →" [ref=e116] [cursor=pointer]:
+            - generic [ref=e117]:
+              - generic [ref=e118]: "05"
+              - generic [ref=e119]: Libre
+            - generic [ref=e120]: "4"
+            - generic [ref=e126]:
+              - strong [ref=e127]: Mesa 05
+              - generic [ref=e128]: Abrir mesa →
+          - button "06 Libre 4 Mesa 06 Abrir mesa →" [ref=e129] [cursor=pointer]:
+            - generic [ref=e130]:
+              - generic [ref=e131]: "06"
+              - generic [ref=e132]: Libre
+            - generic [ref=e133]: "4"
+            - generic [ref=e139]:
+              - strong [ref=e140]: Mesa 06
+              - generic [ref=e141]: Abrir mesa →
+          - button "07 Libre 4 Mesa 07 Abrir mesa →" [ref=e142] [cursor=pointer]:
+            - generic [ref=e143]:
+              - generic [ref=e144]: "07"
+              - generic [ref=e145]: Libre
+            - generic [ref=e146]: "4"
+            - generic [ref=e152]:
+              - strong [ref=e153]: Mesa 07
+              - generic [ref=e154]: Abrir mesa →
+          - button "08 Libre 4 Mesa 08 Abrir mesa →" [ref=e155] [cursor=pointer]:
+            - generic [ref=e156]:
+              - generic [ref=e157]: "08"
+              - generic [ref=e158]: Libre
+            - generic [ref=e159]: "4"
+            - generic [ref=e165]:
+              - strong [ref=e166]: Mesa 08
+              - generic [ref=e167]: Abrir mesa →
+          - button "09 Libre 4 Mesa 09 Abrir mesa →" [ref=e168] [cursor=pointer]:
+            - generic [ref=e169]:
+              - generic [ref=e170]: "09"
+              - generic [ref=e171]: Libre
+            - generic [ref=e172]: "4"
+            - generic [ref=e178]:
+              - strong [ref=e179]: Mesa 09
+              - generic [ref=e180]: Abrir mesa →
+          - button "10 Libre 4 Mesa 10 Abrir mesa →" [ref=e181] [cursor=pointer]:
+            - generic [ref=e182]:
+              - generic [ref=e183]: "10"
+              - generic [ref=e184]: Libre
+            - generic [ref=e185]: "4"
+            - generic [ref=e191]:
+              - strong [ref=e192]: Mesa 10
+              - generic [ref=e193]: Abrir mesa →
+        - generic [ref=e194]: Dos terminales, la misma información. Los pedidos confirmados se sincronizan sin volver a registrarlos.
+      - contentinfo [ref=e195]:
+        - generic [ref=e196]:
+          - text: QatuPOS
+          - strong [ref=e197]: ·
+          - text: Cada operación conserva su historia.
+        - generic [ref=e198]: "QR/NFC, ecommerce y Delivery: habilitación posterior"
+```

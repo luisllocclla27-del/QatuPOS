@@ -1,0 +1,42 @@
+{
+  "execution_id": "2332e84d-b26e-4125-b97f-6284ec045445",
+  "assignment_id": "f0fab915-1015-4def-a558-4c0dd71f0a88",
+  "state": "accepted",
+  "scope": "local synthetic staff guest-order monitoring and continuity report",
+  "tests": {
+    "typecheck": "passed",
+    "build_final": "passed",
+    "unit_contract_api": 106,
+    "e2e": 5,
+    "planning_checks": 25
+  },
+  "independent_review_hashes": 5,
+  "unchanged_parent_inputs": 212,
+  "source_sha256": {
+    "apps/pos/src/components/guest-orders.tsx": "8065faef54660af5432f9a78745a573bff20a7fc1023816baeb11b222e72fe42",
+    "apps/pos/src/components/pos-app.tsx": "80304f099641d29533658850f119252523f2d6cef92af05667fe796226cdead6",
+    "apps/pos/src/app/globals.css": "6796c13e5fa95c1897b153c7dae6412e7beba97d260e29754c43f66e7dc32071",
+    "tests/e2e/zz-guest.spec.ts": "a07b91649c42008b312a6bbd9b95479c0a6b6edb66d7d7d93cba4af781c86306",
+    "specs/005-clave-mesa/spec.md": "c10a53f9a81642ba473ff747c34930e1f436e66a972c5844713a7e08b44e47d4",
+    "specs/005-clave-mesa/plan.md": "947e15969c6f30f5383f68abc2f422707bae5d06eb2d2d99ca5cba9f02952f04",
+    "specs/005-clave-mesa/tasks.md": "29ceffd210eb903e838622ae4560f5f8d835f2444731fde7868c30cd9d664264",
+    "docs/evidence/CONTINUIDAD.md": "c5f21d46b797e14adccb44710109f4800224d8108ae92ee4dac2034b16e73452",
+    "docs/evidence/guest-orders-delivery.md": "1380dfa486367ea347fe4fb034325803c968c1eec11c6172862714409631d31d",
+    "README.md": "42e56a18f9f95e55c008b70bf3ec92aa42a5df26f6a622265aed360e2e3da228"
+  },
+  "evidence": [
+    "docs/evidence/guest-orders-delivery.md",
+    "docs/evidence/guest-orders-review.md",
+    "docs/evidence/CONTINUIDAD.md"
+  ],
+  "usage_at_last_check": {
+    "weekly_remaining_percent": 12,
+    "five_hour_remaining_percent": 83,
+    "additional_credit_balance": "0",
+    "ordinary_usage_allowed": true,
+    "token_balance": "unavailable"
+  },
+  "integral_feature_tasks_marked_complete": false,
+  "external_capabilities_accepted": false,
+  "checked_at_utc": "2026-10-02T16:48:20.522093+00:00"
+}

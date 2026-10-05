@@ -1,0 +1,14 @@
+{
+  "execution_id": "94f67f22-2e2b-40be-82e4-fd65d00c34ca",
+  "state": "ready_for_review",
+  "scope": "019 release Git/Vercel/Supabase",
+  "orders": [
+    "docs/construction/runs/2026-10-05-release-cloud/work-order.json"
+  ],
+  "previous_delivery": "docs/construction/runs/2026-10-05-ventas-profesionales/delivery.json",
+  "previous_writer_ended_evidence": "018 writer_finished=true;535 hashes comprobados sin diferencias",
+  "writer_finished": true,
+  "acceptance_scope": "Preparación local; secretos/configuración y revisiones sensibles anteriores requieren aceptación independiente; cloud real pendiente",
+  "checked_at_utc": "2026-10-05T17:12:12.141881+00:00",
+  "evidence": "docs/evidence/ACTUALIZACION-2026-10-05-release-cloud.md"
+}

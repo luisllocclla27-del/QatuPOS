@@ -1,0 +1,41 @@
+{
+  "execution_id": "9b1cb5b8-53e3-4d40-97ef-5fe5c862bc2a",
+  "assignment_id": "a1c2e3f4-b5d6-4789-9012-34567890abcd",
+  "state": "accepted",
+  "scope": "Carta configurable con revisión de precios en cotización inmutable, rechazo 409 PRICE_CHANGED y control de historial comercial",
+  "tests": {
+    "typecheck": "passed",
+    "build_final": "passed",
+    "unit_contract_api": 114,
+    "e2e": 7,
+    "planning_checks": 25
+  },
+  "source_sha256": {
+    "packages/contracts/src/pos.ts": "32d2d0484b3be78f4816518e431080dce695e3e349731e58fe1a25a662c3e0a7",
+    "docs/contracts/pilot.openapi.json": "4aa3c608b06ebc69a21a45a8d432abcaff6227fed5ef0c16d34df92fadecb95b",
+    "database/migrations/006_catalog_and_quotes.sql": "d9b7152a14851f87b4501472d28a4e8588d3e578661627e922d378c38b1d2bf5",
+    "packages/domain/src/index.ts": "15918f81569e60a0bc57262f43df68dde19a94142e24960d92237329934b5144",
+    "services/commerce/src/authority/repository.ts": "25b26eecdf746bb3e8cdba26bd6ebaa071714fe676a9370fc6d71d970fe44017",
+    "services/commerce/src/platform/validation.ts": "8b4dd651db38260a310deb10784fa5734a0d0142d4575282dff65480f8988887",
+    "services/commerce/src/app.ts": "e9c2c3d7e590f6905d031546c4231da08284d8f67a9657691e7ee7700c7692ea",
+    "apps/pos/src/lib/client.ts": "2c934b2ba1532c0f9228718a42a9096dbe40bb3c72102cfe14118a9dcff7b311",
+    "apps/pos/src/lib/guest-client.ts": "e1762d2dd9c364e9cd5c65626fe17c400932c6cf171f0be0c1c5edd84e594f33",
+    "apps/pos/src/components/catalog-management.tsx": "d5153d2b59526c496604a25ded28e663de9e5f726dd5613aeecfe92c7672b28e",
+    "apps/pos/src/components/pos-app.tsx": "813e9ad9a0dd70080e5e8666a273e56e222dca7660e474c302739e0236e0b087",
+    "apps/pos/src/components/guest-app.tsx": "2352302a1da8704e534b5c743f3dd514d8fc92c6cfdf0604136c55bfd4b13331",
+    "tests/e2e/zzz-catalog.spec.ts": "8056ded57a37df72ff17e459d8d061236cd62636745fc752dc8cebc0698e3b92",
+    "tests/e2e/zz-guest.spec.ts": "27bc221b4654a868d15b43754003bc504b8371daca1f1069d02e128433befd74",
+    "specs/006-carta-precios/spec.md": "4f991a9b37f7eb6670bda032492d2dfa52502804f0a396027f6d3bb0ef69069f",
+    "specs/006-carta-precios/plan.md": "d0259332b56a70726777fa0bad69e9a54b2c49fa19c2d49f72c44ae3efb7c21e",
+    "specs/006-carta-precios/tasks.md": "705b0929dc9c29d198d27dd62a0de336aca5d40046727b9dbbbfc7fda4e324fd",
+    "specs/006-carta-precios/checklist.md": "0e21d399157c48eabac691dce68a05204e2be26f30f60429e80245dad2e61558"
+  },
+  "evidence": [
+    "docs/evidence/catalog-prices-delivery.md",
+    "docs/evidence/catalog-prices-review.md",
+    "docs/evidence/CONTINUIDAD.md"
+  ],
+  "integral_feature_tasks_marked_complete": false,
+  "external_capabilities_accepted": false,
+  "checked_at_utc": "2026-10-02T19:30:00.000Z"
+}

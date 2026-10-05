@@ -1,0 +1,60 @@
+[WebServer] (node:13144) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2912) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:20444) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:18128) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 2 tests using 1 worker
+
+(node:20596) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 tests\e2e\zzzzzzzzzz-operations.spec.ts:19:1 › touch queue keeps FIFO, urgency aviso and paper-only preparation separate from pickup (7.1s)
+  x  2 tests\e2e\zzzzzzzzzz-operations.spec.ts:38:1 › night menu restricts tablets and QR and final stock/cash closes independently from fiscal (2.0m)
+
+
+  1) tests\e2e\zzzzzzzzzz-operations.spec.ts:38:1 › night menu restricts tablets and QR and final stock/cash closes independently from fiscal 
+
+    Test timeout of 120000ms exceeded.
+
+    Error: browserContext.close: Target page, context or browser has been closed
+
+      55 |     await expect(night!.getByText('Caja y bebidas conciliadas operativamente', { exact: true })).toBeVisible(); const closed = await snapshot(night!); expect(closed.day_closes.at(-1)).toMatchObject({ operational_status: 'reconciled', state: 'provisionally_closed', close_mode: 'operational_final', cash_difference_minor: 0 }); expect(closed.stock.find(x => x.name === 'Agua')!.on_hand).toBe(23);
+      56 |     await mkdir('docs/evidence/screens', { recursive: true }); await night!.screenshot({ path: 'docs/evidence/screens/cierre-nocturno-014.png', fullPage: true });
+    > 57 |   } finally { for (const c of contexts) await c.close(); }
+         |                                         ^
+      58 | });
+      59 |
+        at F:\PROYECTOS\QatuPOS\el-encanto-huamanguino\tests\e2e\zzzzzzzzzz-operations.spec.ts:57:41
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\zzzzzzzzzz-operations-nigh-c2e5d-s-independently-from-fiscal\test-failed-3.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\zzzzzzzzzz-operations-nigh-c2e5d-s-independently-from-fiscal\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\zzzzzzzzzz-operations-nigh-c2e5d-s-independently-from-fiscal\test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #4: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\zzzzzzzzzz-operations-nigh-c2e5d-s-independently-from-fiscal\test-failed-4.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\zzzzzzzzzz-operations-nigh-c2e5d-s-independently-from-fiscal\error-context.md
+
+    attachment #6: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\zzzzzzzzzz-operations-nigh-c2e5d-s-independently-from-fiscal\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\zzzzzzzzzz-operations-nigh-c2e5d-s-independently-from-fiscal\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\zzzzzzzzzz-operations.spec.ts:38:1 › night menu restricts tablets and QR and final stock/cash closes independently from fiscal 
+  1 passed (2.2m)

@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0.0",
+  "execution_id": "95093d70-f6bb-4045-8486-a6423e30d5cc",
+  "assignment_id": "43fbd161-f812-4e8c-bcc3-cee9f986ea5c",
+  "version": 1,
+  "package_id": "B12",
+  "work_kind": "implementation",
+  "feature_directory": "specs/007-anulaciones-devoluciones",
+  "task_ids": [
+    "MAR:T011",
+    "MAR:T012"
+  ],
+  "goal": "Construir anulación granular de platos por Caja/Admin con motivo obligatorio, reposición de stock, ajuste financiero exacto de la cuenta y liberación de cobros retenidos.",
+  "owner": "gemini-antigravity",
+  "reviewer": "independent-reviewer",
+  "state": "assigned",
+  "baseline": {
+    "kind": "file_hashes",
+    "identity": "gemini-antigravity-start-voids-2026-10-02",
+    "input_sha256": {
+      "docs/evidence/CONTINUIDAD.md": "3d0720749fb4ac14de34c5f3721e32746066a60ef5ad823f4c3aa5256d9c8ab4",
+      "packages/contracts/src/pos.ts": "32d2d0484b3be78f4816518e431080dce695e3e349731e58fe1a25a662c3e0a7",
+      "docs/contracts/pilot.openapi.json": "4aa3c608b06ebc69a21a45a8d432abcaff6227fed5ef0c16d34df92fadecb95b",
+      "packages/domain/src/index.ts": "15918f81569e60a0bc57262f43df68dde19a94142e24960d92237329934b5144",
+      "services/commerce/src/authority/repository.ts": "25b26eecdf746bb3e8cdba26bd6ebaa071714fe676a9370fc6d71d970fe44017",
+      "apps/pos/src/components/pos-app.tsx": "813e9ad9a0dd70080e5e8666a273e56e222dca7660e474c302739e0236e0b087",
+      "README.md": "42e56a18f9f95e55c008b70bf3ec92aa42a5df26f6a622265aed360e2e3da228"
+    }
+  },
+  "write_paths": [
+    "specs/007-anulaciones-devoluciones/",
+    "packages/contracts/src/pos.ts",
+    "docs/contracts/pilot.openapi.json",
+    "database/migrations/007_voids_and_releases.sql",
+    "packages/domain/src/",
+    "services/commerce/src/",
+    "apps/pos/src/",
+    "tests/",
+    "docs/evidence/",
+    "docs/construction/runs/2026-10-02-order-voids/"
+  ],
+  "read_paths": [
+    "AGENTS.md",
+    "README.md",
+    "docs/handoff/especificaciones-gemini.md",
+    "docs/handoff/prompt-gemini-antigravity.md",
+    "docs/evidence/CONTINUIDAD.md",
+    "docs/construction/next-increments.md",
+    "specs/006-carta-precios/"
+  ],
+  "depends_on": [
+    "B21"
+  ],
+  "contracts": [
+    "docs/contracts/pilot.openapi.json",
+    "packages/contracts/src/pos.ts"
+  ],
+  "requirements": [
+    "MAR-FR-004"
+  ],
+  "acceptance": [
+    "MAR-AT-004"
+  ],
+  "test_plan": [
+    "Verificar contratos OpenAPI y tipos TypeScript con pnpm typecheck.",
+    "Ejecutar pruebas unitarias de dominio, exactitud monetaria y contratos con vitest.",
+    "Ejecutar pruebas de integración PostgreSQL con anulaciones, reposición de stock, rechazo a mozos y liberación de cobros.",
+    "Ejecutar escenarios de navegador Playwright en tablet 1024x768 y móvil 390x844 para el flujo de anulación y liberación.",
+    "Ejecutar pnpm build y pnpm validate:sdd para verificar coherencia sin regresiones."
+  ],
+  "permitted_effects": [
+    "documentation",
+    "local_files",
+    "local_processes",
+    "local_database",
+    "synthetic_data"
+  ],
+  "output_path": "docs/construction/runs/2026-10-02-order-voids/delivery.json",
+  "shared_paths_grant": []
+}

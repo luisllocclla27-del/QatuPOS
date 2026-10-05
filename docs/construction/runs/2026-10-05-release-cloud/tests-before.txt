@@ -1,0 +1,20 @@
+
+ RUN  v5.0.3 F:/PROYECTOS/QatuPOS/el-encanto-huamanguino
+
+ ❯ tests/unit/cloud-protected.test.ts (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/cloud-protected.test.ts [ tests/unit/cloud-protected.test.ts ]
+Error: Cannot find module '../../scripts/cloud/protected.js' imported from F:/PROYECTOS/QatuPOS/el-encanto-huamanguino/tests/unit/cloud-protected.test.ts
+ ❯ tests/unit/cloud-protected.test.ts:5:1
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  no tests
+   Start at  11:51:43
+   Duration  281ms (worker 96%, environment 4%)
+

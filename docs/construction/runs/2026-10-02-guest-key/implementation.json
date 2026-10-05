@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0.0",
+  "execution_id": "1f5f5a0e-d208-419d-a440-7626fe24b835",
+  "assignment_id": "d294b34f-7728-4ba5-bbee-d9541c9c0ca7",
+  "version": 2,
+  "package_id": "B08",
+  "work_kind": "implementation",
+  "feature_directory": "specs/005-clave-mesa",
+  "task_ids": [
+    "TBL:T021",
+    "TBL:T022",
+    "TBL:T024",
+    "TBL:T027",
+    "TBL:T033"
+  ],
+  "goal": "Construir acceso de cliente por clave activada por mozo, pedido sobre mismo núcleo y revocación atómica al completar pago o cerrar visita.",
+  "owner": "root",
+  "reviewer": "runtime_contracts",
+  "state": "accepted",
+  "baseline": {
+    "kind": "file_hashes",
+    "identity": "pilot-before-guest-key-2026-10-02",
+    "input_sha256": {
+      "AGENTS.md": "e17da1d5bcc5a1e4a88a4ae62ed86f13fe9a8a90be8bb5c6aa0d4f90f63f56e2",
+      "packages/domain/src/index.ts": "0d86aece9fc9e4c80947e5794de35d55421bc0b789bbc7cdbe93e43bf2b7d2e0",
+      "services/commerce/src/authority/repository.ts": "775cb096166e09b86e117fbcb5fdf2fe52cc6c32251abd78921fd9caad49c742",
+      "docs/contracts/pilot.openapi.json": "752689f4140bc6db54c2f77d5d77e3f89b6d57ab8bba48bcf56db5bb650ec88e"
+    }
+  },
+  "write_paths": [
+    ".specify/",
+    "specs/005-clave-mesa/",
+    "packages/contracts/src/",
+    "packages/domain/src/",
+    "services/commerce/src/",
+    "database/migrations/005_guest_access.sql",
+    "docs/contracts/",
+    "docs/evidence/",
+    "docs/construction/",
+    "apps/pos/src/",
+    "tests/",
+    "README.md",
+    "docs/runbooks/"
+  ],
+  "read_paths": [
+    "AGENTS.md",
+    "packages/domain/src/index.ts",
+    "services/commerce/src/authority/repository.ts",
+    "docs/contracts/pilot.openapi.json"
+  ],
+  "depends_on": [],
+  "contracts": [
+    "docs/contracts/pilot.openapi.json"
+  ],
+  "requirements": [
+    "FR-001",
+    "FR-002",
+    "FR-004",
+    "FR-033"
+  ],
+  "acceptance": [
+    "AT-001",
+    "AT-002",
+    "AT-004",
+    "AT-036"
+  ],
+  "test_plan": [
+    "Negativas de rol/ámbito/clave, cierres/pagos parciales/unknown, rotación, idempotencia y carrera con pago en PostgreSQL, recorrido staff/cliente en navegador."
+  ],
+  "permitted_effects": [
+    "documentation",
+    "local_files",
+    "dependency_downloads",
+    "local_processes",
+    "local_database",
+    "synthetic_data",
+    "simulated_providers"
+  ],
+  "output_path": "docs/construction/runs/2026-10-02-guest-key/delivery.json",
+  "shared_paths_grant": [
+    "packages/contracts/src/",
+    "database/migrations/005_guest_access.sql",
+    "docs/contracts/"
+  ]
+}

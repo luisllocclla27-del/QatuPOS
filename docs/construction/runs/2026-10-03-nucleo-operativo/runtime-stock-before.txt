@@ -1,0 +1,68 @@
+
+ RUN  v5.0.3 F:/PROYECTOS/QatuPOS/el-encanto-huamanguino
+
+ ❯ tests/unit/operational-runtime.test.ts (43 tests | 4 failed) 70ms
+   ❯ 015 physical stock receipts (4)
+     × creates zero stock then receives traceable units without changing money 7ms
+     × does not receive same document and SKU twice with different operation IDs 1ms
+     × does not receive stock retained for count 5ms
+     × ordinary waiter cannot receive physical stock 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/operational-runtime.test.ts > 015 physical stock receipts > creates zero stock then receives traceable units without changing money
+DomainError: Esta operación no está habilitada en el laboratorio.
+ ❯ executeCommand packages/domain/src/index.ts:1192:20
+    1190|       break;
+    1191|     }
+    1192|     default: throw new DomainError('UNSUPPORTED_CAPABILITY', 'Esta ope…
+       |                    ^
+    1193|   }
+    1194|   const auditReason = 'reason' in command ? command.reason : 'approval…
+ ❯ Object.run tests/unit/operational-runtime.test.ts:8:297
+ ❯ tests/unit/operational-runtime.test.ts:34:110
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  tests/unit/operational-runtime.test.ts > 015 physical stock receipts > does not receive same document and SKU twice with different operation IDs
+DomainError: Esta operación no está habilitada en el laboratorio.
+ ❯ executeCommand packages/domain/src/index.ts:1192:20
+    1190|       break;
+    1191|     }
+    1192|     default: throw new DomainError('UNSUPPORTED_CAPABILITY', 'Esta ope…
+       |                    ^
+    1193|   }
+    1194|   const auditReason = 'reason' in command ? command.reason : 'approval…
+ ❯ Object.run tests/unit/operational-runtime.test.ts:8:297
+ ❯ tests/unit/operational-runtime.test.ts:35:131
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  tests/unit/operational-runtime.test.ts > 015 physical stock receipts > does not receive stock retained for count
+AssertionError: expected [Function] to throw error including 'conteo' but got 'Esta operación no está habilitada en …'
+
+Expected: "conteo"
+Received: "Esta operación no está habilitada en el laboratorio."
+
+ ❯ tests/unit/operational-runtime.test.ts:36:414
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  tests/unit/operational-runtime.test.ts > 015 physical stock receipts > ordinary waiter cannot receive physical stock
+AssertionError: expected [Function] to throw error including 'perfil' but got 'Esta operación no está habilitada en …'
+
+Expected: "perfil"
+Received: "Esta operación no está habilitada en el laboratorio."
+
+ ❯ tests/unit/operational-runtime.test.ts:37:268
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed | 39 passed (43)
+   Start at  16:46:38
+   Duration  494ms (transform 57%, tests 25%, import 16%, worker 2%)
+

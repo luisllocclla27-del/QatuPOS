@@ -1,0 +1,124 @@
+{
+  "schema_version": "1.0.0",
+  "execution_id": "e90ed63f-0e0b-4803-8b7e-65b14b6cdd09",
+  "assignment_id": "9c6fd6f8-a6cb-4385-bb81-6ea91b00ba7c",
+  "version": 2,
+  "package_id": "B07",
+  "work_kind": "implementation",
+  "feature_directory": "specs/011-integridad-comercial",
+  "task_ids": [
+    "MAR:T031",
+    "MAR:T032",
+    "MAR:T033",
+    "MAR:T034",
+    "MAR:T035",
+    "MAR:T036",
+    "MAR:T037",
+    "MAR:T038"
+  ],
+  "goal": "Corregir cotizaciones reutilizadas/ajenas, descuento que reabre pago, dinero exacto, venta neta diaria, proyección privada, arqueo por turno y alcance honesto de documentos simulados; pruebas y actualización de continuidad.",
+  "owner": "root",
+  "reviewer": "future-independent-reviewer",
+  "state": "ready_for_review",
+  "baseline": {
+    "kind": "file_hashes",
+    "identity": "gemini-010-delivered-tests-ended-2026-10-02",
+    "input_sha256": {
+      "packages/domain/src/index.ts": "ef8f05318188c92c589cb0eeb1e1ef90f4b79c6ac487e340fa0189935e52b648",
+      "packages/domain/src/exact.ts": "ea5e8176aff30f39f081c34242cd75dd17fb1f49e6ef813d5a1bf94250c90157",
+      "packages/contracts/src/pos.ts": "2a419213da8ba63654fac84d5ce111085246e34830678c142984079970f45ad6",
+      "services/commerce/src/authority/repository.ts": "c0334f68dbebd9127011aca0c3be3930127aaf8e1e2ce5bf5bdaa8a885c82234",
+      "docs/contracts/pilot.openapi.json": "a0a4364de9dbf9fb50c0e921e33dd2abcc65eae45c613147699fcad18730ea86",
+      "apps/pos/src/components/thermal-receipt-modal.tsx": "e6a52f315fb8def334493028d1e8e10cb4b01d7756acbd2e74f673b57c2c6f48"
+    }
+  },
+  "write_paths": [
+    "packages/domain/src/index.ts",
+    "packages/domain/src/exact.ts",
+    "services/commerce/src/authority/repository.ts",
+    "apps/pos/src/components/pos-app.tsx",
+    "apps/pos/src/components/issue-credit-note-modal.tsx",
+    "apps/pos/src/components/thermal-receipt-modal.tsx",
+    "apps/pos/src/components/cash-audit-modal.tsx",
+    "apps/pos/src/components/issue-fiscal-modal.tsx",
+    "apps/pos/src/lib/cash-report.ts",
+    "docs/contracts/pilot.openapi.json",
+    "database/migrations/011_lab_fiscal_pending.sql",
+    "specs/011-integridad-comercial/",
+    "tests/unit/integrity.test.ts",
+    "tests/unit/cash-report.test.ts",
+    "tests/unit/pilot-domain.test.ts",
+    "tests/integration/integrity.test.ts",
+    "tests/e2e/zzzzz-fiscal.spec.ts",
+    "tests/e2e/zzzzzz-discounts-audit.spec.ts",
+    "tests/e2e/zzzzzzz-credit-notes.spec.ts",
+    "docs/evidence/ACTUALIZACION-2026-10-02-auditoria.md",
+    "docs/evidence/CONTINUIDAD.md",
+    "docs/evidence/planning-validation.json",
+    "docs/construction/runs/2026-10-02-auditoria-correcciones/",
+    "docs/construction/current-run.json",
+    "README.md",
+    "tests/integration/api.test.ts",
+    "apps/pos/next.config.ts",
+    "apps/pos/tsconfig.json",
+    "apps/pos/next-env.d.ts",
+    "tests/e2e/server.ts",
+    ".gitignore"
+  ],
+  "read_paths": [
+    "packages/domain/",
+    "packages/contracts/",
+    "services/commerce/",
+    "apps/pos/",
+    "specs/006-carta-precios/",
+    "specs/007-anulaciones-devoluciones/",
+    "specs/008-facturacion-precuenta/",
+    "specs/009-descuentos-arqueo-caja/",
+    "specs/010-notas-credito-sunat/",
+    "docs/construction/current-run.json"
+  ],
+  "depends_on": [],
+  "contracts": [
+    "docs/contracts/pilot.openapi.json"
+  ],
+  "requirements": [
+    "MAR-FR-001",
+    "MAR-FR-007",
+    "MAR-FR-008",
+    "MAR-FR-009",
+    "MAR-FR-017",
+    "MAR-FR-018",
+    "MAR-FR-019"
+  ],
+  "acceptance": [
+    "MAR-AT-001",
+    "MAR-AT-007",
+    "MAR-AT-008",
+    "MAR-AT-009",
+    "MAR-AT-017",
+    "MAR-AT-018",
+    "MAR-AT-019"
+  ],
+  "test_plan": [
+    "Negativas y concurrencia de cotización/operación HTTP PostgreSQL; regresión descuento pagado, importes máximos, cierre neto, privacidad y conteo ciego; UI simulada y sin QR decorativo; suite completa tras pruebas previas terminadas, tipos/build/documental."
+  ],
+  "permitted_effects": [
+    "documentation",
+    "local_files",
+    "local_processes",
+    "local_database",
+    "synthetic_data",
+    "simulated_providers"
+  ],
+  "output_path": "docs/construction/runs/2026-10-02-auditoria-correcciones/delivery.json",
+  "shared_paths_grant": [
+    "packages/domain/src/index.ts",
+    "packages/domain/src/exact.ts",
+    "services/commerce/src/authority/repository.ts",
+    "docs/contracts/pilot.openapi.json",
+    "database/migrations/011_lab_fiscal_pending.sql",
+    "apps/pos/next.config.ts",
+    "apps/pos/tsconfig.json",
+    ".gitignore"
+  ]
+}

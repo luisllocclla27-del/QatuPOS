@@ -1,0 +1,51 @@
+$ playwright test
+[WebServer] (node:21428) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:23320) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:5852) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:11084) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 12 tests using 1 worker
+
+(node:14792) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 tests\e2e\pos.spec.ts:10:1 › two touch terminals share a mixed table order and cashier records exact cash change (22.9s)
+  ok  2 tests\e2e\pos.spec.ts:112:1 › mobile layout stays inside the viewport with accessible table controls (968ms)
+  ok  3 tests\e2e\zz-guest.spec.ts:21:1 › waiter monitors private customer orders and paid delivery stays independent (18.9s)
+  ok  4 tests\e2e\zz-guest.spec.ts:78:1 › customer recovers a lost response after reload once and waiter rotation ends the old browser (7.7s)
+  ok  5 tests\e2e\zz-guest.spec.ts:97:1 › browser storage failures never send an untracked order or discard a confirmed result (6.9s)
+  ok  6 tests\e2e\zzz-catalog.spec.ts:27:1 › admin manages catalog and price change from 35 to 38 rejects stale quote with alert and accepts updated price (8.0s)
+  ok  7 tests\e2e\zzz-catalog.spec.ts:122:1 › admin catalog mobile view stays within viewport (1.1s)
+  ok  8 tests\e2e\zzzz-voids.spec.ts:12:1 › granular order line voiding recalculates check, audits reason, and allows releasing held collections (10.2s)
+STEP 8.1: verifying thermal receipt text
+STEP 8.2: taking factura screenshot
+STEP 8.3: closing thermal receipt modal
+STEP 9: verifying check row and alert
+STEP 10: verifying fiscal documents panel
+STEP 10.1: testing reprint
+STEP 10.2: taking caja fiscal panel screenshot
+  ok  9 tests\e2e\zzzzz-fiscal.spec.ts:12:1 › pre-cuenta, electronic invoice issuance (F001/B001), 80mm thermal receipt, and fiscal history in Caja (8.6s)
+[E2E DEBUG] Step 7: Starting payment of S/ 36.00
+[E2E DEBUG] Step 7: Waiting for reserved alert
+[E2E DEBUG] Step 7: Waiting for Cobro registrado status
+[E2E DEBUG] Step 7: Payment finished
+[E2E DEBUG] Step 8: Looking for Emitir Boleta / Factura button
+[E2E DEBUG] Step 8: Clicking Emitir Boleta / Factura
+[E2E DEBUG] Step 8: Waiting for fiscal modal
+[E2E DEBUG] Step 8: Submitting Boleta B001 directly
+[E2E DEBUG] Step 8: Submitted fiscal doc successfully
+[E2E DEBUG] Step 9: Waiting for BOLETA DE VENTA ELECTRÓNICA modal
+[E2E DEBUG] Step 9: Fiscal ticket verified and closed
+[E2E DEBUG] Step 10: Looking for Arqueo Corte X button
+[E2E DEBUG] Step 10: Waiting for Arqueo modal
+[E2E DEBUG] Step 10: Arqueo modal verified and closed
+[E2E DEBUG] Step 11: Checking discount audit table
+[E2E DEBUG] Step 11: All done!
+  ok 10 tests\e2e\zzzzzz-discounts-audit.spec.ts:12:1 › commercial discounts, courtesy audit, 80mm pre-cuenta discount breakdown, and live cash audit (Corte X) (10.1s)
+  ok 11 tests\e2e\zzzzzzz-credit-notes.spec.ts:12:1 › electronic credit notes (BC01), formal annulment, 80mm thermal receipt, and live cash audit reconciliation (Corte X) (9.9s)
+  ok 12 tests\e2e\zzzzzzzz-catalog-custody.spec.ts:4:1 › Carta guides compatible stock selection, audits route before first sale (2.4s)
+
+  12 passed (1.9m)

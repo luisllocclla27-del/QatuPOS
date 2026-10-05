@@ -1,0 +1,62 @@
+{
+  "format": 1,
+  "schema": "qatupos",
+  "runner": "pnpm cloud:secure install --config <external-file>",
+  "migrations": [
+    {
+      "name": "001_core_scope.sql",
+      "size_bytes": 3159,
+      "sha256": "0e180c1dd0e28d622fbe743861c4c6f4300eb0bc638bc1ede4f3d8aa93299296"
+    },
+    {
+      "name": "004_lab_state_metadata.sql",
+      "size_bytes": 352,
+      "sha256": "a2d90afd232c7befdc775c6a8582ffa7afbd776a4b0d1f87876bf11e6e5677c4"
+    },
+    {
+      "name": "005_guest_access.sql",
+      "size_bytes": 1846,
+      "sha256": "bbdaa360c2055836faabb41d2e7b4156774a8063df9ea7216bd3cf0e5784745e"
+    },
+    {
+      "name": "006_catalog_and_quotes.sql",
+      "size_bytes": 1809,
+      "sha256": "d9b7152a14851f87b4501472d28a4e8588d3e578661627e922d378c38b1d2bf5"
+    },
+    {
+      "name": "007_voids_and_releases.sql",
+      "size_bytes": 1130,
+      "sha256": "431b37b348268e457ac16be8919febc50151daf0301d5137bca854c4629e0545"
+    },
+    {
+      "name": "008_fiscal_documents.sql",
+      "size_bytes": 2653,
+      "sha256": "918dd72b6a6ceec72133d3838e368365118e0fc6e36e69be502593302bef2706"
+    },
+    {
+      "name": "009_discounts_and_cash_audit.sql",
+      "size_bytes": 1817,
+      "sha256": "0c5ed638e33781fc53443269b3d42cca6ed7da7df060c4fb21b3544f8fcc2ada"
+    },
+    {
+      "name": "010_credit_notes.sql",
+      "size_bytes": 1458,
+      "sha256": "21537166443078883ab4acdeeba51d23115c89f48f9e81fe0dbf8fb05d48e398"
+    },
+    {
+      "name": "011_lab_fiscal_pending.sql",
+      "size_bytes": 1087,
+      "sha256": "c76fa1d0abefd0e9297dd38e36829efb40ea0eec11901ad75d14683d3fe4f684"
+    },
+    {
+      "name": "012_money_bigint.sql",
+      "size_bytes": 1005,
+      "sha256": "437d1183fe0e4aa3588107e7178b0c5126a926c04043366475f51dbddd7b3ffb"
+    },
+    {
+      "name": "013_cloud_security.sql",
+      "size_bytes": 893,
+      "sha256": "a1619f09cd9511c895a873a14cafb1045f978ef08ce39c6404a9789f33ef1e5d"
+    }
+  ]
+}

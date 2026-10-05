@@ -1,0 +1,30 @@
+{
+  "execution_id": "744f35d9-fb9e-4095-9f4d-a161e04fe465",
+  "owner": "root",
+  "transitions": [
+    {
+      "from": "assigned",
+      "to": "running",
+      "evidence": "WorkOrder before edits; baseline01373 hashes checked"
+    },
+    {
+      "from": "running",
+      "to": "running",
+      "version": 2,
+      "evidence": "grant guest UI before editing"
+    },
+    {
+      "from": "running",
+      "to": "running",
+      "version": 3,
+      "evidence": "grant original E2E isolation assertions before editing; cancellation contract before implementation"
+    },
+    {
+      "from": "running",
+      "to": "ready_for_review",
+      "checked_at_utc": "2026-10-03T20:38:47.454939+00:00",
+      "evidence": "verification.json"
+    }
+  ],
+  "independent_acceptance": "pending"
+}

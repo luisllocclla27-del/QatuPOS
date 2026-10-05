@@ -1,0 +1,1280 @@
+{
+  "checked_at_utc": "2026-10-05T17:06:40.191893+00:00",
+  "status": "passed",
+  "scope": "SDD document consistency and local contract validation only",
+  "runtime_implemented": false,
+  "business_acceptance_executed": false,
+  "dependencies": {
+    "jsonschema": "4.26.0",
+    "openapi-spec-validator": "0.9.0",
+    "referencing": "0.37.0"
+  },
+  "checks": [
+    {
+      "name": "document_links_and_code_fences",
+      "status": "passed",
+      "details": {
+        "documents": 57,
+        "local_file_links": 249,
+        "anchors": "not_checked"
+      }
+    },
+    {
+      "name": "requirements_and_acceptance_traceability",
+      "status": "passed",
+      "details": {
+        "functional_requirements": 33,
+        "quality_requirements": 12,
+        "acceptance_scenarios": 37,
+        "definitions": {
+          "INV": 32,
+          "OPS": 12,
+          "ADR": 20,
+          "DEC": 12
+        },
+        "runtime_acceptance": "not_executed"
+      }
+    },
+    {
+      "name": "openapi_structure_and_local_references",
+      "status": "passed",
+      "details": {
+        "openapi_version": "3.1.1",
+        "paths": 13,
+        "operations": 13,
+        "schemas": 26,
+        "local_references": 149,
+        "validation": "openapi-spec-validator"
+      }
+    },
+    {
+      "name": "http_requirement_and_invariant_references",
+      "status": "passed",
+      "details": {
+        "mappings": [
+          {
+            "operation": "quoteCheckout",
+            "requirements": [
+              "FR-003",
+              "FR-004"
+            ],
+            "invariants": [
+              "INV-004",
+              "INV-005"
+            ]
+          },
+          {
+            "operation": "submitCheckout",
+            "requirements": [
+              "FR-005",
+              "FR-006",
+              "FR-007"
+            ],
+            "invariants": [
+              "INV-003",
+              "INV-014",
+              "INV-020"
+            ]
+          },
+          {
+            "operation": "getCheckoutOperation",
+            "requirements": [
+              "FR-001",
+              "FR-005",
+              "FR-006",
+              "FR-007"
+            ],
+            "invariants": [
+              "INV-003",
+              "INV-020"
+            ]
+          },
+          {
+            "operation": "getOrder",
+            "requirements": [
+              "FR-001",
+              "FR-006",
+              "FR-007",
+              "FR-008"
+            ],
+            "invariants": [
+              "INV-001",
+              "INV-002"
+            ]
+          },
+          {
+            "operation": "acceptOrder",
+            "requirements": [
+              "FR-006",
+              "FR-007",
+              "FR-017"
+            ],
+            "invariants": [
+              "INV-014",
+              "INV-018"
+            ]
+          },
+          {
+            "operation": "cancelOrder",
+            "requirements": [
+              "FR-014",
+              "FR-016"
+            ],
+            "invariants": [
+              "INV-015",
+              "INV-019"
+            ]
+          },
+          {
+            "operation": "reserveCollectionAuthorization",
+            "requirements": [
+              "FR-008"
+            ],
+            "invariants": [
+              "INV-007",
+              "INV-008",
+              "INV-009"
+            ]
+          },
+          {
+            "operation": "createPaymentAttempt",
+            "requirements": [
+              "FR-008"
+            ],
+            "invariants": [
+              "INV-007",
+              "INV-008",
+              "INV-009"
+            ]
+          },
+          {
+            "operation": "getPaymentAttempt",
+            "requirements": [
+              "FR-001",
+              "FR-008"
+            ],
+            "invariants": [
+              "INV-007",
+              "INV-008",
+              "INV-009"
+            ]
+          },
+          {
+            "operation": "reserveRefundAuthorization",
+            "requirements": [
+              "FR-014"
+            ],
+            "invariants": [
+              "INV-010",
+              "INV-011",
+              "INV-019"
+            ]
+          },
+          {
+            "operation": "requestRefund",
+            "requirements": [
+              "FR-014"
+            ],
+            "invariants": [
+              "INV-010",
+              "INV-011",
+              "INV-019"
+            ]
+          },
+          {
+            "operation": "getRefund",
+            "requirements": [
+              "FR-001",
+              "FR-014"
+            ],
+            "invariants": [
+              "INV-010",
+              "INV-011",
+              "INV-019"
+            ]
+          },
+          {
+            "operation": "receiveDeliveryEvent",
+            "requirements": [
+              "FR-019",
+              "FR-020"
+            ],
+            "invariants": [
+              "INV-003",
+              "INV-017"
+            ]
+          }
+        ],
+        "requirements_referenced": [
+          "FR-001",
+          "FR-003",
+          "FR-004",
+          "FR-005",
+          "FR-006",
+          "FR-007",
+          "FR-008",
+          "FR-014",
+          "FR-016",
+          "FR-017",
+          "FR-019",
+          "FR-020"
+        ],
+        "requirements_without_http_contract_in_this_slice": [
+          "FR-002",
+          "FR-009",
+          "FR-010",
+          "FR-011",
+          "FR-012",
+          "FR-013",
+          "FR-015",
+          "FR-018",
+          "FR-021",
+          "FR-022",
+          "FR-023",
+          "FR-024",
+          "FR-025",
+          "FR-026",
+          "FR-027",
+          "FR-028",
+          "FR-029",
+          "FR-030",
+          "FR-031",
+          "FR-032",
+          "FR-033",
+          "NFR-001",
+          "NFR-002",
+          "NFR-003",
+          "NFR-004",
+          "NFR-005",
+          "NFR-006",
+          "NFR-007",
+          "NFR-008",
+          "NFR-009",
+          "NFR-010",
+          "NFR-011",
+          "NFR-012"
+        ],
+        "implementation_coverage": "not_measured"
+      }
+    },
+    {
+      "name": "json_schemas_and_positive_negative_examples",
+      "status": "passed",
+      "details": {
+        "positive": 20,
+        "negative": 8,
+        "format_validation": true,
+        "fixtures": [
+          {
+            "file": "quote-request.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "quote-response.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "checkout-request.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "checkout-queued.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "checkout-succeeded.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "checkout-failed.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "order-submitted.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "accept-order-request.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "collection-authorization-request.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "collection-authorization-response.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "payment-attempt-request.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "payment-attempt-unknown.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "refund-request.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "refund-response.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "order-accepted.event.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "payment-confirmed.event.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "delivery-completed.event.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "invalid-money-fraction.json",
+            "expected_valid": false,
+            "observed_valid": false
+          },
+          {
+            "file": "invalid-quantity-number.json",
+            "expected_valid": false,
+            "observed_valid": false
+          },
+          {
+            "file": "invalid-checkout-premature-order.json",
+            "expected_valid": false,
+            "observed_valid": false
+          },
+          {
+            "file": "invalid-payment-client-amount.json",
+            "expected_valid": false,
+            "observed_valid": false
+          },
+          {
+            "file": "invalid-delivery-pii.event.json",
+            "expected_valid": false,
+            "observed_valid": false
+          },
+          {
+            "file": "quote-inclusive-response.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "refund-authorization-request.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "refund-authorization-response.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "invalid-refund-authorization-missing-intent.json",
+            "expected_valid": false,
+            "observed_valid": false
+          },
+          {
+            "file": "invalid-refund-client-amount.json",
+            "expected_valid": false,
+            "observed_valid": false
+          },
+          {
+            "file": "invalid-payment-zero.event.json",
+            "expected_valid": false,
+            "observed_valid": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "fixture_financial_arithmetic",
+      "status": "passed",
+      "details": {
+        "fixtures": [
+          "quote-response.json",
+          "order-submitted.json",
+          "quote-inclusive-response.json"
+        ],
+        "production_financial_rules": "not_executed"
+      }
+    },
+    {
+      "name": "shared_event_contract_alignment",
+      "status": "passed",
+      "details": {
+        "event_examples": 3,
+        "receiver_schema_matches_shared_delivery_event": true,
+        "signatures_and_runtime_delivery": "not_executed"
+      }
+    },
+    {
+      "name": "spec_kit_installation_and_artifacts",
+      "status": "passed",
+      "details": {
+        "spec_kit": "1.0.12",
+        "integration": "codex",
+        "skills": 10,
+        "constitution": "1.0.0",
+        "implementation_invoked": false
+      }
+    },
+    {
+      "name": "table_feature_traceability_and_tasks",
+      "status": "passed",
+      "details": {
+        "requirements": 20,
+        "scenarios": 20,
+        "success_criteria": 6,
+        "tasks": 49,
+        "requirement_task_coverage_percent": 100,
+        "implementation_tasks_complete": 0,
+        "semantic_review": "requires_human_or_agent_review"
+      }
+    },
+    {
+      "name": "table_openapi_and_traceability",
+      "status": "passed",
+      "details": {
+        "paths": 12,
+        "operations": 12,
+        "schemas": 23,
+        "openapi": "3.1.1"
+      }
+    },
+    {
+      "name": "table_core_contract_alignment",
+      "status": "passed",
+      "details": {
+        "identical_shared_schemas": [
+          "QuoteLineInput",
+          "LineSnapshot",
+          "UnitPriceSnapshot",
+          "Totals"
+        ],
+        "identical_invariants": 6,
+        "guest_realtime_shape": "cursor_kind_version_only",
+        "runtime_privacy": "not_tested"
+      }
+    },
+    {
+      "name": "table_schema_fixtures",
+      "status": "passed",
+      "details": {
+        "positive": 24,
+        "negative": 13,
+        "fixtures": [
+          {
+            "file": "table-entry.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "admission-request.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "admission-pending.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "admission-active.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "admission-approve.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "admission-revoke.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "table-quote-request.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "table-quote.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "table-checkout-request.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "table-checkout-queued.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "table-checkout-succeeded.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "table-checkout-failed.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "table-visit.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "table-visit-pending.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "table-invalidation.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "table-resync.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "table-bill-request.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "table-bill-requested.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "table-session-open-request.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "table-session.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "table-session-begin-closing.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "table-session-close.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "table-session-move.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "invalid-entry-occupancy.json",
+            "expected_valid": false,
+            "observed_valid": false
+          },
+          {
+            "file": "invalid-admission-injected-check.json",
+            "expected_valid": false,
+            "observed_valid": false
+          },
+          {
+            "file": "invalid-quote-injected-table.json",
+            "expected_valid": false,
+            "observed_valid": false
+          },
+          {
+            "file": "invalid-quote-numeric-quantity.json",
+            "expected_valid": false,
+            "observed_valid": false
+          },
+          {
+            "file": "invalid-checkout-price.json",
+            "expected_valid": false,
+            "observed_valid": false
+          },
+          {
+            "file": "invalid-checkout-premature-order.json",
+            "expected_valid": false,
+            "observed_valid": false
+          },
+          {
+            "file": "invalid-checkout-missing-order.json",
+            "expected_valid": false,
+            "observed_valid": false
+          },
+          {
+            "file": "invalid-visit-check-snapshot.json",
+            "expected_valid": false,
+            "observed_valid": false
+          },
+          {
+            "file": "invalid-pending-visit-orders.json",
+            "expected_valid": false,
+            "observed_valid": false
+          },
+          {
+            "file": "invalid-invalidation-private-content.json",
+            "expected_valid": false,
+            "observed_valid": false
+          },
+          {
+            "file": "invalid-transition-move-missing-version.json",
+            "expected_valid": false,
+            "observed_valid": false
+          },
+          {
+            "file": "invalid-guest-pay-service.json",
+            "expected_valid": false,
+            "observed_valid": false
+          },
+          {
+            "file": "table-session-closed.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "invalid-session-closed-without-time.json",
+            "expected_valid": false,
+            "observed_valid": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "table_fixture_arithmetic",
+      "status": "passed",
+      "details": {
+        "quote_fixture_checked": true,
+        "pricing_engine_executed": false
+      }
+    },
+    {
+      "name": "fiscal_feature_artifacts_and_traceability",
+      "status": "passed",
+      "details": {
+        "requirements": 18,
+        "acceptance": 18,
+        "metrics": 6,
+        "tasks": 45,
+        "implementation_tasks_complete": 0,
+        "coverage": "documentary_only"
+      }
+    },
+    {
+      "name": "fiscal_openapi_and_references",
+      "status": "passed",
+      "details": {
+        "paths": 8,
+        "operations": 8,
+        "schemas": 25,
+        "openapi": "3.1.1"
+      }
+    },
+    {
+      "name": "fiscal_core_alignment",
+      "status": "passed",
+      "details": {
+        "identical_shared_schemas": [
+          "Totals"
+        ],
+        "identical_invariants": 6,
+        "legal_conformance": "not_verified"
+      }
+    },
+    {
+      "name": "fiscal_schema_fixtures",
+      "status": "passed",
+      "details": {
+        "positive": 24,
+        "negative": 21,
+        "fixtures": [
+          {
+            "file": "basis-request.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "basis-registered.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "invoice-request.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "boleta-unidentified-request.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "boleta-dni-request.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "replacement-request.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "document-queued.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "document-sealed.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "document-submitted.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "document-unknown.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "document-accepted.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "document-accepted-observations.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "document-rejected.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "document-credit-queued.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "credit-request.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "debit-request.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "sales-note-request.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "sales-note.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "external-request.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "external-queued.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "provider-event.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "provider-receipt.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "registration-pending.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "document-boleta-summary-accepted.json",
+            "expected_valid": true,
+            "observed_valid": true
+          },
+          {
+            "file": "invalid-basis-tenant-injection.json",
+            "expected_valid": false,
+            "observed_valid": false
+          },
+          {
+            "file": "invalid-invoice-anonymous.json",
+            "expected_valid": false,
+            "observed_valid": false
+          },
+          {
+            "file": "invalid-client-price.json",
+            "expected_valid": false,
+            "observed_valid": false
+          },
+          {
+            "file": "invalid-direct-credit.json",
+            "expected_valid": false,
+            "observed_valid": false
+          },
+          {
+            "file": "invalid-replacement-without-version.json",
+            "expected_valid": false,
+            "observed_valid": false
+          },
+          {
+            "file": "invalid-queued-with-number.json",
+            "expected_valid": false,
+            "observed_valid": false
+          },
+          {
+            "file": "invalid-accepted-without-evidence.json",
+            "expected_valid": false,
+            "observed_valid": false
+          },
+          {
+            "file": "invalid-unknown-accepted-evidence.json",
+            "expected_valid": false,
+            "observed_valid": false
+          },
+          {
+            "file": "invalid-observations-missing.json",
+            "expected_valid": false,
+            "observed_valid": false
+          },
+          {
+            "file": "invalid-note-fiscal.json",
+            "expected_valid": false,
+            "observed_valid": false
+          },
+          {
+            "file": "invalid-note-disclaimer.json",
+            "expected_valid": false,
+            "observed_valid": false
+          },
+          {
+            "file": "invalid-note-sunat-number.json",
+            "expected_valid": false,
+            "observed_valid": false
+          },
+          {
+            "file": "invalid-external-url.json",
+            "expected_valid": false,
+            "observed_valid": false
+          },
+          {
+            "file": "invalid-correction-client-amount.json",
+            "expected_valid": false,
+            "observed_valid": false
+          },
+          {
+            "file": "invalid-provider-extra-tax.json",
+            "expected_valid": false,
+            "observed_valid": false
+          },
+          {
+            "file": "invalid-summary-without-binding.json",
+            "expected_valid": false,
+            "observed_valid": false
+          },
+          {
+            "file": "invalid-unverified-evidence.json",
+            "expected_valid": false,
+            "observed_valid": false
+          },
+          {
+            "file": "invalid-ruc-format.json",
+            "expected_valid": false,
+            "observed_valid": false
+          },
+          {
+            "file": "invalid-pdf-instead-xml.json",
+            "expected_valid": false,
+            "observed_valid": false
+          },
+          {
+            "file": "invalid-rejection-without-evidence.json",
+            "expected_valid": false,
+            "observed_valid": false
+          },
+          {
+            "file": "invalid-pdf-acceptance-evidence.json",
+            "expected_valid": false,
+            "observed_valid": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "fiscal_fixture_arithmetic",
+      "status": "passed",
+      "details": {
+        "fixture_totals_checked": [
+          "basis-registered.json",
+          "document-queued.json",
+          "document-sealed.json",
+          "document-submitted.json",
+          "document-unknown.json",
+          "document-accepted.json",
+          "document-accepted-observations.json",
+          "document-rejected.json",
+          "document-credit-queued.json",
+          "sales-note.json",
+          "document-boleta-summary-accepted.json"
+        ],
+        "illustrative_component_arithmetic": true,
+        "tax_engine_executed": false
+      }
+    },
+    {
+      "name": "construction_feature_traceability",
+      "status": "passed",
+      "details": {
+        "requirements": 16,
+        "acceptance": 16,
+        "tasks_pending": 26,
+        "success_criteria": 4,
+        "runtime": "not_executed"
+      }
+    },
+    {
+      "name": "construction_dag_and_global_coverage",
+      "status": "passed",
+      "details": {
+        "packages": 22,
+        "cycle": false,
+        "global_requirements_covered": 45,
+        "global_acceptance_covered": 37,
+        "initial_ready": [
+          "B00",
+          "B01"
+        ],
+        "pilot_required_packages": 14,
+        "execution": "not_started"
+      }
+    },
+    {
+      "name": "work_order_schema_fixtures_and_ownership_semantics",
+      "status": "passed",
+      "details": {
+        "positive_fixtures": 2,
+        "negative_fixtures": 5,
+        "path_and_ownership_cases": 11,
+        "semantic_self_review_rejected": true,
+        "baseline_hashes": "illustrative_not_live",
+        "runtime_reservation_registry": "not_implemented"
+      }
+    },
+    {
+      "name": "canonical_layout_consistency",
+      "status": "passed",
+      "details": {
+        "documents": 25,
+        "layout": "services/commerce; services/worker; database/migrations",
+        "print_bridge": "local_adapter_without_commercial_authority"
+      }
+    },
+    {
+      "name": "marisqueria_feature_traceability",
+      "status": "passed",
+      "details": {
+        "requirements": 20,
+        "acceptance": 20,
+        "tasks_pending": 30,
+        "success_criteria": 6,
+        "runtime": "not_executed"
+      }
+    },
+    {
+      "name": "marisqueria_profile_schema_and_fixtures",
+      "status": "passed",
+      "details": {
+        "positive_profiles": 1,
+        "negative_profiles": 3,
+        "hardware": "unverified_network_assumption",
+        "payment_method": "manual_verification_proposal_not_selected_provider"
+      }
+    },
+    {
+      "name": "marisqueria_day_close_fixture_arithmetic",
+      "status": "passed",
+      "details": {
+        "shifts": 2,
+        "collected_minor": 170000,
+        "refunded_minor": 5000,
+        "customer_net_minor": 165000,
+        "final_cash_minor": 15000,
+        "final_stock_units": "31",
+        "accepted_variance_preserved": true,
+        "scope": "synthetic_example_arithmetic_only"
+      }
+    }
+  ],
+  "input_sha256": {
+    ".agents/skills/speckit-analyze/SKILL.md": "fad1c37a451e017995b15fc3eefe243274642fbb3ff7c8a5ab021908df71aa93",
+    ".agents/skills/speckit-checklist/SKILL.md": "5c1dce9333a2b733422e2dc75de7fc4d63ba91a460833d14ef3966a672328b9d",
+    ".agents/skills/speckit-clarify/SKILL.md": "1e9de2b2a673c923f7ca650fc40e4d5f24654163c577e0f1ceb70edfaa08114b",
+    ".agents/skills/speckit-constitution/SKILL.md": "ff6604c8424d4f4edf80f19ccfda1ede1a1dc5091a397cc1f0078a0bc3b0a538",
+    ".agents/skills/speckit-converge/SKILL.md": "369e168cbcc9f903d1b8f3f360a32d24a7ebf3d07066b8676032cffcafbebd9e",
+    ".agents/skills/speckit-implement/SKILL.md": "4d58a80ede8d837798d13a838b83a88fd4335104d0806d27f8018664a1ee0b85",
+    ".agents/skills/speckit-plan/SKILL.md": "0834b2298c078b0a89ee64a3e47e140cc9b31c4049492bd504491199a0fe3e73",
+    ".agents/skills/speckit-specify/SKILL.md": "a505028de7f6489878696d6656c7d057f3a66119ebb8c0cc82d69fabb7b344ff",
+    ".agents/skills/speckit-tasks/SKILL.md": "1e1d18b34e39d62d6388297f035505905741b07973102e0d44aa8647d85ab093",
+    ".agents/skills/speckit-taskstoissues/SKILL.md": "9bfc9d47910598f700ec3f51344c396c94e0d65e206a2c04bcfeedd079a72eb0",
+    ".specify/init-options.json": "d1861d11801e84d3ec308ada446f4ef793cf86cda2a90fd1ec40f872d26b3a54",
+    ".specify/integration.json": "75ccc692d58a5dbc5a658011a5cadde0390013c8b24f56f4e32af6822e9598e3",
+    ".specify/memory/constitution.md": "26b1a374b4c2102ccef7444a8d245216f285008207e14499e362e62910d7896e",
+    "AGENTS.md": "e929c0ccb45949c86118d6789b0f98c31c5b88d9e4a552eb9661870a62a2b86f",
+    "docs/01-plan-maestro.md": "daf703f27a68cd54cb363da3fd032b9460e48a009b911dca3ff5ea921e36fcca",
+    "docs/02-arquitectura-e-integracion.md": "cda464c8bdc8de70d82fd5947da43c045db8433d87e2ecd69d06a7fba83241f7",
+    "docs/03-plan-de-ejecucion.md": "f349a99b73006a05ee69db3156974d64a3525c22d7a7f19e634a7bc065d21be8",
+    "docs/07-benchmark-profesional-2026.md": "2255759407e4c3c9aad934269e2147cea015c8fea2b29e07482937a330fe9c44",
+    "docs/08-facturacion-sunat-peru.md": "9fa369ca6975260e28808b61b3286b268c8cb2f4f634268e8149b178f89b663f",
+    "docs/09-construccion-multiagente.md": "e78bc2988ca836cbc345d3b74bbd72c778b9ee4a1b3335964e89cc597ef4da46",
+    "docs/10-base-tecnica-y-layout.md": "92eb41f36f645cb897b3445aede23114bb458bc9f881ddb5c5e4a79fa794f07e",
+    "docs/11-cobertura-y-brechas.md": "788c18f031cad8b3c6ad6374fcb9dcb34cc4bd50639c3cce6d0ea17ab5180828",
+    "docs/12-piloto-marisqueria.md": "461b62e9e6032bf053798c3b189c9947d5aeed8aeb8262999e1489a7acc06fe4",
+    "docs/construction/execution-plan.json": "7714f75f5fbf5fa4d8d978256204bde8c6b34e5044bd1cd156b6f60fd70c99c4",
+    "docs/construction/work-order-template.md": "55a4a698fb4e324057e69351a808fe8273a3b5fc5d7ef43047c5c2a8b2cffd51",
+    "docs/contracts/commerce.openapi.json": "ba3d7174025637cb70f7b658766223a973edfe97cdbb2c6c67ebf0eec2b2fe0c",
+    "docs/contracts/events.schema.json": "bf1c80d1a23f11dfe200cc37cea723d28c47db95eeb64a283da003183da6d54a",
+    "docs/contracts/examples/accept-order-request.json": "d7d9e857f848bdc645038a456a7e0a3e2d4f4be0df0ccf3100fb79d7fc10051e",
+    "docs/contracts/examples/checkout-failed.json": "7f02be474040bc8f5e8021e6697b7977b47abf4117340a5244c9ea4ad8a09165",
+    "docs/contracts/examples/checkout-queued.json": "1f0ca9b647964d4c3b0da4eb58dce77108030710b20515eb4063df7bd563d570",
+    "docs/contracts/examples/checkout-request.json": "022a30cd86001f3a7be54b6895a887db510fb59178d7a625496870d383e157bf",
+    "docs/contracts/examples/checkout-succeeded.json": "62c545eb42e1e967ea67db6d51258c07c36ed0e5a6864f4b6061b07a23c5324b",
+    "docs/contracts/examples/collection-authorization-request.json": "7074d6fe5ea0317d5d7e4642438776125e4e739d8683d404139d6429a96cb818",
+    "docs/contracts/examples/collection-authorization-response.json": "1033c3bbe0eb5e00dfda6171f38db8061df7d8fa82a5f8a616dfcf19beb3912d",
+    "docs/contracts/examples/delivery-completed.event.json": "ff9cf7c8f7f344b68abc581c98f0497f905ef43c9809fafe2148a575e8692a78",
+    "docs/contracts/examples/invalid-checkout-premature-order.json": "f9c2d6f4c1820bff713f72fef03377b07ca3256c8b214367eb2b28cfa6b4c899",
+    "docs/contracts/examples/invalid-delivery-pii.event.json": "3fb94cbcdf124f7f2907d16ba0d8fdce725b87156f9d94e83d13aa15dfc285c4",
+    "docs/contracts/examples/invalid-money-fraction.json": "016721ee746aa02a697e27fd76b078e19173c36b4c6fbfd51df26cc8e77c3f4e",
+    "docs/contracts/examples/invalid-payment-client-amount.json": "a641639aa3b3042ba6404c6088b51ef7a1606cf689767ceebe479efe0eb8bcff",
+    "docs/contracts/examples/invalid-payment-zero.event.json": "e53b4abe4e0e3df83625f5fc06ff4c014907eb0913fbd7fd0cb52f3e95ad0839",
+    "docs/contracts/examples/invalid-quantity-number.json": "89ed40e782de082615d94a34925b3e1b927aa694c5218fe412d924867e4ccf76",
+    "docs/contracts/examples/invalid-refund-authorization-missing-intent.json": "0d390ae9d9312ee0d417800325cca55e52f5be6bee03067d86716fb4d268c406",
+    "docs/contracts/examples/invalid-refund-client-amount.json": "4fd745a6af7a4b817cfdb975f304cc6f57d4f4aa4d8076b0304f5fa96bcb301b",
+    "docs/contracts/examples/manifest.json": "a89afe960cfff00460fa2d3a95a4cf3ba0527c45161dec2c6f010eff5bb90eb8",
+    "docs/contracts/examples/order-accepted.event.json": "b99d660081b9160726db4e759a901c3cd438f2eb6589c2f5d90985c700de4caa",
+    "docs/contracts/examples/order-submitted.json": "2cdc60babe00e504a90fdfd641b16345e0dd9686ac28656e7a9b056d3d5ef30f",
+    "docs/contracts/examples/payment-attempt-request.json": "7d02a8902c3692b08325d3c49b93806b9b32d0f3db06b7d96fda453d0b312626",
+    "docs/contracts/examples/payment-attempt-unknown.json": "4f7d9b3194b13c9d84c6354cad689d86aae22171e12f1a5c1f925a074341eeef",
+    "docs/contracts/examples/payment-confirmed.event.json": "73149bc29ee1f1371382b8725b886c237cc73a60b2fec23cc6214b4c2fc9bc1b",
+    "docs/contracts/examples/quote-inclusive-response.json": "f9a526503c250a8fbd654f1075af0eba0fc73896758274a3a4b045db3e96cc10",
+    "docs/contracts/examples/quote-request.json": "79bb81cb50f7d82239c79a7cb26559483a2d6871d9e92c1e12d95959fe44462f",
+    "docs/contracts/examples/quote-response.json": "eeebe907bfdd9c3df9f7052ea5d0ef57211adbf7b6405f64c055826f467a3275",
+    "docs/contracts/examples/refund-authorization-request.json": "2557a4e6b75421817559ea473eb6d360238f92e3e5f9b99361e6ac6ab142630c",
+    "docs/contracts/examples/refund-authorization-response.json": "3815d8e6e63401c4ca56b0ee53df6e11cd67b547aaef8dc7f9b2011297add1ca",
+    "docs/contracts/examples/refund-request.json": "5f398c4505296f8bc67dff418cfa58a91e32f1c204f9f3d4d2c90217010ce220",
+    "docs/contracts/examples/refund-response.json": "02568ef7ae50a547dd9e192df08086295cbcd6c527b11d22caa1f594a8288157",
+    "docs/sdd/01-requisitos-y-aceptacion.md": "379ecd05ea040c712faa474ef27e0c62460525eb5dd7ef1d7b13696ca92e2af5",
+    "docs/sdd/02-modelo-y-reglas.md": "e1704b268b1ce4efefbb19b3ec9b52485ab8080c2341c0c14a8ae94600fcbc6e",
+    "docs/sdd/03-contratos.md": "28771405581120fb76e68f3b9db4ca335d8e4b62cf143d5e567907b8ddc9c532",
+    "docs/sdd/04-continuidad-seguridad-y-operacion.md": "28097a291a805f1ce6eeb3d5f8a89be8ba207ce168c191f43faf0ac99ec15475",
+    "docs/sdd/05-decisiones-y-entregas.md": "604233e4fc16b560045adc98af335063e6c9018ad11ed341aa3550284f5829dd",
+    "docs/sdd/06-spec-kit-y-mesa-conectada.md": "502009d5fec17c12d25af68bb5008fee32180faf0013a518d687d4eca855458c",
+    "docs/SDD.md": "1c84c41e226dc5c5a320cfde0141c3b4858cccd031c223809251dafdc8da80d7",
+    "README.md": "7464946a6e01e682401ce670d144aca560311c5ae8e55ebe1b973f499e87509d",
+    "requirements-sdd.txt": "7bef103676bc6d55aa7239d5183610676c4d6f62d25852fa3a061e43baa82691",
+    "scripts/validate_construction_plan.py": "fe009d95ac811c578a03a19fbe9c9b22a0b48f50a1af69157ab834af1dee7f3f",
+    "scripts/validate_fiscal_spec.py": "f51b64bdc2f631ef1d4e5e0cd42edd43cd57633b23eb4e6b3f6cdcd78d2af0ea",
+    "scripts/validate_pilot_spec.py": "cffe220097605235716b0c00c7393944026189aaa39639831bd0f7d7111ce7e9",
+    "scripts/validate_sdd.py": "c2aac1b46fa9eead55eb288fe2807b14e7a0588ccb5782839d522dc00847ab1c",
+    "scripts/validate_table_spec.py": "35280dfa4bcfaf61ce6bdc679dccdf37fb7bb28e6ed08306db2b4c27dfd6903b",
+    "specs/001-mesas-qr-nfc/checklists/requirements.md": "4a724c84c3639c7745346d97b1c3ec6ae1d4c5278a811620e96ac95abf0c35a7",
+    "specs/001-mesas-qr-nfc/checklists/restaurant-readiness.md": "80bcc1e54ab89d5d08e6b601698e387747b129e490dd0dbee280c92b7bf0d894",
+    "specs/001-mesas-qr-nfc/contracts/examples/admission-active.json": "992327a8e806521da4052fa2bb1299e538e8c8ccd900411657c56455fdf34fa0",
+    "specs/001-mesas-qr-nfc/contracts/examples/admission-approve.json": "5973e09a99c6242391ea5119f26fa1c25ac631ab7c55f7278fe4ccce2a31c563",
+    "specs/001-mesas-qr-nfc/contracts/examples/admission-pending.json": "752c28446657eb6eb0a5e7f80b374e54d365a01485a80db4c2e9ebfcd47da5f2",
+    "specs/001-mesas-qr-nfc/contracts/examples/admission-request.json": "49e95281acb7ee5896300c1bc219275419dc427462fe0bb5b793afdc32f5adac",
+    "specs/001-mesas-qr-nfc/contracts/examples/admission-revoke.json": "e95cbdf5a8e9f2c9aedff7b036d9b20b5831270cbca99d12b8928519fba584b5",
+    "specs/001-mesas-qr-nfc/contracts/examples/invalid-admission-injected-check.json": "3bf3cdd29684839b93cd4da34d56ae99a734ede4f8876f79e692b1482920715c",
+    "specs/001-mesas-qr-nfc/contracts/examples/invalid-checkout-missing-order.json": "92f7c470e93237f87f289105d55dd37b072680da71c65394e92eab35e601a3b7",
+    "specs/001-mesas-qr-nfc/contracts/examples/invalid-checkout-premature-order.json": "6fb912de734c5bfbabf3ec9a00179c52559a65c38daaebc77292feb05b3f3e56",
+    "specs/001-mesas-qr-nfc/contracts/examples/invalid-checkout-price.json": "d5a097fa7071d2b8c655c0f0d5d6ec9354356ee583971886bb05847ec39d1c4a",
+    "specs/001-mesas-qr-nfc/contracts/examples/invalid-entry-occupancy.json": "4a75c21171fe1e98667f453383214f0cb732d534878b990c79441daa33d5a776",
+    "specs/001-mesas-qr-nfc/contracts/examples/invalid-guest-pay-service.json": "99517a7c2c4c1e0edc54332755d97c968ef5c244dc411193071769ef369e98cc",
+    "specs/001-mesas-qr-nfc/contracts/examples/invalid-invalidation-private-content.json": "0116200da70dd73d35860f366e50bffbc040eba10164e3127398c711cfadc214",
+    "specs/001-mesas-qr-nfc/contracts/examples/invalid-pending-visit-orders.json": "19d6b28d5ee68c4c630d87ae023b43db96f62fd7791e5101f462494d28ff919c",
+    "specs/001-mesas-qr-nfc/contracts/examples/invalid-quote-injected-table.json": "c7485298ae0b59588f921897c0801c66fee69c27d7f4e7a02d5d7c934fbcc4e5",
+    "specs/001-mesas-qr-nfc/contracts/examples/invalid-quote-numeric-quantity.json": "b97b4237b958af3a82387ab26b5060266691ae1e055b6eaaa2bb11302791585e",
+    "specs/001-mesas-qr-nfc/contracts/examples/invalid-session-closed-without-time.json": "1057b1bfd55f731287aad78fa88b395c59eda8258a8fdc71d385e21ded8eb7b2",
+    "specs/001-mesas-qr-nfc/contracts/examples/invalid-transition-move-missing-version.json": "b2cd563cf2aaa01d37a5e213d78f3a05490196a477ba5543685188414d863861",
+    "specs/001-mesas-qr-nfc/contracts/examples/invalid-visit-check-snapshot.json": "7bcf47a409a4362ad4bd7907a15ab710fef11518eb5885fea56dadca9dcc1b92",
+    "specs/001-mesas-qr-nfc/contracts/examples/manifest.json": "ee12d6751462e808e6561fa527ab32cb93b91f356934d73b93a02770c6a903cd",
+    "specs/001-mesas-qr-nfc/contracts/examples/table-bill-request.json": "7ddd5f7117a23fa2237c5f80f6689f1e302c48fb60dd8a1370e05c2ea5d2ea36",
+    "specs/001-mesas-qr-nfc/contracts/examples/table-bill-requested.json": "8fc2144174d92ca3c3b88ea4cf53a7e8abe343a612a37ddf79d3f25696e3cf8b",
+    "specs/001-mesas-qr-nfc/contracts/examples/table-checkout-failed.json": "7add7af09ddb1cfdc5b57c343225ff610d24948516e00f5ac01b34ebcd94e29a",
+    "specs/001-mesas-qr-nfc/contracts/examples/table-checkout-queued.json": "b960d452518b5308bc2797808360c83acd7928814daa69090535435fcd4d280f",
+    "specs/001-mesas-qr-nfc/contracts/examples/table-checkout-request.json": "64a7d05abff5ef48cbc710e36012dd1d0aa44dd893690c8985be63d96207d14c",
+    "specs/001-mesas-qr-nfc/contracts/examples/table-checkout-succeeded.json": "e75a02574ac25e05ff456e6b3a0665fe83333d036dce9729c99bfc7a4b4043b3",
+    "specs/001-mesas-qr-nfc/contracts/examples/table-entry.json": "e22487dd1a8fc68044af07baec89db9e360cedf88e8766236bfd4641e13c977d",
+    "specs/001-mesas-qr-nfc/contracts/examples/table-invalidation.json": "6bab84d08ed63bf6f2a5a6df9ab1656d82a6a28d0897cb990ba43271f9e4f712",
+    "specs/001-mesas-qr-nfc/contracts/examples/table-quote-request.json": "af2752c2baa194217f298759e072c8e0b5bcb95ac78fca4cffa32a529e68e169",
+    "specs/001-mesas-qr-nfc/contracts/examples/table-quote.json": "de6aa1f21c81b8b72636d024782a22dc6bc4e61f856de9d1029fabbb47671a33",
+    "specs/001-mesas-qr-nfc/contracts/examples/table-resync.json": "b8163194f4c97ed7d4c7d73f67fb59a5000889c80290c3d42536c106f938ed2c",
+    "specs/001-mesas-qr-nfc/contracts/examples/table-session-begin-closing.json": "6bc02154d2671c267e327da8832717bbc6dd3d159dfec51c118c477a8aef76de",
+    "specs/001-mesas-qr-nfc/contracts/examples/table-session-close.json": "077b06906b03611f7b0e0f6c8cbcec6b30ec2b606614921f279bb262a4ff5289",
+    "specs/001-mesas-qr-nfc/contracts/examples/table-session-closed.json": "fec27809c12c054d1387409e9c7b2f5444730f564901abbf8bc7359bea4cc3b6",
+    "specs/001-mesas-qr-nfc/contracts/examples/table-session-move.json": "127950a3ab6485524406a28c72f1e8cac7c1a6d5a4ccc37d9deffe40fa1ed55a",
+    "specs/001-mesas-qr-nfc/contracts/examples/table-session-open-request.json": "ca04f13dad31d25793195166e0e9a6cb80aacc97304e6d9adb390758902b70fe",
+    "specs/001-mesas-qr-nfc/contracts/examples/table-session.json": "5df26d3ab55b3196eedaff624d0b588e264a6531a0c0f66702a1d1ea4d4bdd17",
+    "specs/001-mesas-qr-nfc/contracts/examples/table-visit-pending.json": "dde1027e45dcf80309b76cd810436f0f8a18b6fa8e609f8dd8509b3e7a99fcd9",
+    "specs/001-mesas-qr-nfc/contracts/examples/table-visit.json": "a1fc508e6bc1233be87cd8fcc0b91244df24bdc74fddf31cea6cff9ba868f35b",
+    "specs/001-mesas-qr-nfc/contracts/README.md": "b0482304e0c8f7b02a5f5465940947ae9da871ebdfcdc1662b2af5d3887019da",
+    "specs/001-mesas-qr-nfc/contracts/staff-and-operations.md": "dee12111ded4cbe63b518faa0c958c479e5774b6e79c9b86cce5e19525f778fc",
+    "specs/001-mesas-qr-nfc/contracts/table-ordering.openapi.json": "3508d6f89bb893cc6cd7cd79bdeebfa22ed379cfb6dbebf998a7f8bfa9a5f420",
+    "specs/001-mesas-qr-nfc/data-model.md": "467aecb040a4a682bda998b698e6317cedf8412debb53d496979812016b54be5",
+    "specs/001-mesas-qr-nfc/plan.md": "9f8e5fd9c61ca8b2ebb962504bdc2049619239fb3db6e429c07cafd617624c41",
+    "specs/001-mesas-qr-nfc/quickstart.md": "12e1c8b79bd4256d92cd420dece2c737c3e0c789926f33f4e28ae5a68016bb17",
+    "specs/001-mesas-qr-nfc/research.md": "2063751d3c313589f483c7b9e046a04712fabba9cde7e8a606d148e39cda88a1",
+    "specs/001-mesas-qr-nfc/spec.md": "79d4ed7a5675561bab12e5c78ba0b1e6fbd56b971534c9e4f78435bc1817fc68",
+    "specs/001-mesas-qr-nfc/tasks.md": "31ec6d6e0e80b27c60d2a78f03161806b4e315393a3693119a90a08af998fba4",
+    "specs/001-mesas-qr-nfc/traceability.json": "3749ac07d4d005a3817511022422dfdb44641d774d7de6ec4dfe2389f14e4259",
+    "specs/002-facturacion-peru/checklists/fiscal-readiness.md": "723613d97f78e80ec2e4a3a30bf0d3ef0a048955f3d5c9d7740696f033c3d117",
+    "specs/002-facturacion-peru/checklists/requirements.md": "eda6e5d39fc1c7e8867fdc5cc1eb4c412d4538fab86785bd769b07cac336cbb3",
+    "specs/002-facturacion-peru/contracts/examples/basis-registered.json": "bddd1aa2b8899eea0085c437a713cb6bcd3d52ebcaf0428888f8154e7a00504a",
+    "specs/002-facturacion-peru/contracts/examples/basis-request.json": "c042c4d388cd6fb8683afe90fa8c670e99b811ae05d063436e8f659f6ef95ecd",
+    "specs/002-facturacion-peru/contracts/examples/boleta-dni-request.json": "c06a258f6ba06ecda0dd20827e4959212d401e6f4dd4ccd9341e88b71cfb395c",
+    "specs/002-facturacion-peru/contracts/examples/boleta-unidentified-request.json": "2de97973511aba908fbc1808b962eb6467923577df157b9de908065dac901398",
+    "specs/002-facturacion-peru/contracts/examples/credit-request.json": "d413e9307e8040558785d1dbb0e0c371f97ab05f9b5098bb448e4a0bd71cbeb3",
+    "specs/002-facturacion-peru/contracts/examples/debit-request.json": "dc1766610290bbf73eb18ecb894c7f8c680a70c4fb3d8f8e4c88c4f20c22f341",
+    "specs/002-facturacion-peru/contracts/examples/document-accepted-observations.json": "0e6aa90c48139a7eb399cc4e1334addeae788894d0fee91ead4e979931c59d39",
+    "specs/002-facturacion-peru/contracts/examples/document-accepted.json": "e2139e2bb38722235e8b83f5e0d765d2174b8bde9f55a9e233f886e00ca8b237",
+    "specs/002-facturacion-peru/contracts/examples/document-boleta-summary-accepted.json": "eda13d50ef0887273914d1b05f74a42828e5f2218fe45b89ed394298d239a2a8",
+    "specs/002-facturacion-peru/contracts/examples/document-credit-queued.json": "91e564405b18a64d9c945cbd7c4589e3ce12dd4eb308db8eb3a1d9e9d1aeae1e",
+    "specs/002-facturacion-peru/contracts/examples/document-queued.json": "68f4a7ff0c37465a66df182000eeeef5fe3a850db3fe60d1406a688f0e85cba3",
+    "specs/002-facturacion-peru/contracts/examples/document-rejected.json": "ae79d69b1950b298e57f427387a626d51b95f230843c6d8d56a190bcfef84c4b",
+    "specs/002-facturacion-peru/contracts/examples/document-sealed.json": "e1f5abece94f876d20cb53065546207369950345e746e58ba28156a46339b6ef",
+    "specs/002-facturacion-peru/contracts/examples/document-submitted.json": "7f95930ff1e62fbdd5b5dadd7c2838c221ae72328b3a58e7c74ca6d418bb7398",
+    "specs/002-facturacion-peru/contracts/examples/document-unknown.json": "e446caf4ca7a54616e8ad0c76f8370159a89b96a7ded26011bb270374dee70c8",
+    "specs/002-facturacion-peru/contracts/examples/external-queued.json": "ae3e65808f4ef9fd871f2eeabd7418b93fc0581ddb527c5cbaac03dd289fe4f1",
+    "specs/002-facturacion-peru/contracts/examples/external-request.json": "9deeacee19dfc84911a6cdb5b1d612924690fd3532b7fc538c8e41f4a6d6594e",
+    "specs/002-facturacion-peru/contracts/examples/invalid-accepted-without-evidence.json": "cc993c83013452be5479f787316943aca80370840af316e1459f0bbb7777debd",
+    "specs/002-facturacion-peru/contracts/examples/invalid-basis-tenant-injection.json": "3363551a00b1bad3ef1162c757bfecd6c845784a325f5cbb7d6bd5ddce64606c",
+    "specs/002-facturacion-peru/contracts/examples/invalid-client-price.json": "c8b53a310058b022b815fb40765ee3d1e03f4a7286515448c50182256af29368",
+    "specs/002-facturacion-peru/contracts/examples/invalid-correction-client-amount.json": "5b118c36b3e60aee05ac485b15dccc0bbe41473f28e0cd2bf44b97d7bfacf740",
+    "specs/002-facturacion-peru/contracts/examples/invalid-direct-credit.json": "b215b9f41982d551242f9669ae2a07c88b4b412f45004ae245defe336c9ec0c8",
+    "specs/002-facturacion-peru/contracts/examples/invalid-external-url.json": "28f6fef17219554769a80b4b51e76da5de07dfa7a5096015ff3bfd78d4d0dc42",
+    "specs/002-facturacion-peru/contracts/examples/invalid-invoice-anonymous.json": "c6c8b8e5610d2d4e90ef3e3e7e1406503fccf44824ff5099b7caade7bb300bf7",
+    "specs/002-facturacion-peru/contracts/examples/invalid-note-disclaimer.json": "83207a6c905516f51b931ea7f2a31e5a53b86759a1bee12fb01eae63fbdb5a90",
+    "specs/002-facturacion-peru/contracts/examples/invalid-note-fiscal.json": "2ac8a57ca4bf01b68980ee13dd70bfc67c5b5a2266e6ca1becd85327061a2d23",
+    "specs/002-facturacion-peru/contracts/examples/invalid-note-sunat-number.json": "26480ca5e8b07dfea8abbabc9b86119db55249b09d07f88fd3caaa5235de0e7e",
+    "specs/002-facturacion-peru/contracts/examples/invalid-observations-missing.json": "a737f0396d3dd0432a1fba459bbfa53471fc4b9a61ea3d2314d98f7cee0866e1",
+    "specs/002-facturacion-peru/contracts/examples/invalid-pdf-acceptance-evidence.json": "b6224dadfe2b812cadb62f703c77a58effa68f4ec0edc0c9a7f671f6d5639e23",
+    "specs/002-facturacion-peru/contracts/examples/invalid-pdf-instead-xml.json": "add540b6d1d1ee30ceff667b59b009299b5a33af8cec88cbf8e06c0d314fa7a1",
+    "specs/002-facturacion-peru/contracts/examples/invalid-provider-extra-tax.json": "0d89950bb0547496e9730b8b42fc6605e2a11645cebe7301d60a2875e9390fad",
+    "specs/002-facturacion-peru/contracts/examples/invalid-queued-with-number.json": "50a546078a25cf99b1b5f77b2a82c5675b4d14496f4b3b28617e2c9c83907587",
+    "specs/002-facturacion-peru/contracts/examples/invalid-rejection-without-evidence.json": "b77a60f114011eddd96f3cdffcad01b5b47697f42330e6d89ffc9a03dba21a0c",
+    "specs/002-facturacion-peru/contracts/examples/invalid-replacement-without-version.json": "41fa81618238660334b5a4bf33f7861009597516772e1c71b3a41d60502a36f9",
+    "specs/002-facturacion-peru/contracts/examples/invalid-ruc-format.json": "af4d37c05d4d3e3d5245b474bbdc8c584726f2326a547eb022334b7e0fc4141f",
+    "specs/002-facturacion-peru/contracts/examples/invalid-summary-without-binding.json": "a0eccdbe5610e98178dc8c0a757f6e720ad4e6cb564d4b4d0e3e68b5f95ac3e3",
+    "specs/002-facturacion-peru/contracts/examples/invalid-unknown-accepted-evidence.json": "5ddc47f1f692f6bba7109d6308ad91e505ae298acf503ddf8190da251ddd26d2",
+    "specs/002-facturacion-peru/contracts/examples/invalid-unverified-evidence.json": "06138599b8ac2115c5968199cdfa54ae8606400e7ad036c1887da0941d83e625",
+    "specs/002-facturacion-peru/contracts/examples/invoice-request.json": "785f693f27c045f6e51b92f93b2867681be3270abd4b2fa47473e04a1d6a7802",
+    "specs/002-facturacion-peru/contracts/examples/manifest.json": "c0fc29aaf0959f401a0d8ad970f9372dfd6b1ace01b8eeb362ec9c07b0479f17",
+    "specs/002-facturacion-peru/contracts/examples/provider-event.json": "61538610b6685f32d0ffdf7f4bcde7043c60e4700ddde4fe146526f1338693a2",
+    "specs/002-facturacion-peru/contracts/examples/provider-receipt.json": "d8ce00857f2abb11f6f69b96726a9efba60c3f6755a14dee6c844055c992b4bd",
+    "specs/002-facturacion-peru/contracts/examples/registration-pending.json": "91bea2714ea214651216016f0dd063bcab2e1bc4efc9437343728fded1cb22b9",
+    "specs/002-facturacion-peru/contracts/examples/replacement-request.json": "ae44cb4b7f2f0d84fa9d93719552d91bd770e2550b732c9df045e16c476ea3c4",
+    "specs/002-facturacion-peru/contracts/examples/sales-note-request.json": "c042c4d388cd6fb8683afe90fa8c670e99b811ae05d063436e8f659f6ef95ecd",
+    "specs/002-facturacion-peru/contracts/examples/sales-note.json": "e54b0e49947fd042849a79454ff4bd247459d681d65133d68cee94785ab5542b",
+    "specs/002-facturacion-peru/contracts/fiscal.openapi.json": "69401d64be3b3cb54c82c72e282fec70da5b23091f22b561e1da376f2b499561",
+    "specs/002-facturacion-peru/contracts/README.md": "2a8b83059eea0c2b1a857570b1da191b186393f35c7b5ac4106e3957795e8178",
+    "specs/002-facturacion-peru/data-model.md": "03d66910d372076abde8b1af386650d70601dfa7f7fc5146e9f393dfa84c130b",
+    "specs/002-facturacion-peru/plan.md": "18553a44d2232bc8cf15ac8594623331206084d3eafb9249c710d43f15c4a895",
+    "specs/002-facturacion-peru/quickstart.md": "5114991bfe2375eec1bb1a9dd1fb2b38a8af057ac1f930969efb66621cec4394",
+    "specs/002-facturacion-peru/research.md": "1da1ab342c4fc95e5a18adbd35fd6710904b03151f63a3209bb90ce171a470b3",
+    "specs/002-facturacion-peru/spec.md": "8dad3ebb3e96e51a29e365595afec869dbb63f8b66c7e1e504996f996dd8fc36",
+    "specs/002-facturacion-peru/tasks.md": "dca2152cfb5b881eaec037e5566a0d3133d29dbd4100064d8ae10648f4560b1e",
+    "specs/002-facturacion-peru/traceability.json": "2e58d0f7dbafffee9967cf55f94a1ec31372d35751e96d0edb13aaae539a4632",
+    "specs/003-construccion-coordinada/checklists/coordinacion.md": "89d7e49334d36671b28b9363ae83250a7ae0e31a2b3ee079980be74e5107e2d0",
+    "specs/003-construccion-coordinada/checklists/requirements.md": "595b152400e65cbe86ce815cd29f5df6eb0453c1f18ce31ba8436b52f0ca9eff",
+    "specs/003-construccion-coordinada/contracts/examples/bootstrap-planned.json": "b4ada53a3649d34ec0cad304886078713a0cad74c7b37c01238ffcb8916bcfb8",
+    "specs/003-construccion-coordinada/contracts/examples/contracts-planned.json": "0142f13678503722c7e93222c7fc7b8f5b195670da3be780b91ce50c45e40e52",
+    "specs/003-construccion-coordinada/contracts/examples/invalid-absolute-path.json": "61e4ee00cc4d5f2a9e296a9bc2798a24b713501cb5f976b140ebcdf5ddedd139",
+    "specs/003-construccion-coordinada/contracts/examples/invalid-escape-path.json": "0874ae5460d297ae31ea8ebe4713e42d5c19a0c7f174eabd5beec8f40787716a",
+    "specs/003-construccion-coordinada/contracts/examples/invalid-production-effect.json": "b63421ad8f597a2afd0737e3a8321408a2da10d32a18b02e50b70d6cb7b72070",
+    "specs/003-construccion-coordinada/contracts/examples/invalid-unfrozen-running.json": "527cc0c885c7580cf1502e4f7a92b651672fc2340b722533908180c277e5920c",
+    "specs/003-construccion-coordinada/contracts/examples/invalid-unqualified-task.json": "5aee719e75f57c4cb9576407c2fd11fc06293e0f255ea5ab153adcce818c602d",
+    "specs/003-construccion-coordinada/contracts/examples/manifest.json": "6dd4b9900136131f9fa51929c7f4ef7c89ceccb566b30784698c088b08c1d3d3",
+    "specs/003-construccion-coordinada/contracts/README.md": "6bb8b76609e4fab98f59afdc0280e053b80cf294cb5be5b116ee250e8596f865",
+    "specs/003-construccion-coordinada/contracts/work-order.schema.json": "b5b6b46fde5ed8e6acedced45fcf7e8afe5a575488233c6a200bf6fa08cb9bf6",
+    "specs/003-construccion-coordinada/data-model.md": "2c176368b47f6bc8fcedc634da5d5935d23a1c0e612a5ab8f0af886f691619a6",
+    "specs/003-construccion-coordinada/plan.md": "20163eaa6891d012cd25eace57848b8b746d39d0564621ca91c91e004fc38ad2",
+    "specs/003-construccion-coordinada/quickstart.md": "39d1112ca80c886a0b42d570ae4ff8cab085a4b28c9424d5bf6fac2b8121164b",
+    "specs/003-construccion-coordinada/research.md": "548327f4be3f677759f46dec0f8247530ef17dff991fe48bac4756915c1603da",
+    "specs/003-construccion-coordinada/spec.md": "4ffae1608b7a34ac92904f27e4597b993569ba87b0bfa4dd9d0b2b2e6965ddf4",
+    "specs/003-construccion-coordinada/tasks.md": "845dcc8942ad2187c4dd6bed0a6cff4868816654aacb821a5e24f312ef36b2f5",
+    "specs/003-construccion-coordinada/traceability.json": "6581c329cfff859afdb5cf99509bf988c4c0bf8adb6bbc7cdc979db808a58c45",
+    "specs/004-piloto-marisqueria/checklists/operacion.md": "8f34652a5c838b7d55508f0d703b25d1621e48c42fabf5c52b76bdaa7dc6597a",
+    "specs/004-piloto-marisqueria/checklists/requirements.md": "e6eccf5161067b8e18b38d0121173beb67b59b3d75cd81379bc237f15bbd643f",
+    "specs/004-piloto-marisqueria/contracts/examples/day-close.json": "dd63147b804660998b4ca01373b278519cf66e5ec79d92a448c216987c52bee1",
+    "specs/004-piloto-marisqueria/contracts/examples/invalid-cashier-terminal-assumption.json": "7c33fc63076fe590e44a1f9c7578544e03ac12c1f6f3b6090913a8757ebd7cd9",
+    "specs/004-piloto-marisqueria/contracts/examples/invalid-drinks-printer.json": "195b896796ceb071a972261cc58dfafd870a8e6f2e3c7930492bc7e73f7b76c3",
+    "specs/004-piloto-marisqueria/contracts/examples/invalid-false-homologation.json": "d616fee153cdee84706f235f00c5a0ff4a16783dbea571955f9be7946ec73c3f",
+    "specs/004-piloto-marisqueria/contracts/examples/profile-proposal.json": "f015ca0ed5c9d313c4952dea26e06321f8605e71546e6f5460e9eb908e596dd9",
+    "specs/004-piloto-marisqueria/contracts/pilot-profile.schema.json": "926bea6ef40875d298ed119d3544852406eecab9dc3cf887e63146cb0e7aa66e",
+    "specs/004-piloto-marisqueria/contracts/README.md": "2b5922155dabdab9761c7c4cab34c4cd06a182b3d42ab0fe4a097f1616ad512f",
+    "specs/004-piloto-marisqueria/data-model.md": "db8eb46653be7396c9eb3c5618c77c00f2df25c362d74d03afc4bc713f1f389e",
+    "specs/004-piloto-marisqueria/plan.md": "bbb2d5f845dad48550133300c2997822a075f18805fee6fc3278e2a5ffc21953",
+    "specs/004-piloto-marisqueria/quickstart.md": "3eef668a54eebe91b98a2be40562907a9a93645de3402ee80809d32737c0ef23",
+    "specs/004-piloto-marisqueria/research.md": "2b7f61b947c4c74a2814430165665d6864ea924e6cfc3a57d88bde107f0cdf43",
+    "specs/004-piloto-marisqueria/spec.md": "2abf62df4a6a11c667365a764c3b9912ebcd943c2d4f279541780f2bf33c0764",
+    "specs/004-piloto-marisqueria/tasks.md": "3780eed29f1fad1ec63f01852c658b25f593945be360b67d768af8ec8baf0370",
+    "specs/004-piloto-marisqueria/traceability.json": "ea42a9b82f7705f4497fb434093b67c7270bf64f64f13342af756f9dd7073cae"
+  },
+  "not_verified": [
+    "business implementation",
+    "provider integration",
+    "hardware/offline behavior",
+    "security penetration tests",
+    "performance",
+    "production compliance",
+    "external URLs"
+  ]
+}

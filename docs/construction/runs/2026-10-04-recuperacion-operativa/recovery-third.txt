@@ -1,0 +1,40 @@
+$ vitest run "tests/unit/recovery.test.ts" "tests/integration/recovery.test.ts"
+
+ RUN  v5.0.3 F:/PROYECTOS/QatuPOS/el-encanto-huamanguino
+
+(node:8864) Warning: Closing file descriptor 4 on garbage collection
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:8864) [DEP0137] DeprecationWarning: Closing a FileHandle object on garbage collection is deprecated. Please close FileHandle objects explicitly using FileHandle.prototype.close(). In the future, an error will be thrown if a file descriptor is closed during garbage collection.
+ ❯ tests/integration/recovery.test.ts (10 tests | 10 skipped) 35337ms
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/recovery.test.ts [ tests/integration/recovery.test.ts ]
+Error: Hook timed out in 30000ms.
+If this is a long-running hook, pass a timeout value as the last argument or configure it globally with "hookTimeout".
+ ❯ tests/integration/recovery.test.ts:19:1
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/integration/recovery.test.ts [ tests/integration/recovery.test.ts ]
+error: database "qatupos_lab_test_92e426acb6f243d9a0ef7c92cc425381" is being accessed by other users
+ ❯ node_modules/.pnpm/pg-pool@3.14.0_pg@8.23.1/node_modules/pg-pool/index.js:45:11
+ ❯ Object.close tests/support/database.ts:41:11
+     39|     // Identifier was generated here, not supplied by environment or u…
+
+     40|     if (!/^qatupos_lab_test_[a-f0-9]{32}$/.test(name)) throw new Error…
+     41|     try { await admin.query(`DROP DATABASE "${name}"`); } finally { aw…
+       |           ^
+     42|   }};
+     43| }
+ Test Files  1 failed | 1 passed (2)
+      Tests  9 passed | 10 skipped (19)
+   Start at  13:51:09
+   Duration  36.56s (tests 98%, import 2%, transform 1%)
+
+ ❯ tests/integration/recovery.test.ts:34:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+[ELIFECYCLE] Test failed. See above for more details.

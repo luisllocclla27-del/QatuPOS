@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0.0",
+  "execution_id": "f5127d20-b461-419b-a0d4-1a3b98c991ee",
+  "assignment_id": "e83719b4-3a21-41b9-8e41-073b318ac2fa",
+  "version": 1,
+  "package_id": "B06",
+  "work_kind": "implementation",
+  "feature_directory": "specs/008-facturacion-precuenta",
+  "task_ids": [
+    "FIS:T011",
+    "FIS:T012"
+  ],
+  "goal": "Construir consulta e impresión de Pre-cuenta de mesa, emisión de comprobantes de pago electrónicos homologados SUNAT (Boletas B001 y Facturas F001 con UBL 2.1, QR estándar y Hash SHA-256) y visor de tickets térmicos de 80mm.",
+  "owner": "gemini-antigravity",
+  "reviewer": "independent-reviewer",
+  "state": "assigned",
+  "baseline": {
+    "kind": "file_hashes",
+    "identity": "gemini-antigravity-start-fiscal-2026-10-02",
+    "input_sha256": {
+      "docs/evidence/CONTINUIDAD.md": "72f0c84f4efc2bf67fe8458aac6c6cb6a31643b20f67dc896b617c4b15beeceb",
+      "packages/contracts/src/pos.ts": "8a4d053fed2a41d33dfe88344cfe7ff5b0b52c6c0dd4e1679ede71c9487fd208",
+      "docs/contracts/pilot.openapi.json": "600b23486701eeb12f3fe58f6be0818ee23dd30bc19665aeba404da247549915",
+      "packages/domain/src/index.ts": "d2fbc71fb9501074bcf9172ad2e39182cffe89586b62e4eaf154046a8b3b8cbb",
+      "services/commerce/src/authority/repository.ts": "edddfe9f48aa288b34b4ea01f1fc28ae83dafd502db3f0dcbc3bd5278df369b6",
+      "apps/pos/src/components/pos-app.tsx": "9192a038510b3a4c6a7e165443347d225c76a5caaa55169256a93219222af6aa",
+      "README.md": "42e56a18f9f95e55c008b70bf3ec92aa42a5df26f6a622265aed360e2e3da228"
+    }
+  },
+  "write_paths": [
+    "specs/008-facturacion-precuenta/",
+    "packages/contracts/src/pos.ts",
+    "docs/contracts/pilot.openapi.json",
+    "database/migrations/008_fiscal_documents.sql",
+    "packages/domain/src/",
+    "services/commerce/src/",
+    "apps/pos/src/",
+    "tests/",
+    "docs/evidence/",
+    "docs/construction/runs/2026-10-02-fiscal-precuenta/"
+  ],
+  "read_paths": [
+    "AGENTS.md",
+    "README.md",
+    "docs/handoff/especificaciones-gemini.md",
+    "docs/handoff/prompt-gemini-antigravity.md",
+    "docs/evidence/CONTINUIDAD.md",
+    "docs/construction/next-increments.md",
+    "specs/007-anulaciones-devoluciones/"
+  ],
+  "depends_on": [
+    "B12"
+  ],
+  "contracts": [
+    "docs/contracts/pilot.openapi.json",
+    "packages/contracts/src/pos.ts"
+  ],
+  "requirements": [
+    "FIS-FR-003",
+    "FIS-FR-005",
+    "FIS-FR-006",
+    "FIS-FR-012",
+    "FIS-FR-017"
+  ]
+}

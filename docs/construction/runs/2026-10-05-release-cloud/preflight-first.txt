@@ -1,0 +1,21 @@
+$ node scripts/release/check.mjs
+{
+  "passed": false,
+  "files": 557,
+  "bytes": 8480088,
+  "issues": [
+    {
+      "file": "docs/superpowers/plans/2026-10-03-fullstack-nextjs-supabase-vercel.md",
+      "rule": "remote-database-credential"
+    },
+    {
+      "file": "tests/unit/cloud.test.ts",
+      "rule": "remote-database-credential"
+    }
+  ],
+  "migrations": 11,
+  "scope": "packaging-only",
+  "database_contacted": false,
+  "secret_scan": "limited patterns; human review required"
+}
+[ELIFECYCLE] Command failed with exit code 1.

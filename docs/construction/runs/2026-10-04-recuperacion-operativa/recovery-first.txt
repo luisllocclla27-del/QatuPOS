@@ -1,0 +1,29 @@
+$ vitest run "tests/unit/recovery.test.ts" "tests/integration/recovery.test.ts"
+
+ RUN  v5.0.3 F:/PROYECTOS/QatuPOS/el-encanto-huamanguino
+
+ ❯ tests/integration/recovery.test.ts (10 tests | 10 skipped) 944ms
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/recovery.test.ts [ tests/integration/recovery.test.ts ]
+AssertionError: {"error":{"code":"VERSION_CONFLICT","message":"La información cambió. Actualiza antes de continuar."}}: expected 409 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 409
+
+ ❯ tests/integration/recovery.test.ts:26:244
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  9 passed | 10 skipped (19)
+   Start at  13:49:24
+   Duration  2.17s (tests 52%, import 36%, transform 12%, worker 1%)
+
+[ELIFECYCLE] Test failed. See above for more details.

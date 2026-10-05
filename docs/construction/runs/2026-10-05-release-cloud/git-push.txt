@@ -1,0 +1,7 @@
+{
+  "rejected": true,
+  "raw_http_trace_not_retained": true,
+  "fatal": false,
+  "new_main": false,
+  "remote_main": null
+}

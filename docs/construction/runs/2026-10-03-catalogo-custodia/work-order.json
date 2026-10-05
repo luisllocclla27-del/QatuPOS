@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.0.0",
+  "execution_id": "7e4f3ae8-c22a-44b4-bf99-9a45d83b3095",
+  "assignment_id": "a632b875-06c6-4768-88a0-937ca08d7050",
+  "version": 3,
+  "package_id": "B07",
+  "work_kind": "implementation",
+  "feature_directory": "specs/012-catalogo-custodia",
+  "task_ids": [
+    "MAR:T041",
+    "MAR:T042",
+    "MAR:T043",
+    "MAR:T044",
+    "MAR:T045",
+    "MAR:T046",
+    "MAR:T047"
+  ],
+  "goal": "Asegurar identidad única y vínculo de inventario por estación; editar y auditar campos completos sin perder historial; impedir anulación que altera bebidas durante traspaso; mejorar formulario y probar concurrencia/rollback.",
+  "owner": "root",
+  "reviewer": "future-independent-reviewer",
+  "state": "ready_for_review",
+  "baseline": {
+    "kind": "file_hashes",
+    "identity": "011-delivered-hashes-verified-2026-10-03",
+    "input_sha256": {
+      "packages/domain/src/index.ts": "088b35c4ead049bec3bf9ceef2400093eca384cf906e8883f84c1f364a416989",
+      "packages/contracts/src/pos.ts": "2a419213da8ba63654fac84d5ce111085246e34830678c142984079970f45ad6",
+      "docs/contracts/pilot.openapi.json": "bf9ebe7e0f396a9b496d3e9c24fa35733d02235f2d5778106c773a2ac1900e9c",
+      "apps/pos/src/components/catalog-management.tsx": "d5153d2b59526c496604a25ded28e663de9e5f726dd5613aeecfe92c7672b28e",
+      "docs/construction/current-run.json": "26a8ce6e26b747826839a930109a6d74acad71ffbb16aa9cd40612b480da2dda",
+      "docs/evidence/CONTINUIDAD.md": "522e116d15bffc734b060069ea9050e6eca547021161f05adc95e502a4173621",
+      "docs/evidence/planning-validation.json": "e80504a9b3027dceab9f1d0119d69dd9fdbfa1c5d9a5dead68e47d1f74d5721a",
+      "README.md": "16c91d5da01f7c2dcad83b0dd9391c9f3ac8f4006d958f3601d9656742c94fc9",
+      "apps/pos/tsconfig.json": "3072e8bc8cd0dcff7a44d8318f54153dc2ce91fd404508cf5c942e480449aa76",
+      "apps/pos/next-env.d.ts": "b8b3a344484b959af5e4e3fc1a1609dac3cb9ece0cdeb6c145be29bc4c491000",
+      "tests/e2e/zzz-catalog.spec.ts": "8056ded57a37df72ff17e459d8d061236cd62636745fc752dc8cebc0698e3b92"
+    }
+  },
+  "write_paths": [
+    "packages/domain/src/index.ts",
+    "packages/contracts/src/pos.ts",
+    "docs/contracts/pilot.openapi.json",
+    "apps/pos/src/components/catalog-management.tsx",
+    "tests/unit/catalog-custody.test.ts",
+    "tests/integration/catalog-custody.test.ts",
+    "tests/e2e/zzzzzzzz-catalog-custody.spec.ts",
+    "specs/012-catalogo-custodia/",
+    "docs/construction/runs/2026-10-03-catalogo-custodia/",
+    "docs/construction/current-run.json",
+    "docs/evidence/ACTUALIZACION-2026-10-03-catalogo-custodia.md",
+    "docs/evidence/CONTINUIDAD.md",
+    "docs/evidence/planning-validation.json",
+    "docs/evidence/screens/",
+    "README.md",
+    "apps/pos/tsconfig.json",
+    "apps/pos/next-env.d.ts",
+    "tests/e2e/zzz-catalog.spec.ts"
+  ],
+  "read_paths": [
+    "packages/",
+    "services/",
+    "tests/",
+    "specs/006-carta-precios/",
+    "specs/007-anulaciones-devoluciones/",
+    "specs/011-integridad-comercial/",
+    "docs/"
+  ],
+  "depends_on": [],
+  "contracts": [
+    "docs/contracts/pilot.openapi.json",
+    "specs/012-catalogo-custodia/contracts/changes.md"
+  ],
+  "requirements": [
+    "MAR-FR-001",
+    "MAR-FR-012",
+    "MAR-FR-014"
+  ],
+  "acceptance": [
+    "MAR-AT-001",
+    "MAR-AT-012",
+    "MAR-AT-014"
+  ],
+  "test_plan": [
+    "Regresiones antes del correctivo; identidad duplicada/replay/concurrencia PostgreSQL, compatibilidad y auditoría de bindings, historia congelada, traspaso preparado/declarado/disputado, anulación no afecta recursos ajenos y recorrido del formulario. Tipos, suite, E2E, build y validación documental."
+  ],
+  "permitted_effects": [
+    "documentation",
+    "local_files",
+    "local_processes",
+    "local_database",
+    "synthetic_data",
+    "simulated_providers"
+  ],
+  "output_path": "docs/construction/runs/2026-10-03-catalogo-custodia/delivery.json",
+  "shared_paths_grant": [
+    "packages/domain/src/index.ts",
+    "packages/contracts/src/pos.ts",
+    "docs/contracts/pilot.openapi.json",
+    "apps/pos/tsconfig.json",
+    "apps/pos/next-env.d.ts"
+  ]
+}

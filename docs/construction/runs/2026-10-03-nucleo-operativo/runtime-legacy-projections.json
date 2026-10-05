@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "scope": "read-only projection of preserved interactive branch_state for all existing staff",
+  "branches": 2,
+  "projections_checked": 12,
+  "commercial_writes": 0
+}

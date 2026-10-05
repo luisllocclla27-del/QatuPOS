@@ -1,0 +1,26 @@
+name: Verify pilot release
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.16.0'
+      - name: Activate pinned package manager
+        run: corepack enable && corepack prepare pnpm@12.5.1 --activate
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm release:check
+      - run: pnpm release:test
+      - name: Cloud protected configuration negatives (no connection)
+        run: pnpm exec vitest run tests/unit/cloud-protected.test.ts
+      - run: pnpm typecheck
+      - run: pnpm build:cloud
+      # No provider credentials, production seeds or deploy commands.

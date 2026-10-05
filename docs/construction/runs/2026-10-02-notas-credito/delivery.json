@@ -1,0 +1,40 @@
+{
+  "execution_id": "c194a11f-508b-4a52-b883-9972834d8ef1",
+  "assignment_id": "b3e94470-76c1-4b10-a359-57ef51fae929",
+  "state": "accepted",
+  "scope": "Notas de Credito Electronicas SUNAT (BC01 / FC01) con motivos normativos oficiales (Catalogo 09 SUNAT), anulacion formal de comprobantes, ticket termico de 80mm y conciliacion en Arqueo de Caja (Corte X)",
+  "tests": {
+    "typecheck": "passed",
+    "build_final": "passed",
+    "unit_contract_api": 149,
+    "e2e": 11,
+    "planning_checks": 25
+  },
+  "source_sha256": {
+    "packages/contracts/src/pos.ts": "2a419213da8ba63654fac84d5ce111085246e34830678c142984079970f45ad6",
+    "docs/contracts/pilot.openapi.json": "a0a4364de9dbf9fb50c0e921e33dd2abcc65eae45c613147699fcad18730ea86",
+    "database/migrations/010_credit_notes.sql": "21537166443078883ab4acdeeba51d23115c89f48f9e81fe0dbf8fb05d48e398",
+    "packages/domain/src/index.ts": "ef8f05318188c92c589cb0eeb1e1ef90f4b79c6ac487e340fa0189935e52b648",
+    "services/commerce/src/authority/repository.ts": "c0334f68dbebd9127011aca0c3be3930127aaf8e1e2ce5bf5bdaa8a885c82234",
+    "apps/pos/src/components/issue-credit-note-modal.tsx": "6f746d3d4f7b0c617044c4f452cbd59120a6947247d0d58479cbc856eb948823",
+    "apps/pos/src/components/thermal-receipt-modal.tsx": "e6a52f315fb8def334493028d1e8e10cb4b01d7756acbd2e74f673b57c2c6f48",
+    "apps/pos/src/components/cash-audit-modal.tsx": "3c9d9225530d9c0521a64dfebc0ab4f5845b1937d5d0e621e5c13222a4121de2",
+    "apps/pos/src/components/pos-app.tsx": "b5a8ce86ba0e27d764dfada550ea0b0a29988183f83ca3b03e0e5253d5fe27e6",
+    "tests/unit/pilot-domain.test.ts": "0d1469fe8eb0a377c8d05a7799b698ee31cda844fcc5207e0ee9470c64a2379f",
+    "tests/unit/contracts.test.ts": "7dd6efb9693d3e1f74191e20e0c9b89f1a9f79d03ecbb527395dd519e51c077e",
+    "tests/integration/api.test.ts": "c8a0f769a95c19f7432ce9f2bbe5eeb6715e0d41ecf4a997e5895ded1a9d701a",
+    "tests/e2e/zzzzzzz-credit-notes.spec.ts": "ebc8a786702b03baf0a07cfa72c948e939273acc678a2e2ddda9e50f51ba7187",
+    "tests/support/database.ts": "660735c322c330a0f212b533cac00f43d963f54c00188fbbc5a8096e578538aa",
+    "specs/010-notas-credito-sunat/spec.md": "7c699f404bde232ee7b87e5410a6ef4412697de0e03dcf40098fe1cf59fd7fbd",
+    "specs/010-notas-credito-sunat/tasks.md": "54f0c8a1a6c353719cf9f9a8092005a3d75255041a63de271a34ec3c0988fa69",
+    "specs/010-notas-credito-sunat/checklist.md": "d44a1c161b75f0616d76586c549769ab87a0e0dbfd34817732ada996cb315555"
+  },
+  "evidence": [
+    "docs/evidence/credit-notes-delivery.md",
+    "docs/evidence/credit-notes-review.md",
+    "docs/evidence/CONTINUIDAD.md"
+  ],
+  "integral_feature_tasks_marked_complete": true,
+  "external_capabilities_accepted": false,
+  "checked_at_utc": "2026-10-02T23:55:00.000Z"
+}

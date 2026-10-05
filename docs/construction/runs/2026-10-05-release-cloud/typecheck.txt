@@ -1,0 +1,5 @@
+$ tsc --noEmit
+scripts/cloud/protected.ts(40,8): error TS2741: Property 'NODE_ENV' is missing in type '{}' but required in type 'ProcessEnv'.
+tests/unit/cloud-protected.test.ts(18,103): error TS2345: Argument of type '{ PATH: string; QATU_ENV: string; QATU_WEB_PORT: string; VERCEL_ENV: string; NEXT_PUBLIC_SECRET: string; DATABASE_URL: string; PGPASSWORD: string; PGOPTIONS: string; }' is not assignable to parameter of type 'ProcessEnv'.
+  Property 'NODE_ENV' is missing in type '{ PATH: string; QATU_ENV: string; QATU_WEB_PORT: string; VERCEL_ENV: string; NEXT_PUBLIC_SECRET: string; DATABASE_URL: string; PGPASSWORD: string; PGOPTIONS: string; }' but required in type 'ProcessEnv'.
+[ELIFECYCLE] Command failed with exit code 2.

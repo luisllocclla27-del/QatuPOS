@@ -1,0 +1,64 @@
+{
+  "environment": "synthetic-memory-only",
+  "database_touched": false,
+  "application_files_modified": false,
+  "observations": [
+    {
+      "id": "Q01",
+      "observation": {
+        "accepted_orders": 2,
+        "expected": 1
+      }
+    },
+    {
+      "id": "Q02",
+      "observation": {
+        "quote_actor": "10000000-0000-4000-8000-000000000001",
+        "accepting_actor": "10000000-0000-4000-8000-000000000004",
+        "accepted_orders": 1,
+        "expected": "FORBIDDEN"
+      }
+    },
+    {
+      "id": "D01",
+      "observation": {
+        "total": 7000,
+        "paid": 6300,
+        "reopened_balance": 700,
+        "expected": "rechazo sin reabrir"
+      }
+    },
+    {
+      "id": "D02",
+      "observation": {
+        "waiter_audit_entries": 1,
+        "expected": 0
+      }
+    },
+    {
+      "id": "D03",
+      "observation": {
+        "close_sales": 7000,
+        "net_check": 6300
+      }
+    },
+    {
+      "id": "F01",
+      "observation": {
+        "reason": "07",
+        "credited": 7000,
+        "original_total": 7000,
+        "original_status": "annulled",
+        "expected": "no anular total con motivo parcial"
+      }
+    },
+    {
+      "id": "F02",
+      "observation": {
+        "check_fiscal_status": "issued",
+        "capability": false,
+        "document_status": "accepted_simulated"
+      }
+    }
+  ]
+}

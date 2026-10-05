@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0.0",
+  "execution_id": "2332e84d-b26e-4125-b97f-6284ec045445",
+  "assignment_id": "f0fab915-1015-4def-a558-4c0dd71f0a88",
+  "version": 2,
+  "package_id": "B08",
+  "work_kind": "implementation",
+  "feature_directory": "specs/005-clave-mesa",
+  "task_ids": [
+    "TBL:T022",
+    "TBL:T024",
+    "TBL:T033"
+  ],
+  "goal": "Construir sección de seguimiento de pedidos cliente para personal, sin nuevos efectos financieros, y entregar reporte de continuidad por cuota semanal restante.",
+  "owner": "root",
+  "reviewer": "runtime_contracts",
+  "state": "accepted",
+  "baseline": {
+    "kind": "file_hashes",
+    "identity": "accepted-tablet-gate-2026-10-02",
+    "input_sha256": {
+      "apps/pos/src/components/pos-app.tsx": "5074839a2de51a267fc484119e23186a87527463f180c46b2fc0632a9117593c",
+      "apps/pos/src/app/globals.css": "d7d8e6b35f821eb7429547242f65640cfe7fe8e39859200206bf2e20534c3beb",
+      "packages/domain/src/index.ts": "5335fcd6f693f934e7913377807340edbd04c6917613cd33886f13691e82e3fa",
+      "services/commerce/src/authority/repository.ts": "71e6f851839d5542c05ea162e5d73adc78b01dd68065b186c6dbd9c90043c788",
+      "docs/contracts/pilot.openapi.json": "5038f9a97687739b9e75cc31766ad8645292d7c53a276b56bd60cbc0a3e0bc11"
+    }
+  },
+  "write_paths": [
+    "apps/pos/src/components/pos-app.tsx",
+    "apps/pos/src/components/guest-orders.tsx",
+    "apps/pos/src/app/globals.css",
+    "tests/e2e/zz-guest.spec.ts",
+    "specs/005-clave-mesa/",
+    "docs/evidence/",
+    "docs/construction/runs/2026-10-02-guest-orders/",
+    "README.md"
+  ],
+  "read_paths": [
+    "apps/pos/src/components/pos-app.tsx",
+    "apps/pos/src/app/globals.css",
+    "packages/domain/src/index.ts",
+    "services/commerce/src/authority/repository.ts",
+    "docs/contracts/pilot.openapi.json",
+    "AGENTS.md",
+    "specs/005-clave-mesa/"
+  ],
+  "depends_on": [],
+  "contracts": [
+    "docs/contracts/pilot.openapi.json"
+  ],
+  "requirements": [
+    "FR-001",
+    "FR-002",
+    "FR-004",
+    "FR-033"
+  ],
+  "acceptance": [
+    "AT-001",
+    "AT-002",
+    "AT-004",
+    "AT-036"
+  ],
+  "test_plan": [
+    "Navegador: pedidos nuevos en sección, filtros, estado preparado/entregado, cuenta pagada sigue pendiente de entrega, link no abre ocupación ajena; tipos/build y regresión de núcleo."
+  ],
+  "permitted_effects": [
+    "documentation",
+    "local_files",
+    "dependency_downloads",
+    "local_processes",
+    "local_database",
+    "synthetic_data",
+    "simulated_providers"
+  ],
+  "output_path": "docs/construction/runs/2026-10-02-guest-orders/delivery.json",
+  "shared_paths_grant": []
+}

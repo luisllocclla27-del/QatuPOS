@@ -1,0 +1,454 @@
+
+ RUN  v5.0.3 F:/PROYECTOS/QatuPOS/el-encanto-huamanguino
+
+ ❯ tests/unit/restaurant-operations.test.ts (27 tests | 27 failed) 49ms
+   ❯ 014 production coordination (11)
+     × assigns stable sequence and waiter to staff and ticket 13ms
+     × audits urgency with separate aviso and leaves original ticket and money intact 2ms
+     × does not permit cocina to choose urgency 3ms
+     × does not permit caja to choose urgency 1ms
+     × requires reason for urgency and leaves state intact 1ms
+     × cannot change urgency on stale production version 1ms
+     × does not claim unprepared kitchen food 1ms
+     × prevents another waiter delivery of a claimed ready line 1ms
+     × explicit owner release allows another waiter to claim 1ms
+     × does not let kitchen claim floor pickup 1ms
+     × waiter cannot steal assignment; admin reassignment retains historical ticket 1ms
+   ❯ 014 night service and operational closure (16)
+     × night rejects kitchen quotes and accepts all three beverage classes 7ms
+     × rejects daytime quote after handover enters night without consuming it 1ms
+     × projects only safe service mode without revealing financial approvals to waiter 1ms
+     × keeps day ID across midnight and can fulfill prior food at night 1ms
+     × closes balanced night operationally while fiscal state stays provisional 1ms
+     × does not final-close a diurnal shift 2ms
+     × does not final-close unpaid checks 1ms
+     × does not final-close paid but undelivered orders 1ms
+     × requires inventory reconciliation before final closure 1ms
+     × does not final-close pending inventory review 2ms
+     × difference of cash needs independent sealed approval 1ms
+     × cash movement invalidates previous sealed approval 1ms
+     × cannot use sealed approval for different count 1ms
+     × cannot approve own cash variance 1ms
+     × provisional records unresolved service without claiming final 1ms
+     × does not receive beverage count below already reserved stock 1ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 27 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/restaurant-operations.test.ts > 014 production coordination > assigns stable sequence and waiter to staff and ticket
+DomainError: No se encontró el recurso en este local.
+ ❯ invariant packages/domain/src/exact.ts:10:25
+      8|
+      9| export function invariant(condition: unknown, code: string, message: s…
+     10|   if (!condition) throw new DomainError(code, message, status);
+       |                         ^
+     11| }
+     12|
+ ❯ find packages/domain/src/index.ts:21:3
+ ❯ createDomainQuote packages/domain/src/index.ts:1070:17
+ ❯ quote tests/unit/restaurant-operations.test.ts:13:48
+ ❯ Object.order tests/unit/restaurant-operations.test.ts:15:35
+ ❯ tests/unit/restaurant-operations.test.ts:29:89
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/27]⎯
+
+ FAIL  tests/unit/restaurant-operations.test.ts > 014 production coordination > audits urgency with separate aviso and leaves original ticket and money intact
+DomainError: No se encontró el recurso en este local.
+ ❯ invariant packages/domain/src/exact.ts:10:25
+      8|
+      9| export function invariant(condition: unknown, code: string, message: s…
+     10|   if (!condition) throw new DomainError(code, message, status);
+       |                         ^
+     11| }
+     12|
+ ❯ find packages/domain/src/index.ts:21:3
+ ❯ createDomainQuote packages/domain/src/index.ts:1070:17
+ ❯ quote tests/unit/restaurant-operations.test.ts:13:48
+ ❯ Object.order tests/unit/restaurant-operations.test.ts:15:35
+ ❯ tests/unit/restaurant-operations.test.ts:30:113
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/27]⎯
+
+ FAIL  tests/unit/restaurant-operations.test.ts > 014 production coordination > does not permit cocina to choose urgency
+ FAIL  tests/unit/restaurant-operations.test.ts > 014 production coordination > does not permit caja to choose urgency
+DomainError: No se encontró el recurso en este local.
+ ❯ invariant packages/domain/src/exact.ts:10:25
+      8|
+      9| export function invariant(condition: unknown, code: string, message: s…
+     10|   if (!condition) throw new DomainError(code, message, status);
+       |                         ^
+     11| }
+     12|
+ ❯ find packages/domain/src/index.ts:21:3
+ ❯ createDomainQuote packages/domain/src/index.ts:1070:17
+ ❯ quote tests/unit/restaurant-operations.test.ts:13:48
+ ❯ Object.order tests/unit/restaurant-operations.test.ts:15:35
+ ❯ tests/unit/restaurant-operations.test.ts:31:97
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/27]⎯
+
+ FAIL  tests/unit/restaurant-operations.test.ts > 014 production coordination > requires reason for urgency and leaves state intact
+DomainError: No se encontró el recurso en este local.
+ ❯ invariant packages/domain/src/exact.ts:10:25
+      8|
+      9| export function invariant(condition: unknown, code: string, message: s…
+     10|   if (!condition) throw new DomainError(code, message, status);
+       |                         ^
+     11| }
+     12|
+ ❯ find packages/domain/src/index.ts:21:3
+ ❯ createDomainQuote packages/domain/src/index.ts:1070:17
+ ❯ quote tests/unit/restaurant-operations.test.ts:13:48
+ ❯ Object.order tests/unit/restaurant-operations.test.ts:15:35
+ ❯ tests/unit/restaurant-operations.test.ts:32:86
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/27]⎯
+
+ FAIL  tests/unit/restaurant-operations.test.ts > 014 production coordination > cannot change urgency on stale production version
+DomainError: No se encontró el recurso en este local.
+ ❯ invariant packages/domain/src/exact.ts:10:25
+      8|
+      9| export function invariant(condition: unknown, code: string, message: s…
+     10|   if (!condition) throw new DomainError(code, message, status);
+       |                         ^
+     11| }
+     12|
+ ❯ find packages/domain/src/index.ts:21:3
+ ❯ createDomainQuote packages/domain/src/index.ts:1070:17
+ ❯ quote tests/unit/restaurant-operations.test.ts:13:48
+ ❯ Object.order tests/unit/restaurant-operations.test.ts:15:35
+ ❯ tests/unit/restaurant-operations.test.ts:33:84
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/27]⎯
+
+ FAIL  tests/unit/restaurant-operations.test.ts > 014 production coordination > does not claim unprepared kitchen food
+DomainError: No se encontró el recurso en este local.
+ ❯ invariant packages/domain/src/exact.ts:10:25
+      8|
+      9| export function invariant(condition: unknown, code: string, message: s…
+     10|   if (!condition) throw new DomainError(code, message, status);
+       |                         ^
+     11| }
+     12|
+ ❯ find packages/domain/src/index.ts:21:3
+ ❯ createDomainQuote packages/domain/src/index.ts:1070:17
+ ❯ quote tests/unit/restaurant-operations.test.ts:13:48
+ ❯ Object.order tests/unit/restaurant-operations.test.ts:15:35
+ ❯ tests/unit/restaurant-operations.test.ts:34:73
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/27]⎯
+
+ FAIL  tests/unit/restaurant-operations.test.ts > 014 production coordination > prevents another waiter delivery of a claimed ready line
+DomainError: No se encontró el recurso en este local.
+ ❯ invariant packages/domain/src/exact.ts:10:25
+      8|
+      9| export function invariant(condition: unknown, code: string, message: s…
+     10|   if (!condition) throw new DomainError(code, message, status);
+       |                         ^
+     11| }
+     12|
+ ❯ find packages/domain/src/index.ts:21:3
+ ❯ createDomainQuote packages/domain/src/index.ts:1070:17
+ ❯ quote tests/unit/restaurant-operations.test.ts:13:48
+ ❯ Object.order tests/unit/restaurant-operations.test.ts:15:35
+ ❯ tests/unit/restaurant-operations.test.ts:35:91
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/27]⎯
+
+ FAIL  tests/unit/restaurant-operations.test.ts > 014 production coordination > explicit owner release allows another waiter to claim
+DomainError: No se encontró el recurso en este local.
+ ❯ invariant packages/domain/src/exact.ts:10:25
+      8|
+      9| export function invariant(condition: unknown, code: string, message: s…
+     10|   if (!condition) throw new DomainError(code, message, status);
+       |                         ^
+     11| }
+     12|
+ ❯ find packages/domain/src/index.ts:21:3
+ ❯ createDomainQuote packages/domain/src/index.ts:1070:17
+ ❯ quote tests/unit/restaurant-operations.test.ts:13:48
+ ❯ Object.order tests/unit/restaurant-operations.test.ts:15:35
+ ❯ tests/unit/restaurant-operations.test.ts:36:88
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/27]⎯
+
+ FAIL  tests/unit/restaurant-operations.test.ts > 014 production coordination > does not let kitchen claim floor pickup
+DomainError: No se encontró el recurso en este local.
+ ❯ invariant packages/domain/src/exact.ts:10:25
+      8|
+      9| export function invariant(condition: unknown, code: string, message: s…
+     10|   if (!condition) throw new DomainError(code, message, status);
+       |                         ^
+     11| }
+     12|
+ ❯ find packages/domain/src/index.ts:21:3
+ ❯ createDomainQuote packages/domain/src/index.ts:1070:17
+ ❯ quote tests/unit/restaurant-operations.test.ts:13:48
+ ❯ Object.order tests/unit/restaurant-operations.test.ts:15:35
+ ❯ tests/unit/restaurant-operations.test.ts:37:74
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/27]⎯
+
+ FAIL  tests/unit/restaurant-operations.test.ts > 014 production coordination > waiter cannot steal assignment; admin reassignment retains historical ticket
+DomainError: No se encontró el recurso en este local.
+ ❯ invariant packages/domain/src/exact.ts:10:25
+      8|
+      9| export function invariant(condition: unknown, code: string, message: s…
+     10|   if (!condition) throw new DomainError(code, message, status);
+       |                         ^
+     11| }
+     12|
+ ❯ find packages/domain/src/index.ts:21:3
+ ❯ createDomainQuote packages/domain/src/index.ts:1070:17
+ ❯ quote tests/unit/restaurant-operations.test.ts:13:48
+ ❯ Object.order tests/unit/restaurant-operations.test.ts:15:35
+ ❯ tests/unit/restaurant-operations.test.ts:38:111
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/27]⎯
+
+ FAIL  tests/unit/restaurant-operations.test.ts > 014 night service and operational closure > night rejects kitchen quotes and accepts all three beverage classes
+AssertionError: expected [Function] to throw error including 'nocturno' but got 'No se encontró el recurso en este loc…'
+
+Expected: "nocturno"
+Received: "No se encontró el recurso en este local."
+
+ ❯ tests/unit/restaurant-operations.test.ts:41:154
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/27]⎯
+
+ FAIL  tests/unit/restaurant-operations.test.ts > 014 night service and operational closure > rejects daytime quote after handover enters night without consuming it
+DomainError: No se encontró el recurso en este local.
+ ❯ invariant packages/domain/src/exact.ts:10:25
+      8|
+      9| export function invariant(condition: unknown, code: string, message: s…
+     10|   if (!condition) throw new DomainError(code, message, status);
+       |                         ^
+     11| }
+     12|
+ ❯ find packages/domain/src/index.ts:21:3
+ ❯ createDomainQuote packages/domain/src/index.ts:1070:17
+ ❯ Object.quote tests/unit/restaurant-operations.test.ts:13:48
+ ❯ tests/unit/restaurant-operations.test.ts:42:125
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/27]⎯
+
+ FAIL  tests/unit/restaurant-operations.test.ts > 014 night service and operational closure > projects only safe service mode without revealing financial approvals to waiter
+DomainError: Esta operación no está habilitada en el laboratorio.
+ ❯ executeCommand packages/domain/src/index.ts:1044:20
+    1042|       break;
+    1043|     }
+    1044|     default: throw new DomainError('UNSUPPORTED_CAPABILITY', 'Esta ope…
+       |                    ^
+    1045|   }
+    1046|   const auditReason = 'reason' in command ? command.reason : 'approval…
+ ❯ run tests/unit/restaurant-operations.test.ts:10:70
+ ❯ Object.approve tests/unit/restaurant-operations.test.ts:23:54
+ ❯ tests/unit/restaurant-operations.test.ts:43:150
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/27]⎯
+
+ FAIL  tests/unit/restaurant-operations.test.ts > 014 night service and operational closure > keeps day ID across midnight and can fulfill prior food at night
+DomainError: No se encontró el recurso en este local.
+ ❯ invariant packages/domain/src/exact.ts:10:25
+      8|
+      9| export function invariant(condition: unknown, code: string, message: s…
+     10|   if (!condition) throw new DomainError(code, message, status);
+       |                         ^
+     11| }
+     12|
+ ❯ find packages/domain/src/index.ts:21:3
+ ❯ createDomainQuote packages/domain/src/index.ts:1070:17
+ ❯ quote tests/unit/restaurant-operations.test.ts:13:48
+ ❯ Object.order tests/unit/restaurant-operations.test.ts:15:35
+ ❯ tests/unit/restaurant-operations.test.ts:44:109
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/27]⎯
+
+ FAIL  tests/unit/restaurant-operations.test.ts > 014 night service and operational closure > closes balanced night operationally while fiscal state stays provisional
+DomainError: No se encontró el recurso en este local.
+ ❯ invariant packages/domain/src/exact.ts:10:25
+      8|
+      9| export function invariant(condition: unknown, code: string, message: s…
+     10|   if (!condition) throw new DomainError(code, message, status);
+       |                         ^
+     11| }
+     12|
+ ❯ find packages/domain/src/index.ts:21:3
+ ❯ createDomainQuote packages/domain/src/index.ts:1070:17
+ ❯ quote tests/unit/restaurant-operations.test.ts:13:48
+ ❯ Object.order tests/unit/restaurant-operations.test.ts:15:35
+ ❯ tests/unit/restaurant-operations.test.ts:45:136
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/27]⎯
+
+ FAIL  tests/unit/restaurant-operations.test.ts > 014 night service and operational closure > does not final-close a diurnal shift
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ tests/unit/restaurant-operations.test.ts:46:103
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/27]⎯
+
+ FAIL  tests/unit/restaurant-operations.test.ts > 014 night service and operational closure > does not final-close unpaid checks
+DomainError: No se encontró el recurso en este local.
+ ❯ invariant packages/domain/src/exact.ts:10:25
+      8|
+      9| export function invariant(condition: unknown, code: string, message: s…
+     10|   if (!condition) throw new DomainError(code, message, status);
+       |                         ^
+     11| }
+     12|
+ ❯ find packages/domain/src/index.ts:21:3
+ ❯ createDomainQuote packages/domain/src/index.ts:1070:17
+ ❯ quote tests/unit/restaurant-operations.test.ts:13:48
+ ❯ Object.order tests/unit/restaurant-operations.test.ts:15:35
+ ❯ tests/unit/restaurant-operations.test.ts:47:98
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[17/27]⎯
+
+ FAIL  tests/unit/restaurant-operations.test.ts > 014 night service and operational closure > does not final-close paid but undelivered orders
+DomainError: No se encontró el recurso en este local.
+ ❯ invariant packages/domain/src/exact.ts:10:25
+      8|
+      9| export function invariant(condition: unknown, code: string, message: s…
+     10|   if (!condition) throw new DomainError(code, message, status);
+       |                         ^
+     11| }
+     12|
+ ❯ find packages/domain/src/index.ts:21:3
+ ❯ createDomainQuote packages/domain/src/index.ts:1070:17
+ ❯ quote tests/unit/restaurant-operations.test.ts:13:48
+ ❯ Object.order tests/unit/restaurant-operations.test.ts:15:35
+ ❯ tests/unit/restaurant-operations.test.ts:48:112
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[18/27]⎯
+
+ FAIL  tests/unit/restaurant-operations.test.ts > 014 night service and operational closure > requires inventory reconciliation before final closure
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ tests/unit/restaurant-operations.test.ts:49:265
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[19/27]⎯
+
+ FAIL  tests/unit/restaurant-operations.test.ts > 014 night service and operational closure > does not final-close pending inventory review
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ tests/unit/restaurant-operations.test.ts:50:304
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[20/27]⎯
+
+ FAIL  tests/unit/restaurant-operations.test.ts > 014 night service and operational closure > difference of cash needs independent sealed approval
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ tests/unit/restaurant-operations.test.ts:51:149
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[21/27]⎯
+
+ FAIL  tests/unit/restaurant-operations.test.ts > 014 night service and operational closure > cash movement invalidates previous sealed approval
+DomainError: Esta operación no está habilitada en el laboratorio.
+ ❯ executeCommand packages/domain/src/index.ts:1044:20
+    1042|       break;
+    1043|     }
+    1044|     default: throw new DomainError('UNSUPPORTED_CAPABILITY', 'Esta ope…
+       |                    ^
+    1045|   }
+    1046|   const auditReason = 'reason' in command ? command.reason : 'approval…
+ ❯ run tests/unit/restaurant-operations.test.ts:10:70
+ ❯ Object.approve tests/unit/restaurant-operations.test.ts:23:54
+ ❯ tests/unit/restaurant-operations.test.ts:52:131
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[22/27]⎯
+
+ FAIL  tests/unit/restaurant-operations.test.ts > 014 night service and operational closure > cannot use sealed approval for different count
+DomainError: Esta operación no está habilitada en el laboratorio.
+ ❯ executeCommand packages/domain/src/index.ts:1044:20
+    1042|       break;
+    1043|     }
+    1044|     default: throw new DomainError('UNSUPPORTED_CAPABILITY', 'Esta ope…
+       |                    ^
+    1045|   }
+    1046|   const auditReason = 'reason' in command ? command.reason : 'approval…
+ ❯ run tests/unit/restaurant-operations.test.ts:10:70
+ ❯ Object.approve tests/unit/restaurant-operations.test.ts:23:54
+ ❯ tests/unit/restaurant-operations.test.ts:53:127
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[23/27]⎯
+
+ FAIL  tests/unit/restaurant-operations.test.ts > 014 night service and operational closure > cannot approve own cash variance
+AssertionError: expected [Function] to throw error including 'distint' but got 'Esta operación no está habilitada en …'
+
+Expected: "distint"
+Received: "Esta operación no está habilitada en el laboratorio."
+
+ ❯ tests/unit/restaurant-operations.test.ts:54:140
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[24/27]⎯
+
+ FAIL  tests/unit/restaurant-operations.test.ts > 014 night service and operational closure > provisional records unresolved service without claiming final
+DomainError: No se encontró el recurso en este local.
+ ❯ invariant packages/domain/src/exact.ts:10:25
+      8|
+      9| export function invariant(condition: unknown, code: string, message: s…
+     10|   if (!condition) throw new DomainError(code, message, status);
+       |                         ^
+     11| }
+     12|
+ ❯ find packages/domain/src/index.ts:21:3
+ ❯ createDomainQuote packages/domain/src/index.ts:1070:17
+ ❯ quote tests/unit/restaurant-operations.test.ts:13:48
+ ❯ Object.order tests/unit/restaurant-operations.test.ts:15:35
+ ❯ tests/unit/restaurant-operations.test.ts:55:125
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[25/27]⎯
+
+ FAIL  tests/unit/restaurant-operations.test.ts > 014 night service and operational closure > does not receive beverage count below already reserved stock
+DomainError: No se encontró el recurso en este local.
+ ❯ invariant packages/domain/src/exact.ts:10:25
+      8|
+      9| export function invariant(condition: unknown, code: string, message: s…
+     10|   if (!condition) throw new DomainError(code, message, status);
+       |                         ^
+     11| }
+     12|
+ ❯ find packages/domain/src/index.ts:21:3
+ ❯ createDomainQuote packages/domain/src/index.ts:1070:17
+ ❯ quote tests/unit/restaurant-operations.test.ts:13:48
+ ❯ Object.order tests/unit/restaurant-operations.test.ts:15:35
+ ❯ tests/unit/restaurant-operations.test.ts:56:105
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[26/27]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  27 failed (27)
+   Start at  14:33:07
+   Duration  577ms (transform 60%, tests 22%, import 15%, worker 4%)
+

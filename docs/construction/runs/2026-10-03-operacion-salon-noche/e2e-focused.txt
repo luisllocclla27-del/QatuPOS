@@ -1,0 +1,18 @@
+[WebServer] (node:21888) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:13520) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:10624) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:20780) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 3 tests using 1 worker
+
+(node:13472) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 tests\e2e\zzzzzzzzzz-operations.spec.ts:19:1 › touch queue keeps FIFO, urgency aviso and paper-only preparation separate from pickup (7.0s)
+  ok 2 tests\e2e\zzzzzzzzzz-operations.spec.ts:38:1 › night menu restricts tablets and QR and final stock/cash closes independently from fiscal (9.6s)
+  ok 3 tests\e2e\zzzzzzzzzz-operations.spec.ts:59:1 › night cashier retains a cash shortage and another admin signs the exact final count (7.7s)
+
+  3 passed (29.9s)

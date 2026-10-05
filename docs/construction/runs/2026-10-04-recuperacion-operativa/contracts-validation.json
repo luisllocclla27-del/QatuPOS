@@ -1,0 +1,10 @@
+{
+  "work_order": true,
+  "openapi": true,
+  "feature": "016",
+  "global_pointer_unchanged": {
+    "feature_directory": "specs/013-conteos-y-dia-operativo"
+  },
+  "checklists": "none for this feature",
+  "hooks": "extensions.yml absent"
+}

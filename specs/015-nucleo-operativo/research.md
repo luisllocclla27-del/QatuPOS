@@ -1,0 +1,15 @@
+# Evidencia015
+
+014:96 hashes verificados antes de asignar. Problemas: runtime rechaza production, DB soloqatupos_lab, login demo, usuarios seedúnicos,6moneycolumns int32; pasarelas/fiscal/print simulados explícitos. Solución gradual no afirmaciónfinal: separar instalador/datos y controles operativos mientras conectores faltantes permanecen deshabilitados.
+
+Fuentes primarias consultadas03/10/2026: [PostgreSQL numeric](https://www.postgresql.org/docs/current/datatype-numeric.html), [nodepg types](https://node-postgres.com/features/types), [OWASP session](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html), [CSRF](https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html). bigint superaint32; conversión JS debe verificar exactitud. HTTPSySecurecookies obligatorios en operativo; origen obligatorio+CSRF no soloSameSite.
+
+Datos/proveedores/impresoras/dominio pendientes de usuario; continuar código interno independiente. No actualizarlibraries porpreferencia.
+
+## Decisiones confirmadas del local
+
+El usuario confirma instalación en PC del restaurante y acceso por red desde terminales/tablets. Se implementó terminador HTTPS Node con destino fijo Next loopback3000 y API loopback4000, certificado suministrado por operador; sin servidor alternativo ni nuevas dependencias. Validación de confianza del certificado en dispositivos, hostname/DNS, firewall, Wi-Fi y arranque como servicio pendientes. Bootstrap sin ventas/productos/stock sintéticos; SKU físicos se crean a cero y reciben unidades auditadas.
+
+Izipay elegido para Yape/tarjeta. Fuentes oficiales consultadas03/10/2026: [checkout web](https://developers.izipay.pe/web-core/quickstart/), [notificaciones IPN](https://developers.izipay.pe/web-core/notifications/), [integraciones físicas PinPad/A2A](https://testdevelopers.izipay.pe/physical-integrations/). Checkout requiere token obtenido por backend; IPN expone un POST con firma y correlación. El portal de integraciones físicas ofrece kits distintos. No se infiere que el SDK web controle el POS físico ni que un callback de navegador pruebe cobro. Modo de Izipay pendiente de respuesta; credenciales, validación criptográfica y correlación exacta antes de confirmación operativa. PC exclusivamente LAN necesita diseño para recepción de notificaciones externas si se elige checkout; no exponer directamente PostgreSQL/API. No se configuró ningún comercio real.
+
+Pruebas: error int32 reproducido en aceptación de quote; tras bigint/parse seguro persisten quote, void, descuento y fiscal simulado grande. Tres expectativas antiguas sobre tipos SQL se adaptaron a la representación string del driver, conservando aserciones de monto exacto. Fallos iniciales de fixtures nuevos (campos canónicos, género de mensaje y codificación) corregidos explícitamente; no se presentan como defectos del producto. Revocación se comprueba de nuevo bajo bloqueo de local para impedir ejecución de escrituras que estaban esperando; login serializa alta de sesión frente a cambio de credencial.

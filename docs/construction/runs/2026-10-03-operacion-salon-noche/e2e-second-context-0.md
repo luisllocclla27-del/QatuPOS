@@ -1,0 +1,164 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: zzzzzzzzzz-operations.spec.ts >> night menu restricts tablets and QR and final stock/cash closes independently from fiscal
+- Location: tests\e2e\zzzzzzzzzz-operations.spec.ts:38:1
+
+# Error details
+
+```
+Test timeout of 120000ms exceeded.
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - button "Open Next.js Dev Tools" [ref=e7] [cursor=pointer]
+  - alert [ref=e11]
+  - generic [ref=e12]:
+    - complementary [ref=e13]:
+      - generic [ref=e14]:
+        - generic [ref=e15]: q
+        - strong [ref=e16]: qatupos
+      - generic [ref=e17]: EL ENCANTOHUAMANGUINO
+      - navigation "Secciones de operación" [ref=e18]:
+        - button "▦ Mesas" [ref=e19] [cursor=pointer]:
+          - generic [ref=e20]: ▦
+          - text: Mesas
+        - button "▧ Pedidos del cliente 0" [ref=e21] [cursor=pointer]:
+          - generic [ref=e22]: ▧
+          - text: Pedidos del cliente
+          - generic [ref=e23]: "0"
+        - button "◒ Bebidas 0" [ref=e24] [cursor=pointer]:
+          - generic [ref=e25]: ◒
+          - text: Bebidas
+          - generic [ref=e26]: "0"
+        - button "▤ Estaciones" [ref=e27] [cursor=pointer]:
+          - generic [ref=e28]: ▤
+          - text: Estaciones
+        - button "□ Caja" [ref=e29] [cursor=pointer]:
+          - generic [ref=e30]: □
+          - text: Caja
+        - button "⇄ Mi turno" [ref=e31] [cursor=pointer]:
+          - generic [ref=e32]: ⇄
+          - text: Mi turno
+        - button "≋ Inventario" [ref=e33] [cursor=pointer]:
+          - generic [ref=e34]: ≋
+          - text: Inventario
+        - button "◷ Cierre del día" [ref=e35] [cursor=pointer]:
+          - generic [ref=e36]: ◷
+          - text: Cierre del día
+      - generic [ref=e37]:
+        - text: Una sola operación
+        - generic [ref=e39]: Mesas · Estaciones · Caja
+        - generic [ref=e40]: ENTORNO DE PRUEBA
+    - generic [ref=e41]:
+      - banner [ref=e42]:
+        - generic [ref=e43]:
+          - generic [ref=e44]: El Encanto Huamanguino
+          - generic [ref=e45]: Día operativo · 2026-10-01
+        - generic [ref=e46]:
+          - button "Conectado" [ref=e47] [cursor=pointer]
+          - generic [ref=e49]: L
+          - generic [ref=e50]:
+            - strong [ref=e51]: Luis · caja diurna
+            - generic [ref=e52]: Caja
+          - button "Cambiar usuario" [ref=e53] [cursor=pointer]: ⇥
+      - generic [ref=e54]:
+        - text: Laboratorio
+        - generic [ref=e55]: ·
+        - text: Proveedores e impresoras simulados
+        - generic [ref=e56]: ·
+        - text: Comprobantes SUNAT pendientes de integración
+      - generic [ref=e57]:
+        - strong [ref=e58]: Turno nocturno · solo cerveza, gaseosa y agua
+        - paragraph [ref=e59]: Los pedidos anteriores conservan preparación y entrega. La carta nocturna se aplica también a los clientes de mesa.
+      - main [ref=e60]:
+        - generic [ref=e61]:
+          - generic [ref=e62]:
+            - generic [ref=e63]: Cobrar y registrar movimientos
+            - heading "Caja" [level=1] [ref=e64]
+          - generic [ref=e65]: Caja · Día abierto
+        - generic [ref=e67]:
+          - generic [ref=e69]:
+            - generic [ref=e70]:
+              - strong [ref=e72]: Caja nocturna · abierta
+              - generic [ref=e73]: Rosa · caja nocturna
+            - generic [ref=e74]:
+              - text: Fondo inicial
+              - strong [ref=e75]: S/ 67.00
+          - button "📊 Arqueo de Caja en Vivo (Corte X)" [ref=e76] [cursor=pointer]:
+            - generic [ref=e77]: 📊
+            - text: Arqueo de Caja en Vivo (Corte X)
+        - generic [ref=e78]: La caja tiene otro responsable. Inicia sesión con su identidad para cobrar.
+        - generic [ref=e79]:
+          - generic [ref=e80]:
+            - generic [ref=e81]:
+              - heading "Cuentas por cobrar" [level=2] [ref=e82]
+              - generic [ref=e83]: "3"
+            - generic [ref=e84]:
+              - button "Mesa 01 Cuenta S/ 35.00 ✓ Pagado S/ 0.00" [ref=e85] [cursor=pointer]:
+                - generic [ref=e86]:
+                  - strong [ref=e87]: Mesa 01
+                  - generic [ref=e88]: Cuenta S/ 35.00
+                  - generic [ref=e89]: ✓ Pagado
+                - strong [ref=e90]: S/ 0.00
+              - button "Mesa 02 Cuenta S/ 32.00 ✓ Pagado S/ 0.00" [ref=e91] [cursor=pointer]:
+                - generic [ref=e92]:
+                  - strong [ref=e93]: Mesa 02
+                  - generic [ref=e94]: Cuenta S/ 32.00
+                  - generic [ref=e95]: ✓ Pagado
+                - strong [ref=e96]: S/ 0.00
+              - button "Mesa 03 Cuenta S/ 4.00 ✓ Pagado S/ 0.00" [ref=e97] [cursor=pointer]:
+                - generic [ref=e98]:
+                  - strong [ref=e99]: Mesa 03
+                  - generic [ref=e100]: Cuenta S/ 4.00
+                  - generic [ref=e101]: ✓ Pagado
+                - strong [ref=e102]: S/ 0.00
+          - generic [ref=e103]:
+            - generic [ref=e104]:
+              - heading "Selecciona una cuenta" [level=2] [ref=e105]
+              - generic [ref=e106]: Registro de laboratorio
+            - generic [ref=e107]:
+              - generic [ref=e108]: ✓
+              - heading "Cada cobro, con respaldo" [level=3] [ref=e109]
+              - paragraph [ref=e110]: Elige una mesa para registrar efectivo, tarjeta o Yape.
+        - generic [ref=e111]:
+          - heading "Entradas y salidas de efectivo" [level=2] [ref=e112]
+          - paragraph [ref=e113]: Son movimientos del cajón. No se registran como ventas.
+          - generic [ref=e114]:
+            - generic [ref=e115]:
+              - generic [ref=e116]: Movimiento
+              - combobox "Movimiento" [ref=e117]:
+                - option "Retiro / salida" [selected]
+                - option "Depósito / entrada"
+            - generic [ref=e118]:
+              - generic [ref=e119]: Importe (S/)
+              - textbox "Importe (S/)" [ref=e120]
+            - generic [ref=e121]:
+              - generic [ref=e122]: Motivo
+              - textbox "Motivo" [ref=e123]
+            - button "Registrar movimiento" [disabled] [ref=e124]
+        - generic [ref=e125]:
+          - generic [ref=e126]:
+            - generic [ref=e127]:
+              - heading "Comprobantes Electrónicos Emitidos (SUNAT)" [level=2] [ref=e128]
+              - text: Boletas B001 y Facturas F001 con firma hash SHA-256 UBL 2.1 y código QR
+            - generic [ref=e129]: 0 emitido(s)
+          - generic [ref=e130]:
+            - generic [ref=e131]: ✓
+            - heading "Sin comprobantes emitidos hoy" [level=3] [ref=e132]
+            - paragraph [ref=e133]: Al registrar el cobro completo de una mesa, puedes emitir su Boleta o Factura aquí.
+      - contentinfo [ref=e134]:
+        - generic [ref=e135]:
+          - text: QatuPOS
+          - strong [ref=e136]: ·
+          - text: Cada operación conserva su historia.
+        - generic [ref=e137]: "QR/NFC, ecommerce y Delivery: habilitación posterior"
+```

@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "precheck": true,
+  "verify_statements": 6,
+  "migrations": 11,
+  "unchanged": true,
+  "database": "fresh synthetic PostgreSQL fixture",
+  "supabase_contacted": false
+}

@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "built_next_node_api": true,
+  "https_verified": true,
+  "secure_cookie": true,
+  "origin_csrf_authority": true,
+  "private_pg_schema": true,
+  "restricted_role": true,
+  "empty_initial_catalog": true,
+  "cash_open": true,
+  "table_activation": true,
+  "guest_join": true,
+  "staff_and_guest_survive_restart": true,
+  "stable_guest_key": true,
+  "upstream_commerce_port_required": false,
+  "external_provider_calls": 0,
+  "real_supabase_vercel_homologated": false
+}

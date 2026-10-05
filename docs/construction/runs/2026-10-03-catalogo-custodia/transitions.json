@@ -1,0 +1,17 @@
+[
+  {
+    "state": "running",
+    "evidence": "WorkOrder baseline01135 hashes verified before assignment; exclusive root writer"
+  },
+  {
+    "state": "running",
+    "version": 2,
+    "evidence": "Coordinator granted existing catalog browser test for accessible label update; baseline hash captured first"
+  },
+  {
+    "state": "ready_for_review",
+    "version": 3,
+    "at": "2026-10-03T06:07:07.143295+00:00",
+    "evidence": "204 tests,12 browser, types/build/contracts/planning; independent acceptance pending"
+  }
+]

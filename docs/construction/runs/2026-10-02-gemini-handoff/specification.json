@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0.0",
+  "execution_id": "7efc2748-8317-4943-b0d9-bb816325a150",
+  "assignment_id": "c5426d09-e76d-489a-a840-a3702c90c7e3",
+  "version": 2,
+  "package_id": "B21",
+  "work_kind": "specification",
+  "feature_directory": "specs/005-clave-mesa",
+  "task_ids": [
+    "MAR:T004",
+    "MAR:T025",
+    "MAR:T027"
+  ],
+  "goal": "Preparar especificaciones de continuidad y prompt de traspaso a Gemini Antigravity, sin implementación ni cambios de contratos o del núcleo comercial.",
+  "owner": "root",
+  "reviewer": "handoff-recipient",
+  "state": "ready_for_review",
+  "baseline": {
+    "kind": "file_hashes",
+    "identity": "guest-orders-local-2026-10-02",
+    "input_sha256": {
+      "docs/evidence/CONTINUIDAD.md": "c5f21d46b797e14adccb44710109f4800224d8108ae92ee4dac2034b16e73452",
+      "packages/contracts/src/pos.ts": "c4e1f0093762b23ce15686dce339e2fcdb37bdaae5b617017a42add4248231ae",
+      "pnpm-lock.yaml": "72e2bea3c4cc0e4f1a9ab36b400aa9225499549ae5d05f735eb02e1f10ae754e",
+      "services/commerce/src/authority/repository.ts": "71e6f851839d5542c05ea162e5d73adc78b01dd68065b186c6dbd9c90043c788",
+      "packages/domain/src/index.ts": "5335fcd6f693f934e7913377807340edbd04c6917613cd33886f13691e82e3fa",
+      "docs/contracts/pilot.openapi.json": "5038f9a97687739b9e75cc31766ad8645292d7c53a276b56bd60cbc0a3e0bc11"
+    }
+  },
+  "write_paths": [
+    "docs/handoff/especificaciones-gemini.md",
+    "docs/handoff/prompt-gemini-antigravity.md",
+    "docs/construction/runs/2026-10-02-gemini-handoff/",
+    "docs/evidence/planning-validation.json"
+  ],
+  "read_paths": [
+    "AGENTS.md",
+    "README.md",
+    "docs/evidence/CONTINUIDAD.md",
+    "docs/construction/next-increments.md",
+    "packages/contracts/src/pos.ts",
+    "packages/domain/src/index.ts",
+    "services/commerce/src/authority/repository.ts",
+    "docs/contracts/pilot.openapi.json",
+    "specs/005-clave-mesa/"
+  ],
+  "depends_on": [],
+  "contracts": [
+    "docs/contracts/pilot.openapi.json"
+  ],
+  "requirements": [
+    "MAR-FR-002"
+  ],
+  "acceptance": [
+    "MAR-AT-002"
+  ],
+  "test_plan": [
+    "Validar WorkOrder con schema del padre, enlaces locales, hashes de base sin cambios y validación documental; verificar que el prompt distingue capacidades locales y pendientes reales."
+  ],
+  "permitted_effects": [
+    "documentation",
+    "local_files",
+    "local_processes"
+  ],
+  "output_path": "docs/construction/runs/2026-10-02-gemini-handoff/delivery.json",
+  "shared_paths_grant": []
+}

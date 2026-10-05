@@ -1,0 +1,311 @@
+
+ RUN  v5.0.3 F:/PROYECTOS/QatuPOS/el-encanto-huamanguino
+
+ ❯ tests/unit/counts-day.test.ts (20 tests | 18 failed) 128ms
+   ❯ 013 signed day boundaries (4)
+     × does not void prior day consumption 84ms
+     × does not apply discount to a prior day check 3ms
+     × does not remove prior day discount 3ms
+   ❯ 013 inventory declaration and safe review (16)
+     × preserves observation and reservations if counted stock is insufficient 2ms
+     × retains stock for new reservations pending review 2ms
+     × does not deliver stock awaiting count approval 2ms
+     × permits pending cancellation then recount/approval without fabricated stock 6ms
+     × does not reintegrate physical units during pending count 2ms
+     × requires full coverage when replacing multi-SKU declaration 1ms
+     × cannot approve a superseded declaration 2ms
+     × records current business day on a new count 1ms
+     × does not guess the day of legacy counts 1ms
+     × does not approve after the business day closes 2ms
+     × requires reason even for zero-difference approval 1ms
+     × cashier cannot count stock of Heladería 1ms
+     × prevents overlapping handover over a declared count 1ms
+     × does not freeze unrelated station count during beverage handover 3ms
+     × carries pending count IDs on provisional close without resolving them 2ms
+ ❯ tests/integration/counts-day.test.ts (5 tests | 5 skipped) 11ms
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/counts-day.test.ts [ tests/integration/counts-day.test.ts ]
+Error: connect ECONNREFUSED 127.0.0.1:55432
+ ❯ node_modules/.pnpm/pg-pool@3.14.0_pg@8.23.1/node_modules/pg-pool/index.js:45:11
+ ❯ testDatabase tests/support/database.ts:13:3
+     11|   const name = 'qatupos_lab_test_' + randomUUID().replaceAll('-', '');
+     12|   const admin = createPool(defaultDatabaseUrl);
+     13|   await admin.query(`CREATE DATABASE "${name}"`);
+       |   ^
+     14|   const url = new URL(defaultDatabaseUrl); url.pathname = '/' + name;
+     15|   const pool = createPool(url.toString());
+ ❯ tests/integration/counts-day.test.ts:6:30
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/19]⎯
+
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 18 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/counts-day.test.ts > 013 signed day boundaries > does not void prior day consumption
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ tests/unit/counts-day.test.ts:26:167
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/19]⎯
+
+ FAIL  tests/unit/counts-day.test.ts > 013 signed day boundaries > does not apply discount to a prior day check
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ tests/unit/counts-day.test.ts:27:135
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/19]⎯
+
+ FAIL  tests/unit/counts-day.test.ts > 013 signed day boundaries > does not remove prior day discount
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ tests/unit/counts-day.test.ts:28:281
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/19]⎯
+
+ FAIL  tests/unit/counts-day.test.ts > 013 inventory declaration and safe review > preserves observation and reservations if counted stock is insufficient
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ tests/unit/counts-day.test.ts:39:30
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/19]⎯
+
+ FAIL  tests/unit/counts-day.test.ts > 013 inventory declaration and safe review > retains stock for new reservations pending review
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ tests/unit/counts-day.test.ts:41:170
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/19]⎯
+
+ FAIL  tests/unit/counts-day.test.ts > 013 inventory declaration and safe review > does not deliver stock awaiting count approval
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ tests/unit/counts-day.test.ts:42:241
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/19]⎯
+
+ FAIL  tests/unit/counts-day.test.ts > 013 inventory declaration and safe review > permits pending cancellation then recount/approval without fabricated stock
+AssertionError: expected { …(6) } to match object { status: 'superseded', …(1) }
+(5 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "status": "superseded",
+-   "superseded_by": "7d295956-5baf-42b1-af41-178d0bbdfab1",
++   "status": "declared",
+  }
+
+ ❯ tests/unit/counts-day.test.ts:47:41
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/19]⎯
+
+ FAIL  tests/unit/counts-day.test.ts > 013 inventory declaration and safe review > does not reintegrate physical units during pending count
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ tests/unit/counts-day.test.ts:53:39
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/19]⎯
+
+ FAIL  tests/unit/counts-day.test.ts > 013 inventory declaration and safe review > requires full coverage when replacing multi-SKU declaration
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ tests/unit/counts-day.test.ts:55:195
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/19]⎯
+
+ FAIL  tests/unit/counts-day.test.ts > 013 inventory declaration and safe review > cannot approve a superseded declaration
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ tests/unit/counts-day.test.ts:56:158
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/19]⎯
+
+ FAIL  tests/unit/counts-day.test.ts > 013 inventory declaration and safe review > records current business day on a new count
+AssertionError: expected undefined to be '70000000-0000-4000-8000-000000000001' // Object.is equality
+
+- Expected:
+"70000000-0000-4000-8000-000000000001"
+
++ Received:
+undefined
+
+ ❯ tests/unit/counts-day.test.ts:57:158
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/19]⎯
+
+ FAIL  tests/unit/counts-day.test.ts > 013 inventory declaration and safe review > does not guess the day of legacy counts
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ tests/unit/counts-day.test.ts:58:179
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/19]⎯
+
+ FAIL  tests/unit/counts-day.test.ts > 013 inventory declaration and safe review > does not approve after the business day closes
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ tests/unit/counts-day.test.ts:59:177
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/19]⎯
+
+ FAIL  tests/unit/counts-day.test.ts > 013 inventory declaration and safe review > requires reason even for zero-difference approval
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ tests/unit/counts-day.test.ts:60:144
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/19]⎯
+
+ FAIL  tests/unit/counts-day.test.ts > 013 inventory declaration and safe review > cashier cannot count stock of Heladería
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ tests/unit/counts-day.test.ts:61:113
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/19]⎯
+
+ FAIL  tests/unit/counts-day.test.ts > 013 inventory declaration and safe review > prevents overlapping handover over a declared count
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ tests/unit/counts-day.test.ts:62:129
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[17/19]⎯
+
+ FAIL  tests/unit/counts-day.test.ts > 013 inventory declaration and safe review > does not freeze unrelated station count during beverage handover
+DomainError: La custodia está en traspaso.
+ ❯ invariant packages/domain/src/exact.ts:10:25
+      8|
+      9| export function invariant(condition: unknown, code: string, message: s…
+     10|   if (!condition) throw new DomainError(code, message, status);
+       |                         ^
+     11| }
+     12|
+ ❯ executeCommand packages/domain/src/index.ts:567:39
+ ❯ run tests/unit/counts-day.test.ts:9:71
+ ❯ Object.count tests/unit/counts-day.test.ts:16:65
+ ❯ tests/unit/counts-day.test.ts:63:120
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[18/19]⎯
+
+ FAIL  tests/unit/counts-day.test.ts > 013 inventory declaration and safe review > carries pending count IDs on provisional close without resolving them
+AssertionError: expected undefined to deeply equal [ Array(1) ]
+
+- Expected:
+[
+  "672ec64d-db99-4c88-8d56-21352ce81a4b",
+]
+
++ Received:
+undefined
+
+ ❯ tests/unit/counts-day.test.ts:64:225
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[19/19]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  18 failed | 2 passed | 5 skipped (25)
+   Start at  13:08:47
+   Duration  1.47s (import 63%, transform 21%, tests 14%, worker 1%)
+

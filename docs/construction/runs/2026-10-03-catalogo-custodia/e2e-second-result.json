@@ -1,0 +1,5 @@
+{
+  "passed": 0,
+  "failed": 1,
+  "cause": "Exact label Estacion included nested select options in accessible label; test reached successful creation, then timed out before edit. Fixed label locator, preserved assertions."
+}

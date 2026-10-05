@@ -1,0 +1,29 @@
+{
+  "execution_id": "7efc2748-8317-4943-b0d9-bb816325a150",
+  "assignment_id": "c5426d09-e76d-489a-a840-a3702c90c7e3",
+  "date": "2026-10-02",
+  "state": "ready_for_review",
+  "scope": "Documentos de traspaso a Gemini Antigravity; propuesta de catálogo configurable y cotización, sin código de aplicación ni modificación de contratos.",
+  "files": [
+    "docs/handoff/especificaciones-gemini.md",
+    "docs/handoff/prompt-gemini-antigravity.md"
+  ],
+  "checks": {
+    "work_order_schema": "passed",
+    "required_existing_paths": 20,
+    "unchanged_baseline_hashes": 6,
+    "proposed_requirements": 16,
+    "planning_validation": "25 passed",
+    "runtime_tests": "not rerun: documentation only"
+  },
+  "output_sha256": {
+    "docs/handoff/especificaciones-gemini.md": "272776f9955398bcbc11cfb652a489cbf1e64e985408a253fea9e7836dcf54cd",
+    "docs/handoff/prompt-gemini-antigravity.md": "5ca2569dbc7dbe1f4698ba004d4a60060cb054e0b09a24d270a1702ba128511d"
+  },
+  "limitations": [
+    "No revisión independiente de esta propuesta; formalizar/analyze antes de implementar.",
+    "No se verificó disponibilidad/capacidad del modelo indicado por el usuario.",
+    "Ninguna tarea integral del padre se marca completa; sin efectos externos."
+  ],
+  "next_dependency": "El receptor inspecciona baseline vigente, crea feature/WorkOrders propios y cierra contratos/migración antes de implementar."
+}

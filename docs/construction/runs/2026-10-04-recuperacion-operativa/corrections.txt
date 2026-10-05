@@ -1,0 +1,13 @@
+$ vitest run "tests/unit/day-open.test.ts" "tests/unit/guest-order-progress.test.ts" "tests/integration/operational-core.test.ts"
+
+ RUN  v5.0.3 F:/PROYECTOS/QatuPOS/el-encanto-huamanguino
+
+
+ Test Files  3 passed (3)
+      Tests  28 passed (28)
+   Start at  13:46:38
+   Duration  5.71s (tests 83%, import 12%, transform 4%)
+
+    Isolate  3 workers spawned · ~153ms startup each (spawn + environment, per file)
+             at least ~306ms faster with isolate: false — reuses workers across files instead of one per file
+

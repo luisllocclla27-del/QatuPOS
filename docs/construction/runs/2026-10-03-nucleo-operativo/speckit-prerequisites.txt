@@ -1,0 +1,1 @@
+{"FEATURE_DIR":"F:/PROYECTOS/QatuPOS/el-encanto-huamanguino/specs/015-nucleo-operativo","AVAILABLE_DOCS":["research.md","data-model.md","contracts/","quickstart.md","tasks.md"]}

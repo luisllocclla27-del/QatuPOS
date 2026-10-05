@@ -1,0 +1,34 @@
+{
+  "execution_id": "95093d70-f6bb-4045-8486-a6423e30d5cc",
+  "assignment_id": "43fbd161-f812-4e8c-bcc3-cee9f986ea5c",
+  "state": "accepted",
+  "scope": "Anulaciones de comanda por Caja/Admin con motivo obligatorio, reposición de inventario físico/disponible, recálculo atómico en céntimos PEN y liberación de cobros retenidos",
+  "tests": {
+    "typecheck": "passed",
+    "build_final": "passed",
+    "unit_contract_api": 126,
+    "e2e": 8,
+    "planning_checks": 25
+  },
+  "source_sha256": {
+    "packages/contracts/src/pos.ts": "8a4d053fed2a41d33dfe88344cfe7ff5b0b52c6c0dd4e1679ede71c9487fd208",
+    "docs/contracts/pilot.openapi.json": "600b23486701eeb12f3fe58f6be0818ee23dd30bc19665aeba404da247549915",
+    "database/migrations/007_voids_and_releases.sql": "431b37b348268e457ac16be8919febc50151daf0301d5137bca854c4629e0545",
+    "packages/domain/src/index.ts": "d2fbc71fb9501074bcf9172ad2e39182cffe89586b62e4eaf154046a8b3b8cbb",
+    "services/commerce/src/authority/repository.ts": "edddfe9f48aa288b34b4ea01f1fc28ae83dafd502db3f0dcbc3bd5278df369b6",
+    "apps/pos/src/components/pos-app.tsx": "9192a038510b3a4c6a7e165443347d225c76a5caaa55169256a93219222af6aa",
+    "tests/e2e/zzzz-voids.spec.ts": "a21cbc2e841bad0c3b677e2ec18af87dfb3f7c154ce49672e2596033a5041e1d",
+    "specs/007-anulaciones-devoluciones/spec.md": "42f7c00e1215b22b1029c78201b2a4c14ef1eecbbf8703a45c3ec0f8a84eb7ce",
+    "specs/007-anulaciones-devoluciones/plan.md": "35e396603a11883be712613d9cecae650b263309aeb78fa28fa4c3b5220c325c",
+    "specs/007-anulaciones-devoluciones/tasks.md": "f3045620875e7a9bbf6ca92a6cce3705bcab7d07936a28e3b7b9ca4e16d43e5c",
+    "specs/007-anulaciones-devoluciones/checklist.md": "6df900b21a36e1666e85bc1f600ee6b48bf5788d75cf8280628311d4d3143c22"
+  },
+  "evidence": [
+    "docs/evidence/order-voids-delivery.md",
+    "docs/evidence/order-voids-review.md",
+    "docs/evidence/CONTINUIDAD.md"
+  ],
+  "integral_feature_tasks_marked_complete": true,
+  "external_capabilities_accepted": false,
+  "checked_at_utc": "2026-10-02T20:34:00.000Z"
+}

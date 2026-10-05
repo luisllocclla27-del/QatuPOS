@@ -1,0 +1,30 @@
+{
+  "execution_id": "38b4d3cb-9b46-4bb8-ae8b-9a538740787f",
+  "assignment_id": "921799eb-ad3d-4b55-a035-030dab40ece2",
+  "state": "accepted",
+  "scope": "local tablet and locked-entry refinement only",
+  "tests": {
+    "typecheck": "passed",
+    "build": "passed",
+    "unit_contract_api": 106,
+    "e2e": 5,
+    "planning_checks": 25
+  },
+  "independent_hash_checks": 5,
+  "parent_hashes_unchanged": 212,
+  "evidence": [
+    "docs/evidence/tablet-gate-delivery.md",
+    "docs/evidence/tablet-gate-review.md"
+  ],
+  "source_sha256": {
+    "apps/pos/src/components/table-guest-access.tsx": "5109cbd72f62b38963e3da583fe980898f08d330b66c3865849a4fe0e6db6503",
+    "apps/pos/src/components/guest-app.tsx": "f5b690c1fbb403b5a447bf22fb9f583e2b03f9f9a12664bd25b71b1ffb93abd3",
+    "apps/pos/src/app/globals.css": "d7d8e6b35f821eb7429547242f65640cfe7fe8e39859200206bf2e20534c3beb",
+    "tests/e2e/zz-guest.spec.ts": "78b144030f6ca928dcaa7b9e61241675e8cc388fecb5358a85d3410a8247f234",
+    "README.md": "05284515698dc4a0654c0e077747404132b6dd933f94771f34cde03b5bbf25a6",
+    "docs/runbooks/guest-access.md": "f17eed0d06de9eee2d57f7d1e4e0d79083defb679fdd8adbe8f7ee2ff5cb659a"
+  },
+  "new_hardware_capabilities_accepted": false,
+  "integral_feature_tasks_marked_complete": false,
+  "checked_at_utc": "2026-10-02T16:08:25.063118+00:00"
+}

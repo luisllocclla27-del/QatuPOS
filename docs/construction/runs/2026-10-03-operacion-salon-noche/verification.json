@@ -1,0 +1,56 @@
+{
+  "checked_at_utc": "2026-10-03T20:38:47.454939+00:00",
+  "unit_integration": {
+    "command": "pnpm test",
+    "exit_code": 0,
+    "passed": 290,
+    "files": 16,
+    "new_cases": 53,
+    "evidence": "tests-final.txt"
+  },
+  "e2e": {
+    "command": "pnpm test:e2e",
+    "exit_code": 0,
+    "passed": 17,
+    "new_cases": 4,
+    "evidence": "e2e-final.txt"
+  },
+  "typecheck": {
+    "command": "pnpm typecheck",
+    "exit_code": 0,
+    "evidence": "typecheck-final.txt"
+  },
+  "build": {
+    "command": "pnpm build",
+    "exit_code": 0,
+    "evidence": "build-final.txt"
+  },
+  "planning": {
+    "command": "pnpm validate:sdd",
+    "exit_code": 0,
+    "passed": 25,
+    "scope": "parent planning only"
+  },
+  "work_order_schema": "passed",
+  "openapi": "passed",
+  "interactive_branch_state_preserved": true,
+  "interactive_state_sha256": "ba929698f99805c4c91faab5a3470b20ee511ea6a86bdf8c915685cb1510b502",
+  "runtime_health": {
+    "api": {
+      "status": "ok",
+      "environment": "laboratory"
+    },
+    "customer_status": 200,
+    "development_session": 62607,
+    "domain_increment": "014-operacion-salon-noche",
+    "interactive_data_reset": false
+  },
+  "independent_financial_inventory_isolation_review": "pending",
+  "regression_initial_fixture_failures": 19,
+  "intermittent_original_login_failure": "not reproduced; original cause not isolated; isolation preconditions added",
+  "local_document_links": {
+    "passed": true,
+    "checked": 27,
+    "anchors": "not_checked"
+  }
+}

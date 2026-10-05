@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0.0",
+  "execution_id": "c194a11f-508b-4a52-b883-9972834d8ef1",
+  "assignment_id": "b3e94470-76c1-4b10-a359-57ef51fae929",
+  "version": 1,
+  "package_id": "B07",
+  "work_kind": "implementation",
+  "feature_directory": "specs/010-notas-credito-sunat",
+  "task_ids": [
+    "NCR:T001",
+    "NCR:T002",
+    "NCR:T003"
+  ],
+  "goal": "Implementar Notas de Crédito Electrónicas SUNAT (BC01 / FC01) con motivos normativos oficiales, anulación formal de comprobantes, ticket térmico de 80mm y conciliación en Arqueo de Caja.",
+  "owner": "gemini-antigravity",
+  "reviewer": "independent-reviewer",
+  "state": "assigned",
+  "baseline": {
+    "kind": "file_hashes",
+    "identity": "gemini-antigravity-start-credit-notes-2026-10-02",
+    "input_sha256": {
+      "docs/evidence/CONTINUIDAD.md": "a382e706f22178625c1e9cc4349a62569e4e24df1e56ddbffab3af6979ea9c58",
+      "packages/contracts/src/pos.ts": "281b755479e6ee2b88a507ed863b1e82a4b5d0360e8ff0806d9bbb78eb32fdc6",
+      "docs/contracts/pilot.openapi.json": "ab9fb2db61ae94da8bbf22c45cec591c2f3750bec44f8e57d7e05c6cbe35773c",
+      "packages/domain/src/index.ts": "26fff55c9bfef6815a841dd221e841779895f812cf1af265ed6d91f04f5edc60",
+      "services/commerce/src/authority/repository.ts": "40c554131a73282127d6fd91621ab98b1ad2500e1405ef29aff92dbf0ead228a",
+      "apps/pos/src/components/pos-app.tsx": "94e408ba5d94ffd4af1eea368e42802f85ee0c7d046c4e38f58da936017e7313",
+      "README.md": "42e56a18f9f95e55c008b70bf3ec92aa42a5df26f6a622265aed360e2e3da228"
+    }
+  },
+  "write_paths": [
+    "specs/010-notas-credito-sunat/",
+    "packages/contracts/src/pos.ts",
+    "docs/contracts/pilot.openapi.json",
+    "database/migrations/010_credit_notes.sql",
+    "packages/domain/src/",
+    "services/commerce/src/",
+    "apps/pos/src/",
+    "tests/",
+    "docs/evidence/",
+    "docs/construction/runs/2026-10-02-notas-credito/"
+  ],
+  "read_paths": [
+    "AGENTS.md",
+    "README.md",
+    "docs/evidence/CONTINUIDAD.md",
+    "docs/construction/next-increments.md",
+    "specs/008-facturacion-precuenta/",
+    "specs/009-descuentos-arqueo-caja/"
+  ],
+  "depends_on": [
+    "B06",
+    "B07"
+  ],
+  "contracts": [
+    "docs/contracts/pilot.openapi.json",
+    "packages/contracts/src/pos.ts"
+  ],
+  "requirements": [
+    "NCR-FR-001",
+    "NCR-FR-002",
+    "NCR-FR-003",
+    "NCR-FR-004",
+    "NCR-FR-005"
+  ],
+  "acceptance_tests": [
+    "NCR-AC-001",
+    "NCR-AC-002",
+    "NCR-AC-003",
+    "NCR-AC-004",
+    "NCR-AC-005",
+    "NCR-AC-006"
+  ]
+}

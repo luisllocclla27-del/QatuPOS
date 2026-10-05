@@ -1,0 +1,14 @@
+[
+  {
+    "file": "docs/superpowers/plans/2026-10-03-fullstack-nextjs-supabase-vercel.md",
+    "source_sha256": "5580b208b2c9156f25f62c8042ef8e243bf705392a5e0c8cf4add3f06ed86a5e",
+    "rule": "remote-database-credential",
+    "reason": "Literal sintético revisado: ref de prueba, contraseña ficticia en prueba/borrador histórico. Si cambia el archivo, revisar de nuevo."
+  },
+  {
+    "file": "tests/unit/cloud.test.ts",
+    "source_sha256": "985fbb97435c64f0579d3951c8075c3be806091c21909fe5186e4a633edf92ee",
+    "rule": "remote-database-credential",
+    "reason": "Literal sintético revisado: ref de prueba, contraseña ficticia en prueba/borrador histórico. Si cambia el archivo, revisar de nuevo."
+  }
+]

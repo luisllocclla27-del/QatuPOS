@@ -1,0 +1,20 @@
+import { describe, it, expect } from 'vitest';
+import { accountAmounts, checkPaymentState, cashChange, resumableAuthorization, salesRows } from '../../apps/pos/src/lib/sales.js';
+import { createInitialState, projectSnapshot } from '../../packages/domain/src/index.js';
+import type { Check } from '@qatu/contracts';
+const check = (paid=0, held=0): Check => ({ id:'c',visit_id:'v',version:1,total_minor:3500,paid_minor:paid,held_minor:held,remaining_collectible_minor:3500-paid-held,currency:'PEN',status:'open',fiscal_status:'pending',discount_minor:0 });
+const snapshot = () => { const s=createInitialState({tenant_id:'t',branch_id:'b'});return projectSnapshot(s,{tenant_id:s.tenant_id,branch_id:s.branch.id,user:s.staff[1]!}); };
+describe('018 financial presentation',()=>{
+  it('all held is pending, not paid',()=>{expect(checkPaymentState(check(0,3500))).toBe('held');expect(accountAmounts(check(0,3500))).toEqual({pending:3500,held:3500,available:0});});
+  it('partial payment plus retention does not imply full payment',()=>expect(checkPaymentState(check(1000,2500))).toBe('held'));
+  it('partial payment without retention is partial',()=>expect(checkPaymentState(check(1000))).toBe('partial'));
+  it('only exact total paid without hold is paid',()=>expect(checkPaymentState(check(3500))).toBe('paid'));
+  it('empty or courtesy account is not reported paid',()=>expect(checkPaymentState({...check(),total_minor:0,remaining_collectible_minor:0})).toBe('empty'));
+  it('pending total differs from available',()=>expect(accountAmounts(check(1000,500))).toEqual({pending:2500,held:500,available:2000}));
+  it('insufficient cash is explicit, not zero change',()=>expect(cashChange('20',3500)).toEqual({kind:'insufficient',shortfall:1500}));
+  it('valid cash change is exact',()=>expect(cashChange('50,01',3500)).toEqual({kind:'change',amount:1501}));
+  it('invalid cash yields no apparent change',()=>expect(cashChange('abc',3500)).toEqual({kind:'invalid'}));
+  it('reservation requires its creator and own open session',()=>{const s=snapshot();s.authorizations=[{id:'a',created_by:'owner',cash_session_id:'cash',status:'reserved'} as any];s.cash_sessions=[{id:'cash',owner_id:'owner',state:'open'} as any];expect(resumableAuthorization(s,'owner','a')?.id).toBe('a');expect(resumableAuthorization(s,'other','a')).toBeUndefined();s.cash_sessions[0]!.state='counting';expect(resumableAuthorization(s,'owner','a')).toBeUndefined();});
+  it('consumed reservation cannot be resumed',()=>{const s=snapshot();s.authorizations=[{id:'a',created_by:'owner',cash_session_id:'cash',status:'consumed'} as any];s.cash_sessions=[{id:'cash',owner_id:'owner',state:'open'} as any];expect(resumableAuthorization(s,'owner','a')).toBeUndefined();});
+  it('historical occupancy uses check identity, not current table visit',()=>{const s=snapshot();s.tables[0]!.visit_id='new';s.visits=[{id:'v',table_id:s.tables[0]!.id,check_id:'c',opened_at:'2026-10-04T02:00:00Z',business_day_id:'old',status:'closed'} as any];s.checks=[{...check(3500),status:'closed'}];const rows=salesRows(s,{query:s.tables[0]!.label,date:'2026-10-03',status:'paid'});expect(rows).toHaveLength(1);expect(rows[0]!.check.id).toBe('c');expect(rows[0]!.date).toBe('2026-10-03');expect(salesRows(s,{query:'missing',date:'',status:'all'})).toEqual([]);});
+});

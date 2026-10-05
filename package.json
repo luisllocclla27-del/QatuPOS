@@ -1,0 +1,49 @@
+{
+  "name": "el-encanto-huamanguino-pos",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@12.5.1",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "db:start": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/database/start-local.ps1",
+    "db:migrate": "tsx scripts/database/migrate.ts",
+    "db:seed": "tsx scripts/database/seed.ts",
+    "setup:local": "pnpm db:start && pnpm db:migrate && pnpm db:seed",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:api": "vitest run tests/integration/api.test.ts",
+    "test:e2e": "playwright test",
+    "build": "pnpm --filter @qatu/pos build",
+    "lint": "tsc --noEmit",
+    "validate:sdd": "\"..\\.venv-sdd\\Scripts\\python.exe\" scripts/validate-planning.py",
+    "operational:bootstrap": "tsx scripts/operational/bootstrap.ts",
+    "operational:start": "node scripts/operational/start.mjs",
+    "operational:migrate": "tsx scripts/operational/migrate.ts",
+    "operational:backup": "tsx scripts/operational/recovery/cli.ts backup",
+    "operational:restore-verify": "tsx scripts/operational/recovery/cli.ts restore-verify",
+    "cloud:install": "tsx scripts/cloud/cli.ts install",
+    "cloud:doctor": "tsx scripts/cloud/cli.ts doctor",
+    "build:cloud": "node scripts/cloud/build.mjs",
+    "cloud:migrate": "tsx scripts/cloud/cli.ts migrate",
+    "cloud:secure": "tsx scripts/cloud/protected.ts",
+    "release:check": "node scripts/release/check.mjs",
+    "release:test": "node --test tests/release/*.test.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0",
+    "@types/node": "26.6.3",
+    "@types/pg": "8.23.1",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1",
+    "pg": "8.23.1",
+    "tsx": "4.23.15",
+    "typescript": "6.0.3",
+    "vitest": "5.0.3"
+  }
+}

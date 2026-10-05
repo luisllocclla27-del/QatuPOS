@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "migration": "012_money_bigint.sql",
+  "sha256": "437d1183fe0e4aa3588107e7178b0c5126a926c04043366475f51dbddd7b3ffb",
+  "replayed": false,
+  "commercial_state_mutations": 0,
+  "seed_reset": false,
+  "previous_011": "left unapplied here to preserve existing laboratory fiscal history; empty operational installation applies all migrations"
+}

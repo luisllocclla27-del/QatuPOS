@@ -1,0 +1,17 @@
+# Plan del incremento clave de mesa
+
+Constitución del padre: autoridad única, importes exactos, acceso por visita y privacidad del originador. Las reglas se conservan; el incremento implementa solo admisión por clave y pedido local, no toda feature001.
+
+Refinamiento de tablet/QR: entrada `/cliente` bloqueada sin sesión válida; botón del mozo **Habilitar mesa y mostrar clave**. El QR futuro apunta a esta entrada fija, sin secreto. Se reutilizan los endpoints/contratos ya aceptados; no se modifica dominio, pagos, cookies ni persistencia. Probar tablet1024 y entrada cliente antes de habilitar, además del cierre por pago existente. Generación/impresión del QR y red física quedan pendientes de URL accesible y prueba de dispositivos; la página de ingreso ya es ejecutable en loopback.
+
+Seguimiento del personal: componente `guest-orders.tsx` consume únicamente el PosSnapshot autorizado existente y filtra `source: guest`. Reusa cantidades de preparación/entrega; Caja se muestra como entrega directa. Pago es estado separado y no limpia la cola. Navegación valida correspondencia visita abierta/table.visit_id antes de seleccionar; una tanda de visita histórica permanece solo lectura. No añade comandos ni estados de aceptación/ack, alertas push o precios. Los filtros son locales y la consulta conserva polling de cinco segundos del POS.
+
+Acceso público en `/cliente` dentro del frontend existente. Cookie cliente separada de staff, token persistido por hash y CSRF/origen; sesión 12h, sin vencimiento temporal de la clave mientras no se concluya la atención. No aceptar tenant/visit en solicitud pública. La clave tiene diez caracteres de alfabeto legible y se deriva por HMAC de un UUID de acceso con secreto local durable, guardando solo digest en PostgreSQL. El mozo autorizado puede consultar la clave activa; snapshots generales no llevan secretos. Rotar crea UUID/clave nuevos.
+
+Metadata no secreta del acceso en el agregado del local; proyecciones staff se limitan por rol. Migración nueva añade índices de credenciales y sesiones, FK de ámbito y marca de originador a operaciones. Estado + metadata + credenciales + sesiones revocadas + idempotencia + outbox comparten el commit comercial.
+
+Pedido invitado se traduce en servidor al comando `order.create` existente, con actor ejecutor staff resuelto y contexto de originador cliente. El contexto se verifica bajo bloqueo del agregado; no concede rol staff al cliente. Operación queda ligada también a sesión cliente. Order y audit identifican origen/participante. La vista cliente devuelve solo catálogo, mesa y pedidos originados por esa sesión; no devuelve CheckSnapshot ni libro de caja.
+
+Conclusión se deriva después de cada comando: cuenta positiva totalmente pagada sin retenciones, cierre de visita, revocación/rotación. Ningún nuevo pedido puede reabrir una cuenta pagada; preparación/entrega siguen su estado. Reintentos y pago concurrente usan el mismo bloqueo por local. Día cerrado conserva visitas sin saldo resuelto, pero no autoriza nuevas ventas.
+
+Validación: contratos estrictos, pruebas de roles/clave/ámbito/CSRF, parcial/unknown/total, rotación/reocupación, dos invitados privados, idempotencia, carreras y rollback PostgreSQL; flujo staff/cliente y pérdida de respuesta en navegador. Revisión independiente antes de aceptar aislamiento/finanzas. Clave local `.runtime/guest-code.key` se conserva con backup del laboratorio; perderla requiere rotar accesos, no restablecer una clave conocida. No hay supuesto de custodia de secretos de producción.

@@ -1,0 +1,10 @@
+{
+  "api": {
+    "status": "ok",
+    "environment": "laboratory"
+  },
+  "customer_status": 200,
+  "development_session": 62607,
+  "domain_increment": "014-operacion-salon-noche",
+  "interactive_data_reset": false
+}

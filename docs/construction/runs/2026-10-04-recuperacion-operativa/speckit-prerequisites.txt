@@ -1,0 +1,1 @@
+{"FEATURE_DIR":"F:\\PROYECTOS\\QatuPOS\\el-encanto-huamanguino\\specs\\016-recuperacion-operativa","AVAILABLE_DOCS":["contracts/","tasks.md"]}

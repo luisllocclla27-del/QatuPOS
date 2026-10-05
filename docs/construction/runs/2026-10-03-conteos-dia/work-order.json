@@ -1,0 +1,107 @@
+{
+  "schema_version": "1.0.0",
+  "execution_id": "ffe6d03b-6ccd-4c13-a018-2209ae09f86e",
+  "assignment_id": "b0e59cbf-d48f-4e2f-b57c-82cf144b4cf2",
+  "version": 3,
+  "package_id": "B07",
+  "work_kind": "implementation",
+  "feature_directory": "specs/013-conteos-y-dia-operativo",
+  "task_ids": [
+    "MAR:T051",
+    "MAR:T052",
+    "MAR:T053",
+    "MAR:T054",
+    "MAR:T055",
+    "MAR:T056",
+    "MAR:T057"
+  ],
+  "goal": "Preservar cierres firmados bloqueando ajustes comerciales de días previos; declarar/recontar/aprobar inventario con retención por SKU, reservas preservadas y responsables distintos; mejorar flujo Caja→Administración y probar rollback/concurrencia.",
+  "owner": "root",
+  "reviewer": "future-independent-reviewer",
+  "state": "ready_for_review",
+  "baseline": {
+    "kind": "file_hashes",
+    "identity": "012-delivered-65-hashes-verified-2026-10-03",
+    "input_sha256": {
+      "packages/domain/src/index.ts": "d1772144d301a43719f7420262e8ad3afdaaa31d6cdec73d062047466ebdaa99",
+      "packages/contracts/src/pos.ts": "d48ddbb17c86dbaadb11340df1408eada8deaa4ce1cbf7939e48885e5329377c",
+      "docs/contracts/pilot.openapi.json": "a4c8e922d97ee62a095825d6b872c29107793241900672e374d873c057cdf664",
+      "apps/pos/src/components/pos-app.tsx": "664ec799623462a5e3e1d937b86d6e285968379502dac25bbffd602f4d17c31c",
+      "tests/unit/pilot-domain.test.ts": "5467c70689b6b1065dbc2681bda32e938333217496fe77ec80f0de0475134b5c",
+      "docs/construction/current-run.json": "b8610242491a0dc9581920c017a721ef4bee1e74f0b9f5f10b9b258ccc6c451c",
+      "docs/evidence/CONTINUIDAD.md": "22dc6287932a6ec22cea0bc5d91d030aeb4f08daa6b592801fe3bdb7f36f932c",
+      "docs/evidence/planning-validation.json": "2f4f2d3c80351d955ab4e3ff161274a3239d84d8ecadf791ea07420011713f09",
+      "README.md": "1b1eab86c8d5ac59ccb42399f86f47289dbed94c0757b4ea4d3916e61b4d79ea",
+      "apps/pos/tsconfig.json": "3072e8bc8cd0dcff7a44d8318f54153dc2ce91fd404508cf5c942e480449aa76",
+      "apps/pos/next-env.d.ts": "b8b3a344484b959af5e4e3fc1a1609dac3cb9ece0cdeb6c145be29bc4c491000"
+    }
+  },
+  "write_paths": [
+    "packages/domain/src/index.ts",
+    "packages/contracts/src/pos.ts",
+    "docs/contracts/pilot.openapi.json",
+    "apps/pos/src/components/pos-app.tsx",
+    "apps/pos/src/lib/inventory-review.ts",
+    "tests/unit/counts-day.test.ts",
+    "tests/unit/inventory-review.test.ts",
+    "tests/integration/counts-day.test.ts",
+    "tests/unit/pilot-domain.test.ts",
+    "tests/e2e/zzzzzzzzz-inventory.spec.ts",
+    "specs/013-conteos-y-dia-operativo/",
+    "docs/construction/runs/2026-10-03-conteos-dia/",
+    "docs/construction/current-run.json",
+    "docs/evidence/ACTUALIZACION-2026-10-03-conteos-dia.md",
+    "docs/evidence/CONTINUIDAD.md",
+    "docs/evidence/planning-validation.json",
+    "docs/evidence/screens/",
+    "README.md",
+    "apps/pos/tsconfig.json",
+    "apps/pos/next-env.d.ts",
+    "apps/pos/src/components/inventory-panel.tsx"
+  ],
+  "read_paths": [
+    "packages/",
+    "services/",
+    "tests/",
+    "specs/007-anulaciones-devoluciones/",
+    "specs/009-descuentos-arqueo-caja/",
+    "specs/012-catalogo-custodia/",
+    "docs/"
+  ],
+  "depends_on": [],
+  "contracts": [
+    "docs/contracts/pilot.openapi.json",
+    "specs/013-conteos-y-dia-operativo/contracts/changes.md"
+  ],
+  "requirements": [
+    "MAR-FR-011",
+    "MAR-FR-012",
+    "MAR-FR-018",
+    "MAR-FR-019"
+  ],
+  "acceptance": [
+    "MAR-AT-011",
+    "MAR-AT-012",
+    "MAR-AT-018",
+    "MAR-AT-019"
+  ],
+  "test_plan": [
+    "Pruebas de cierres previos inmutables y cobranza anterior permitida; conteo menor a reservas durable con aprobación rechazada, bloqueo por SKU, anulación/liberación y reconteo, propietario distinto, reemplazo de declaraciones sin perder historial, carrera PG entre conteo y reserva. Tipos/suite/navegador/build/contratos/documentos."
+  ],
+  "permitted_effects": [
+    "documentation",
+    "local_files",
+    "local_processes",
+    "local_database",
+    "synthetic_data",
+    "simulated_providers"
+  ],
+  "output_path": "docs/construction/runs/2026-10-03-conteos-dia/delivery.json",
+  "shared_paths_grant": [
+    "packages/domain/src/index.ts",
+    "packages/contracts/src/pos.ts",
+    "docs/contracts/pilot.openapi.json",
+    "apps/pos/tsconfig.json",
+    "apps/pos/next-env.d.ts"
+  ]
+}

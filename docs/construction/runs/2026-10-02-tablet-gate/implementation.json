@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0.0",
+  "execution_id": "38b4d3cb-9b46-4bb8-ae8b-9a538740787f",
+  "assignment_id": "921799eb-ad3d-4b55-a035-030dab40ece2",
+  "version": 2,
+  "package_id": "B08",
+  "work_kind": "implementation",
+  "feature_directory": "specs/005-clave-mesa",
+  "task_ids": [
+    "TBL:T021",
+    "TBL:T024",
+    "TBL:T033"
+  ],
+  "goal": "Ajustar el recorrido de tablet del mozo y entrada bloqueada que abre el QR; conservar autorización por clave y cierre por pago ya revisados.",
+  "owner": "root",
+  "reviewer": "runtime_contracts",
+  "state": "accepted",
+  "baseline": {
+    "kind": "file_hashes",
+    "identity": "accepted-guest-key-increment-2026-10-02",
+    "input_sha256": {
+      "apps/pos/src/components/table-guest-access.tsx": "c778691a6023e63ddadc516914c270c069b6268c3af6bfac5f58bb40ee7c526c",
+      "apps/pos/src/components/guest-app.tsx": "cc3d1ce3e9e58bb12fc1acc0fd82fdbe4f286485a21c894e18125d7bbba72f1b",
+      "services/commerce/src/authority/repository.ts": "71e6f851839d5542c05ea162e5d73adc78b01dd68065b186c6dbd9c90043c788",
+      "packages/domain/src/index.ts": "5335fcd6f693f934e7913377807340edbd04c6917613cd33886f13691e82e3fa",
+      "docs/contracts/pilot.openapi.json": "5038f9a97687739b9e75cc31766ad8645292d7c53a276b56bd60cbc0a3e0bc11"
+    }
+  },
+  "write_paths": [
+    "apps/pos/src/components/table-guest-access.tsx",
+    "apps/pos/src/components/guest-app.tsx",
+    "apps/pos/src/app/globals.css",
+    "tests/e2e/zz-guest.spec.ts",
+    "specs/005-clave-mesa/",
+    "README.md",
+    "docs/runbooks/guest-access.md",
+    "docs/evidence/",
+    "docs/construction/runs/2026-10-02-tablet-gate/"
+  ],
+  "read_paths": [
+    "apps/pos/src/components/table-guest-access.tsx",
+    "apps/pos/src/components/guest-app.tsx",
+    "services/commerce/src/authority/repository.ts",
+    "packages/domain/src/index.ts",
+    "docs/contracts/pilot.openapi.json",
+    "AGENTS.md",
+    "specs/005-clave-mesa/"
+  ],
+  "depends_on": [],
+  "contracts": [
+    "docs/contracts/pilot.openapi.json"
+  ],
+  "requirements": [
+    "FR-001",
+    "FR-002",
+    "FR-004",
+    "FR-033"
+  ],
+  "acceptance": [
+    "AT-001",
+    "AT-002",
+    "AT-004",
+    "AT-036"
+  ],
+  "test_plan": [
+    "Navegador tablet 1024x768 y entrada bloqueada, clave permite pedir y pago total concluye; reusar pruebas de núcleo e idempotencia sin alterar reglas financieras."
+  ],
+  "permitted_effects": [
+    "documentation",
+    "local_files",
+    "dependency_downloads",
+    "local_processes",
+    "local_database",
+    "synthetic_data",
+    "simulated_providers"
+  ],
+  "output_path": "docs/construction/runs/2026-10-02-tablet-gate/delivery.json",
+  "shared_paths_grant": []
+}

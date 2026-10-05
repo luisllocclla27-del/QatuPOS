@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0.0",
+  "execution_id": "40f292bc-1a38-41e6-927a-90830e432e52",
+  "assignment_id": "21d99a38-f83d-4384-910e-50979d916d07",
+  "version": 1,
+  "package_id": "B01",
+  "work_kind": "specification",
+  "feature_directory": "specs/004-piloto-marisqueria",
+  "task_ids": [
+    "MAR:T003"
+  ],
+  "goal": "Cerrar contrato staff del primer flujo presencial completo reutilizando los conceptos del núcleo; tipos y validación antes de endpoints.",
+  "owner": "foundation-contracts",
+  "reviewer": "root",
+  "state": "ready_for_review",
+  "baseline": {
+    "kind": "file_hashes",
+    "identity": "working-tree-40f292bc-1a38-41e6-927a-90830e432e52",
+    "input_sha256": {
+      "AGENTS.md": "e929c0ccb45949c86118d6789b0f98c31c5b88d9e4a552eb9661870a62a2b86f",
+      "docs/SDD.md": "1c84c41e226dc5c5a320cfde0141c3b4858cccd031c223809251dafdc8da80d7",
+      ".specify/memory/constitution.md": "26b1a374b4c2102ccef7444a8d245216f285008207e14499e362e62910d7896e",
+      "docs/10-base-tecnica-y-layout.md": "92eb41f36f645cb897b3445aede23114bb458bc9f881ddb5c5e4a79fa794f07e",
+      "specs/004-piloto-marisqueria/spec.md": "2abf62df4a6a11c667365a764c3b9912ebcd943c2d4f279541780f2bf33c0764",
+      "specs/004-piloto-marisqueria/data-model.md": "db8eb46653be7396c9eb3c5618c77c00f2df25c362d74d03afc4bc713f1f389e",
+      "docs/contracts/commerce.openapi.json": "ba3d7174025637cb70f7b658766223a973edfe97cdbb2c6c67ebf0eec2b2fe0c"
+    }
+  },
+  "write_paths": [
+    "docs/contracts/pilot.openapi.json",
+    "packages/contracts/src/pos.ts",
+    "docs/decisions/pilot-contract.md"
+  ],
+  "read_paths": [
+    "AGENTS.md",
+    "docs/SDD.md",
+    ".specify/memory/constitution.md",
+    "docs/10-base-tecnica-y-layout.md",
+    "specs/004-piloto-marisqueria/spec.md",
+    "specs/004-piloto-marisqueria/data-model.md",
+    "docs/contracts/commerce.openapi.json"
+  ],
+  "depends_on": [],
+  "contracts": [
+    "docs/contracts/commerce.openapi.json"
+  ],
+  "requirements": [
+    "FR-001",
+    "FR-002",
+    "FR-004",
+    "FR-033"
+  ],
+  "acceptance": [
+    "AT-001",
+    "AT-002",
+    "AT-004",
+    "AT-036"
+  ],
+  "test_plan": [
+    "Validar contrato y tipos, ejecutar build y pruebas con evidencias independientes sobre base integrada."
+  ],
+  "permitted_effects": [
+    "documentation",
+    "local_files",
+    "dependency_downloads",
+    "local_processes",
+    "local_database",
+    "synthetic_data",
+    "simulated_providers"
+  ],
+  "output_path": "docs/construction/runs/40f292bc-1a38-41e6-927a-90830e432e52/deliveries/21d99a38-f83d-4384-910e-50979d916d07.json",
+  "shared_paths_grant": [
+    "docs/contracts/pilot.openapi.json",
+    "packages/contracts/src/pos.ts",
+    "docs/decisions/pilot-contract.md"
+  ]
+}

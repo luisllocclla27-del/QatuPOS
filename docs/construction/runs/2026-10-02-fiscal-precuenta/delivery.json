@@ -1,0 +1,37 @@
+{
+  "execution_id": "f5127d20-b461-419b-a0d4-1a3b98c991ee",
+  "assignment_id": "e83719b4-3a21-41b9-8e41-073b318ac2fa",
+  "state": "accepted",
+  "scope": "Pre-cuenta de consumo, emision de Boleta B001 y Factura F001 con estandar UBL 2.1, QR oficial SUNAT, Hash SHA-256 y visualizador/impresion de tickets termicos de 80mm",
+  "tests": {
+    "typecheck": "passed",
+    "build_final": "passed",
+    "unit_contract_api": 132,
+    "e2e": 9,
+    "planning_checks": 25
+  },
+  "source_sha256": {
+    "packages/contracts/src/pos.ts": "30b9dae2aeb5eb27a8dd61b7c15f63effdef94d5b8e6b49ef6c71f69b6df54c5",
+    "docs/contracts/pilot.openapi.json": "e3e1e7a0d027a7de03370766909be268941c6bbbe155654766cb422657cb420a",
+    "database/migrations/008_fiscal_documents.sql": "918dd72b6a6ceec72133d3838e368365118e0fc6e36e69be502593302bef2706",
+    "packages/domain/src/index.ts": "9a968df5674099c75d6bb96a02c24773998753092c177719e9c6653a8c96cd44",
+    "services/commerce/src/authority/repository.ts": "40f075514f38d993a0434dd9e619c7ccb3cb2d08cfbf1b6968c285c88cd82ce6",
+    "apps/pos/src/components/pos-app.tsx": "0a4a156b842ea75613c471139ddc803e35e85901788aeed514084c68db46c2b5",
+    "apps/pos/src/components/thermal-receipt-modal.tsx": "d3b7cb4c12bdbbac150c741d7caa8f4499b12b154ba91618cb8ea33bc56ad759",
+    "apps/pos/src/components/issue-fiscal-modal.tsx": "d337eff1f773c047856c9d9d53a55f4cc0b41abf628aed3fd47e2f7910a77059",
+    "apps/pos/src/app/globals.css": "3f67a276e7b676c666c3b2d7ebad0075ab38f7b792088f6696e55ce2f287d086",
+    "tests/e2e/zzzzz-fiscal.spec.ts": "206a6bc9cf5e016a4c9b4c64055337249762d590019a478ccf63d2f69a742ada",
+    "specs/008-facturacion-precuenta/spec.md": "1a31afb2642f6fe017121933d17dfa9b1172553198dc9ae6c7b6d3c489df7020",
+    "specs/008-facturacion-precuenta/plan.md": "69d889435c626d5425b809834a975391aab35c9b6b72d9abe169134f80e25558",
+    "specs/008-facturacion-precuenta/tasks.md": "e0f05f3977b4fb37004d634f6e8decce5898deedf6e40f3bab8f0d152ffb8690",
+    "specs/008-facturacion-precuenta/checklist.md": "bd810c6b2d6be3cd3f8af72c13831d6f31225065749b4d55eab42ae18556b117"
+  },
+  "evidence": [
+    "docs/evidence/fiscal-precuenta-delivery.md",
+    "docs/evidence/fiscal-precuenta-review.md",
+    "docs/evidence/CONTINUIDAD.md"
+  ],
+  "integral_feature_tasks_marked_complete": true,
+  "external_capabilities_accepted": false,
+  "checked_at_utc": "2026-10-02T21:20:00.000Z"
+}
