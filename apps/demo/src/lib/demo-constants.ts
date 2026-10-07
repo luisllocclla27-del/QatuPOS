@@ -119,3 +119,11 @@ export const DEMO_STAFF: DemoStaff[] = [
 export function formatMoney(cents: number): string {
   return `S/ ${(cents / 100).toFixed(2)}`;
 }
+
+/** Genera un PIN demo aleatorio con formato XXXXX-XXXXX */
+export function generateDemoPin(): string {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  const part = (n: number) => Array.from({ length: n }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+  return `${part(5)}-${part(5)}`;
+}
+
