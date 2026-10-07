@@ -12,7 +12,8 @@
     "jsx": "react-jsx",
     "paths": {
       "@qatu/contracts": ["./packages/contracts/src/pos.ts"],
-      "@qatu/domain": ["./packages/domain/src/index.ts"]
+      "@qatu/domain": ["./packages/domain/src/index.ts"],
+      "@/*": ["./apps/demo/src/*"]
     },
     "ignoreDeprecations": "6.0"
   },
