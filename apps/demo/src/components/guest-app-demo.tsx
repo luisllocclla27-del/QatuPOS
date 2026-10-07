@@ -11,6 +11,14 @@ import {
   type DemoProduct,
 } from '@/lib/demo-constants';
 import { createDemoBrowserClient } from '@/lib/supabase-browser';
+import { ResetBanner } from '@/components/reset-banner';
+import {
+  type CartItem,
+  type TaxBreakdown,
+  computeTaxBreakdown,
+  calculateCartTotal,
+  calculateCartItemCount,
+} from '@/lib/demo-cart';
 import {
   Search,
   ShoppingBag,
@@ -35,11 +43,8 @@ import Link from 'next/link';
 
 export type GuestPhase = 'welcome' | 'pin' | 'menu' | 'quote' | 'confirmed' | 'tracking';
 
-export interface CartItem {
-  product_id: string;
-  quantity: number;
-  note?: string;
-}
+export type { CartItem, TaxBreakdown };
+export { computeTaxBreakdown, calculateCartTotal, calculateCartItemCount };
 
 export interface OrderItem {
   name: string;
@@ -78,6 +83,7 @@ export function GuestAppDemo() {
   const [pinError, setPinError] = useState<string | null>(null);
   const [cart, setCart] = useState<CartItem[]>([]);
   const [orderItems, setOrderItems] = useState<OrderItem[]>([]);
+  const [lastPlacedItems, setLastPlacedItems] = useState<OrderItem[]>([]);
   const [quoteSecondsLeft, setQuoteSecondsLeft] = useState<number>(120); // 2 min countdown
   const [orderId, setOrderId] = useState<string>('');
   const [simulatedProgress, setSimulatedProgress] = useState<boolean>(true);
@@ -87,11 +93,25 @@ export function GuestAppDemo() {
   const timersRef = useRef<Set<ReturnType<typeof setTimeout>>>(new Set());
   const quoteIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
+  // Managed Supabase client and channels refs
+  const supabaseRef = useRef<ReturnType<typeof createDemoBrowserClient> | null>(null);
+  const channelsRef = useRef<Map<string, any>>(new Map());
+
   useEffect(() => {
     return () => {
       timersRef.current.forEach(clearTimeout);
       timersRef.current.clear();
       if (quoteIntervalRef.current) clearInterval(quoteIntervalRef.current);
+      if (supabaseRef.current) {
+        channelsRef.current.forEach(ch => {
+          try {
+            supabaseRef.current?.removeChannel(ch);
+          } catch {
+            // Ignore on unmount
+          }
+        });
+        channelsRef.current.clear();
+      }
     };
   }, []);
 
@@ -110,15 +130,16 @@ export function GuestAppDemo() {
 
   // Cart calculations
   const cartTotalCents = useMemo(() => {
-    return cart.reduce((total, item) => {
-      const prod = DEMO_PRODUCTS.find(p => p.id === item.product_id);
-      return total + (prod ? prod.price_cents * item.quantity : 0);
-    }, 0);
+    return calculateCartTotal(cart, DEMO_PRODUCTS);
   }, [cart]);
 
   const cartTotalItemsCount = useMemo(() => {
-    return cart.reduce((acc, item) => acc + item.quantity, 0);
+    return calculateCartItemCount(cart);
   }, [cart]);
+
+  const taxBreakdown = useMemo(() => {
+    return computeTaxBreakdown(cartTotalCents);
+  }, [cartTotalCents]);
 
   const updateCartQuantity = useCallback((productId: string, delta: number) => {
     setCart(prev => {
@@ -163,9 +184,11 @@ export function GuestAppDemo() {
     const demoPin = generateDemoPin();
     setPinInput(demoPin);
     setPinError(null);
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setPhase('menu');
+      timersRef.current.delete(timer);
     }, 300);
+    timersRef.current.add(timer);
   };
 
   // Start quote countdown when entering quote phase
@@ -190,89 +213,97 @@ export function GuestAppDemo() {
     }
   }, [phase]);
 
+  // Channel retrieval and registration
+  const getOrCreateChannel = useCallback((channelName: string) => {
+    if (
+      !process.env.NEXT_PUBLIC_SUPABASE_URL ||
+      !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+    ) {
+      return null;
+    }
+
+    if (!supabaseRef.current) {
+      try {
+        supabaseRef.current = createDemoBrowserClient();
+      } catch {
+        return null;
+      }
+    }
+
+    const supabase = supabaseRef.current;
+    if (!supabase) return null;
+
+    let channel = channelsRef.current.get(channelName);
+    if (!channel) {
+      channel = supabase.channel(channelName);
+      channelsRef.current.set(channelName, channel);
+    }
+    return channel;
+  }, []);
+
+  const sendBroadcast = useCallback(
+    async (channelName: string, event: string, payload: Record<string, unknown>) => {
+      try {
+        const channel = getOrCreateChannel(channelName);
+        if (!channel) return;
+
+        if (channel.state === 'joined') {
+          await channel.send({
+            type: 'broadcast',
+            event,
+            payload,
+          });
+        } else {
+          channel.subscribe(async (status: string) => {
+            if (status === 'SUBSCRIBED') {
+              await channel.send({
+                type: 'broadcast',
+                event,
+                payload,
+              });
+            }
+          });
+        }
+      } catch (err) {
+        console.warn('Realtime broadcast error:', err);
+      }
+    },
+    [getOrCreateChannel]
+  );
+
   // Realtime Broadcast when order is confirmed
   const broadcastOrderPlaced = useCallback(
     async (itemsToOrder: OrderItem[]) => {
-      try {
-        if (
-          !process.env.NEXT_PUBLIC_SUPABASE_URL ||
-          !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-        ) {
-          return;
-        }
+      // 1. Broadcast to salon map channel
+      await sendBroadcast('demo-tables', 'table-update', {
+        table_number: tableNumber,
+        status: 'active',
+        new_order: true,
+      });
 
-        const supabase = createDemoBrowserClient();
-
-        // 1. Broadcast to salon map channel
-        const salonChannel = supabase.channel('demo-tables');
-        salonChannel.subscribe(status => {
-          if (status === 'SUBSCRIBED') {
-            salonChannel.send({
-              type: 'broadcast',
-              event: 'table-update',
-              payload: {
-                table_number: tableNumber,
-                status: 'active',
-                new_order: true,
-              },
-            });
-          }
-        });
-
-        // 2. Broadcast to kitchen channel
-        const newOrderId = `ord-${Date.now().toString().slice(-4)}`;
-        const kdsChannel = supabase.channel('demo-kds');
-        kdsChannel.subscribe(status => {
-          if (status === 'SUBSCRIBED') {
-            kdsChannel.send({
-              type: 'broadcast',
-              event: 'new-kds-order',
-              payload: {
-                id: newOrderId,
-                table_number: tableNumber,
-                zone: currentTable.zone,
-                created_at: new Date().toISOString(),
-                source: 'guest',
-                items: itemsToOrder,
-              },
-            });
-          }
-        });
-      } catch (err) {
-        console.warn('Realtime broadcast bypassed or mock active:', err);
-      }
+      // 2. Broadcast to kitchen channel
+      const newOrderId = `ord-${Date.now().toString().slice(-4)}`;
+      await sendBroadcast('demo-kds', 'new-kds-order', {
+        id: newOrderId,
+        table_number: tableNumber,
+        zone: currentTable.zone,
+        created_at: new Date().toISOString(),
+        source: 'guest',
+        items: itemsToOrder,
+      });
     },
-    [tableNumber, currentTable.zone]
+    [tableNumber, currentTable.zone, sendBroadcast]
   );
 
   // Broadcast when requesting the bill
   const broadcastCallBill = useCallback(async () => {
     setWaiterCalled(true);
-    try {
-      if (
-        process.env.NEXT_PUBLIC_SUPABASE_URL &&
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-      ) {
-        const supabase = createDemoBrowserClient();
-        const salonChannel = supabase.channel('demo-tables');
-        salonChannel.subscribe(status => {
-          if (status === 'SUBSCRIBED') {
-            salonChannel.send({
-              type: 'broadcast',
-              event: 'table-update',
-              payload: {
-                table_number: tableNumber,
-                status: 'paying',
-                new_order: false,
-              },
-            });
-          }
-        });
-      }
-    } catch {
-      // Mock mode
-    }
-  }, [tableNumber]);
+    await sendBroadcast('demo-tables', 'table-update', {
+      table_number: tableNumber,
+      status: 'paying',
+      new_order: false,
+    });
+  }, [tableNumber, sendBroadcast]);
 
   // Confirm order action
   const handleConfirmOrder = () => {
@@ -293,7 +324,9 @@ export function GuestAppDemo() {
 
     const generatedId = `ORD-${Math.floor(1000 + Math.random() * 9000)}`;
     setOrderId(generatedId);
-    setOrderItems(newOrderItems);
+    setLastPlacedItems(newOrderItems);
+    setOrderItems(prev => [...prev, ...newOrderItems]);
+    setCart([]);
     setPhase('confirmed');
 
     // Fire Realtime broadcasts
@@ -311,29 +344,22 @@ export function GuestAppDemo() {
   useEffect(() => {
     if (phase !== 'tracking') return;
 
+    const trackingTimers: ReturnType<typeof setTimeout>[] = [];
+
     // Listen to real Supabase Realtime updates from Kitchen
     try {
-      if (
-        process.env.NEXT_PUBLIC_SUPABASE_URL &&
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-      ) {
-        const supabase = createDemoBrowserClient();
-        const trackingChannel = supabase
-          .channel('demo-kds')
-          .on('broadcast', { event: 'order-status-update' }, payload => {
-            const data = payload.payload as {
-              table_number: number;
-              status: OrderItem['status'];
-            };
-            if (data.table_number === tableNumber) {
-              setOrderItems(prev => prev.map(i => ({ ...i, status: data.status })));
-            }
-          })
-          .subscribe();
-
-        return () => {
-          supabase.removeChannel(trackingChannel);
-        };
+      const kdsChannel = getOrCreateChannel('demo-kds');
+      if (kdsChannel) {
+        kdsChannel.on('broadcast', { event: 'order-status-update' }, (payload: { payload: { table_number: number; status: OrderItem['status'] } }) => {
+          const data = payload?.payload;
+          if (data && data.table_number === tableNumber) {
+            setOrderItems(prev => prev.map(i => ({ ...i, status: data.status })));
+            setSimulatedProgress(false);
+          }
+        });
+        if (kdsChannel.state !== 'joined' && kdsChannel.state !== 'joining') {
+          kdsChannel.subscribe();
+        }
       }
     } catch {
       // Offline fallback
@@ -367,12 +393,20 @@ export function GuestAppDemo() {
         setOrderItems(prev => prev.map(item => ({ ...item, status: 'ready' })));
       }, 16000);
 
+      trackingTimers.push(step1Timer, step2Timer, step3Timer, step4Timer);
       timersRef.current.add(step1Timer);
       timersRef.current.add(step2Timer);
       timersRef.current.add(step3Timer);
       timersRef.current.add(step4Timer);
     }
-  }, [phase, simulatedProgress, tableNumber]);
+
+    return () => {
+      trackingTimers.forEach(t => {
+        clearTimeout(t);
+        timersRef.current.delete(t);
+      });
+    };
+  }, [phase, simulatedProgress, tableNumber, getOrCreateChannel]);
 
   // Overall status derived from order items
   const overallTrackingStatus = useMemo(() => {
@@ -393,8 +427,20 @@ export function GuestAppDemo() {
     <div className="min-h-screen bg-slate-900 flex justify-center selection:bg-brand-500 selection:text-white">
       {/* Mobile container centered on desktop */}
       <div className="w-full max-w-md bg-slate-50 min-h-screen flex flex-col shadow-2xl relative border-x border-slate-200/80">
+        {/* Top Reset Banner Bar */}
+        <div className="bg-slate-100/90 border-b border-slate-200/80 px-3 py-1.5 flex items-center justify-between text-xs sticky top-0 z-50">
+          <ResetBanner />
+          <Link
+            href="/salon"
+            className="text-[11px] text-slate-500 hover:text-slate-800 font-medium transition-colors bg-white hover:bg-slate-50 px-2 py-0.5 rounded-md border border-slate-200 shadow-2xs"
+            title="Volver a la vista del mozo"
+          >
+            Vista Mozo →
+          </Link>
+        </div>
+
         {/* App Bar / Header */}
-        <header className="bg-white/95 backdrop-blur-md border-b border-slate-200/80 px-4 py-3 sticky top-0 z-40 flex items-center justify-between">
+        <header className="bg-white/95 backdrop-blur-md border-b border-slate-200/80 px-4 py-3 sticky top-[37px] z-40 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
             <div className="w-9 h-9 bg-brand-50 rounded-xl flex items-center justify-center text-xl shadow-2xs border border-brand-100">
               🌊
@@ -412,13 +458,9 @@ export function GuestAppDemo() {
           </div>
 
           <div className="flex items-center gap-2">
-            <Link
-              href="/salon"
-              className="text-xs text-slate-400 hover:text-slate-600 bg-slate-100 hover:bg-slate-200 px-2.5 py-1 rounded-lg font-medium transition-colors"
-              title="Volver a la vista del mozo"
-            >
-              Mozo →
-            </Link>
+            <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-brand-50 text-brand-700 border border-brand-200/80">
+              QR Activo
+            </span>
           </div>
         </header>
 
@@ -787,16 +829,16 @@ export function GuestAppDemo() {
                   {/* Detalle fiscal resumido */}
                   <div className="pt-3 border-t border-slate-100 space-y-1.5 text-xs text-slate-500">
                     <div className="flex justify-between">
-                      <span>Subtotal</span>
-                      <span>{formatMoney(cartTotalCents)}</span>
+                      <span>Subtotal (Base Imponible)</span>
+                      <span>{formatMoney(taxBreakdown.subtotalCents)}</span>
                     </div>
                     <div className="flex justify-between text-[11px] text-slate-400">
                       <span>IGV (18% incluido)</span>
-                      <span>{formatMoney(Math.round(cartTotalCents * 0.18))}</span>
+                      <span>{formatMoney(taxBreakdown.igvCents)}</span>
                     </div>
                     <div className="flex justify-between text-sm font-extrabold text-slate-800 pt-1 border-t border-slate-100">
                       <span>Total estimado:</span>
-                      <span className="text-brand-700">{formatMoney(cartTotalCents)}</span>
+                      <span className="text-brand-700">{formatMoney(taxBreakdown.totalCents)}</span>
                     </div>
                   </div>
                 </div>
@@ -850,7 +892,7 @@ export function GuestAppDemo() {
                     Comanda en preparación:
                   </div>
                   <div className="space-y-1.5">
-                    {orderItems.map((item, idx) => (
+                    {(lastPlacedItems.length > 0 ? lastPlacedItems : orderItems).map((item, idx) => (
                       <div
                         key={idx}
                         className="flex items-center justify-between text-xs"
