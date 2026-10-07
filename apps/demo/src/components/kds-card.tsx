@@ -23,6 +23,19 @@ export function getUrgencyStatus(createdAt: string): { elapsed: number; urgency:
   return { elapsed, urgency };
 }
 
+export function isOrderCompleted(
+  target: { items: { status: 'pending' | 'preparing' | 'ready' }[] } | { status: 'pending' | 'preparing' | 'ready' }[]
+): boolean {
+  const items = Array.isArray(target) ? target : target.items;
+  return items.length > 0 && items.every(i => i.status === 'ready');
+}
+
+export function isOrderActive(
+  target: { items: { status: 'pending' | 'preparing' | 'ready' }[] } | { status: 'pending' | 'preparing' | 'ready' }[]
+): boolean {
+  return !isOrderCompleted(target);
+}
+
 export function KdsCard({
   order,
   onPreparing,

@@ -3,7 +3,13 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { KdsCard, type KdsOrder } from '@/components/kds-card';
+import {
+  KdsCard,
+  type KdsOrder,
+  getUrgencyStatus,
+  isOrderCompleted,
+  isOrderActive,
+} from '@/components/kds-card';
 import { ResetBanner } from '@/components/reset-banner';
 import { DEMO_PRODUCTS, DEMO_TABLES, DEMO_STAFF } from '@/lib/demo-constants';
 import { createDemoBrowserClient } from '@/lib/supabase-browser';
@@ -105,11 +111,27 @@ export default function CocinaPage() {
   const [filter, setFilter] = useState<'all' | 'guest' | 'staff'>('all');
   const [showCompleted, setShowCompleted] = useState<boolean>(false);
 
+  const soundEnabledRef = useRef<boolean>(true);
+  useEffect(() => {
+    soundEnabledRef.current = soundEnabled;
+  }, [soundEnabled]);
+
   const supabaseRef = useRef<ReturnType<typeof createDemoBrowserClient> | null>(null);
   const channelRef = useRef<any>(null);
   const alertTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const ordersRef = useRef<KdsOrder[]>([]);
   const completedOrdersRef = useRef<KdsOrder[]>([]);
+
+  // Dismissal tracking to prevent duplicate completions & track timers across unmount
+  const pendingDismissalsRef = useRef<Set<string>>(new Set());
+  const dismissTimersRef = useRef<Set<ReturnType<typeof setTimeout>>>(new Set());
+
+  useEffect(() => {
+    return () => {
+      dismissTimersRef.current.forEach(t => clearTimeout(t));
+      dismissTimersRef.current.clear();
+    };
+  }, []);
 
   useEffect(() => {
     ordersRef.current = orders;
@@ -178,7 +200,7 @@ export default function CocinaPage() {
       return [...prev, newOrder];
     });
 
-    if (soundEnabled) {
+    if (soundEnabledRef.current) {
       playKitchenBell();
     }
 
@@ -187,7 +209,12 @@ export default function CocinaPage() {
     alertTimerRef.current = setTimeout(() => {
       setNewOrderAlert(null);
     }, 4500);
-  }, [soundEnabled]);
+  }, []);
+
+  const handleIncomingOrderRef = useRef(handleIncomingOrder);
+  useEffect(() => {
+    handleIncomingOrderRef.current = handleIncomingOrder;
+  });
 
   // Load initial orders and subscribe to Realtime
   useEffect(() => {
@@ -235,12 +262,8 @@ export default function CocinaPage() {
             });
 
             if (loaded.length > 0) {
-              const activeTickets = loaded.filter(
-                o => o.items.length === 0 || o.items.some(i => i.status !== 'ready')
-              );
-              const finishedTickets = loaded.filter(
-                o => o.items.length > 0 && o.items.every(i => i.status === 'ready')
-              );
+              const activeTickets = loaded.filter(isOrderActive);
+              const finishedTickets = loaded.filter(isOrderCompleted);
 
               setOrders(activeTickets);
               setCompletedOrders(finishedTickets.slice(0, 10));
@@ -277,7 +300,7 @@ export default function CocinaPage() {
           .on('broadcast', { event: 'new-kds-order' }, (payload: { payload: KdsOrder }) => {
             const data = payload?.payload;
             if (data && data.id) {
-              handleIncomingOrder(data);
+              handleIncomingOrderRef.current(data);
             }
           })
           .subscribe((status: string) => {
@@ -300,7 +323,7 @@ export default function CocinaPage() {
     return () => {
       if (alertTimerRef.current) clearTimeout(alertTimerRef.current);
     };
-  }, [handleIncomingOrder]);
+  }, []);
 
   // Actions
   const handlePreparing = useCallback(async (orderId: string) => {
@@ -346,8 +369,14 @@ export default function CocinaPage() {
   }, [orders, sendBroadcast]);
 
   const handleReady = useCallback(async (orderId: string) => {
+    if (pendingDismissalsRef.current.has(orderId)) return;
+    pendingDismissalsRef.current.add(orderId);
+
     const targetOrder = orders.find(o => o.id === orderId);
-    if (!targetOrder) return;
+    if (!targetOrder) {
+      pendingDismissalsRef.current.delete(orderId);
+      return;
+    }
 
     // Mark items ready in local state
     setOrders(prev =>
@@ -387,19 +416,28 @@ export default function CocinaPage() {
     }
 
     // After 800ms, smoothly slide out the card and record as completed
-    setTimeout(() => {
+    const timerId = setTimeout(() => {
+      dismissTimersRef.current.delete(timerId);
+      pendingDismissalsRef.current.delete(orderId);
+
       setOrders(prev => prev.filter(o => o.id !== orderId));
-      setCompletedOrders(prev => [
-        {
-          ...targetOrder,
-          items: targetOrder.items.map(i => ({ ...i, status: 'ready' })),
-        },
-        ...prev.slice(0, 7),
-      ]);
+      setCompletedOrders(prev => {
+        if (prev.some(o => o.id === targetOrder.id)) return prev;
+        return [
+          {
+            ...targetOrder,
+            items: targetOrder.items.map(i => ({ ...i, status: 'ready' })),
+          },
+          ...prev.filter(o => o.id !== targetOrder.id).slice(0, 7),
+        ];
+      });
     }, 800);
+
+    dismissTimersRef.current.add(timerId);
   }, [orders, sendBroadcast]);
 
   const handleRecoverOrder = useCallback((order: KdsOrder) => {
+    pendingDismissalsRef.current.delete(order.id);
     setCompletedOrders(prev => prev.filter(o => o.id !== order.id));
     setOrders(prev => [
       ...prev,
@@ -448,10 +486,7 @@ export default function CocinaPage() {
   // Metrics
   const activeCount = orders.length;
   const preparingCount = orders.filter(o => o.items.some(i => i.status === 'preparing')).length;
-  const urgentCount = orders.filter(o => {
-    const elapsed = Math.floor((Date.now() - new Date(o.created_at).getTime()) / 60000);
-    return elapsed >= 15;
-  }).length;
+  const urgentCount = orders.filter(o => getUrgencyStatus(o.created_at).urgency === 'red').length;
 
   const chefStaff = DEMO_STAFF.find(s => s.role === 'kitchen') || { name: 'José Mamani', username: 'chef.pepe' };
 
