@@ -11,6 +11,7 @@ import {
   ResponsiveContainer,
   Cell,
 } from 'recharts';
+import { formatMoney } from '../lib/demo-constants';
 
 export interface SalesHourPoint {
   hour: string;
@@ -27,7 +28,7 @@ export const DEMO_SALES_DATA: SalesHourPoint[] = [
   { hour: '4pm',  sales: 780 },
   { hour: '5pm',  sales: 620 },
   { hour: '6pm',  sales: 480 },
-  { hour: '7pm',  sales: 230 },
+  { hour: '7pm',  sales: 250 },
 ];
 
 interface SalesChartProps {
@@ -59,7 +60,7 @@ export function SalesChart({
         </div>
         <div className="text-right">
           <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Total en Gráfico</div>
-          <div className="text-lg font-extrabold text-brand-700">S/ {totalSales.toLocaleString('es-PE')}</div>
+          <div className="text-lg font-extrabold text-brand-700">{formatMoney(totalSales * 100)}</div>
         </div>
       </div>
 
@@ -78,10 +79,10 @@ export function SalesChart({
                 tick={{ fontSize: 11, fill: '#64748b' }}
                 axisLine={false}
                 tickLine={false}
-                tickFormatter={(v) => `S/ ${v}`}
+                tickFormatter={(v) => `S/ ${Number(v).toFixed(2)}`}
               />
               <Tooltip
-                formatter={(v: any) => [`S/ ${v}`, 'Ventas facturadas']}
+                formatter={(v: any) => [`S/ ${Number(v).toFixed(2)}`, 'Ventas facturadas']}
                 labelFormatter={(label) => `Hora: ${label}`}
                 contentStyle={{
                   backgroundColor: '#0f172a',
@@ -113,7 +114,7 @@ export function SalesChart({
       <div className="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
         <div className="flex items-center gap-1.5">
           <span className="w-2.5 h-2.5 rounded-full bg-brand-600 inline-block" />
-          <span>Pico máximo: <strong>2:00pm (S/ {maxSale})</strong></span>
+          <span>Pico máximo: <strong>2:00pm ({formatMoney(maxSale * 100)})</strong></span>
         </div>
         <span className="text-[11px] text-slate-400">Actualizado con cierres de comanda</span>
       </div>

@@ -3,20 +3,14 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  TrendingUp,
   AlertTriangle,
   CheckCircle2,
   Clock,
-  DollarSign,
   Users,
-  UtensilsCrossed,
-  ArrowUpRight,
-  ShieldAlert,
   Smartphone,
   CreditCard,
   Banknote,
   QrCode,
-  Flame,
 } from 'lucide-react';
 import { KpiCard } from './kpi-card';
 import { SalesChart } from './sales-chart';
@@ -25,6 +19,7 @@ import {
   type DemoTableStatus,
   type DemoZone,
   STATUS_COLORS,
+  formatMoney,
 } from '@/lib/demo-constants';
 import { createDemoBrowserClient } from '@/lib/supabase-browser';
 
@@ -72,7 +67,7 @@ interface TopTable {
   number: number;
   zone: DemoZone;
   seats: number;
-  totalSpent: number;
+  totalSpentCents: number;
   featuredDishes: string;
   status: DemoTableStatus;
 }
@@ -82,7 +77,7 @@ const TOP_TABLES_DATA: TopTable[] = [
     number: 33,
     zone: 'Zona VIP',
     seats: 8,
-    totalSpent: 485,
+    totalSpentCents: 48500,
     featuredDishes: 'Parrilla Mixta ×2, Cervezas ×6, Suspiro',
     status: 'active',
   },
@@ -90,7 +85,7 @@ const TOP_TABLES_DATA: TopTable[] = [
     number: 2,
     zone: 'Zona Laguna',
     seats: 6,
-    totalSpent: 340,
+    totalSpentCents: 34000,
     featuredDishes: 'Ceviches Mixtos ×3, Limonada Frozen ×2',
     status: 'paying',
   },
@@ -98,7 +93,7 @@ const TOP_TABLES_DATA: TopTable[] = [
     number: 7,
     zone: 'Zona Laguna',
     seats: 5,
-    totalSpent: 295,
+    totalSpentCents: 29500,
     featuredDishes: 'Tacu Tacu con Lomo ×2, Chicha Morada ×2',
     status: 'active',
   },
@@ -106,7 +101,7 @@ const TOP_TABLES_DATA: TopTable[] = [
     number: 14,
     zone: 'Zona Jardín',
     seats: 6,
-    totalSpent: 260,
+    totalSpentCents: 26000,
     featuredDishes: 'Costillar BBQ ×2, Inca Kola 1.5L',
     status: 'active',
   },
@@ -114,7 +109,7 @@ const TOP_TABLES_DATA: TopTable[] = [
     number: 1,
     zone: 'Zona Laguna',
     seats: 4,
-    totalSpent: 215,
+    totalSpentCents: 21500,
     featuredDishes: 'Ceviche Clásico ×2, Picarones ×2',
     status: 'active',
   },
@@ -145,9 +140,9 @@ export function DashboardOwner() {
         const supabase = createDemoBrowserClient();
 
         const tablesChannel = supabase
-          .channel('demo-dashboard-tables')
+          .channel('demo-tables')
           .on('broadcast', { event: 'table-update' }, (payload) => {
-            const { table_number, status, new_order } = payload.payload as {
+            const { table_number, status } = payload.payload as {
               table_number: number;
               status: DemoTableStatus;
               new_order?: boolean;
@@ -156,44 +151,30 @@ export function DashboardOwner() {
             setTablesState(prev =>
               prev.map(t => (t.number === table_number ? { ...t, status } : t))
             );
-
-            if (new_order) {
-              setActiveOrdersCount(count => count + 1);
-              setTotalOrdersCount(count => count + 1);
-              setTodaySalesCents(cents => cents + 4800); // S/ 48.00 avg increment
-
-              setAlerts(prev => [
-                {
-                  id: `alt-${Date.now()}`,
-                  type: 'info',
-                  message: `Mesa ${table_number}: Nuevo pedido QR confirmado y enviado a Cocina`,
-                  time: 'Ahora mismo',
-                },
-                ...prev.slice(0, 7),
-              ]);
-            }
           })
           .subscribe((status: string) => {
             setIsLiveConnected(status === 'SUBSCRIBED');
           });
 
         const kdsChannel = supabase
-          .channel('demo-dashboard-kds')
+          .channel('demo-kds')
           .on('broadcast', { event: 'new-kds-order' }, (payload: any) => {
             setActiveOrdersCount(count => count + 1);
             setTotalOrdersCount(count => count + 1);
+            setTodaySalesCents(cents => cents + 4800); // S/ 48.00 avg increment
+
             const tableNum = payload?.payload?.table_number;
-            if (tableNum) {
-              setAlerts(prev => [
-                {
-                  id: `alt-${Date.now()}`,
-                  type: 'info',
-                  message: `Mesa ${tableNum}: Nueva comanda en preparación por cocina`,
-                  time: 'Ahora mismo',
-                },
-                ...prev.slice(0, 7),
-              ]);
-            }
+            setAlerts(prev => [
+              {
+                id: `alt-${Date.now()}`,
+                type: 'info',
+                message: tableNum
+                  ? `Mesa ${tableNum}: Nueva comanda en preparación por cocina`
+                  : 'Nueva comanda recibida en cocina',
+                time: 'Ahora mismo',
+              },
+              ...prev.slice(0, 7),
+            ]);
           })
           .on('broadcast', { event: 'order-status-update' }, (payload: any) => {
             if (payload?.payload?.status === 'ready') {
@@ -214,6 +195,7 @@ export function DashboardOwner() {
 
   // Cycle alerts ticker
   useEffect(() => {
+    if (alerts.length === 0) return;
     const interval = setInterval(() => {
       setCurrentAlertIndex(prev => (prev + 1) % alerts.length);
     }, 4500);
@@ -228,9 +210,9 @@ export function DashboardOwner() {
   const alertCount = tablesState.filter(t => t.status === 'alert').length;
 
   const occupancyRate = Math.round((occupiedCount / tablesState.length) * 100);
-  const avgTicketSoles = (todaySalesCents / 100 / totalOrdersCount).toFixed(2);
+  const avgTicketCents = totalOrdersCount > 0 ? Math.round(todaySalesCents / totalOrdersCount) : 0;
 
-  const activeAlert = alerts[currentAlertIndex] || alerts[0];
+  const activeAlert = alerts.length > 0 ? (alerts[currentAlertIndex] || alerts[0]) : null;
 
   return (
     <div className="space-y-6">
@@ -242,27 +224,29 @@ export function DashboardOwner() {
             Alertas Inteligentes
           </div>
           <AnimatePresence mode="wait">
-            <motion.div
-              key={activeAlert.id}
-              initial={{ y: 15, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -15, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="text-sm font-medium truncate flex items-center gap-2"
-            >
-              {activeAlert.type === 'alert' && <AlertTriangle className="w-4 h-4 text-red-400 shrink-0" />}
-              {activeAlert.type === 'warning' && <Clock className="w-4 h-4 text-amber-400 shrink-0" />}
-              {activeAlert.type === 'success' && <CheckCircle2 className="w-4 h-4 text-green-400 shrink-0" />}
-              {activeAlert.type === 'info' && <Smartphone className="w-4 h-4 text-blue-400 shrink-0" />}
-              <span className="text-slate-100">{activeAlert.message}</span>
-              <span className="text-xs text-slate-400 shrink-0">({activeAlert.time})</span>
-            </motion.div>
+            {activeAlert && (
+              <motion.div
+                key={activeAlert.id}
+                initial={{ y: 15, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -15, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="text-sm font-medium truncate flex items-center gap-2"
+              >
+                {activeAlert.type === 'alert' && <AlertTriangle className="w-4 h-4 text-red-400 shrink-0" />}
+                {activeAlert.type === 'warning' && <Clock className="w-4 h-4 text-amber-400 shrink-0" />}
+                {activeAlert.type === 'success' && <CheckCircle2 className="w-4 h-4 text-green-400 shrink-0" />}
+                {activeAlert.type === 'info' && <Smartphone className="w-4 h-4 text-blue-400 shrink-0" />}
+                <span className="text-slate-100">{activeAlert.message}</span>
+                <span className="text-xs text-slate-400 shrink-0">({activeAlert.time})</span>
+              </motion.div>
+            )}
           </AnimatePresence>
         </div>
 
         <div className="flex items-center gap-2 shrink-0">
           <div className="text-xs text-slate-400 font-mono hidden sm:block">
-            {currentAlertIndex + 1} / {alerts.length}
+            {alerts.length > 0 ? `${currentAlertIndex + 1} / ${alerts.length}` : '0 / 0'}
           </div>
           <div className="flex items-center gap-1.5 text-[11px] text-slate-400 bg-slate-800/80 px-2.5 py-1 rounded-lg">
             <span className={`w-2 h-2 rounded-full ${isLiveConnected ? 'bg-green-400 animate-pulse' : 'bg-brand-400'}`} />
@@ -276,7 +260,7 @@ export function DashboardOwner() {
         <KpiCard
           emoji="💰"
           label="Ventas del Día"
-          value={`S/ ${(todaySalesCents / 100).toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}
+          value={formatMoney(todaySalesCents)}
           sublabel="Meta del turno: S/ 8,500.00 (89% lograda)"
           trend="up"
           trendText="↑ +18% vs domingo ant."
@@ -292,7 +276,7 @@ export function DashboardOwner() {
         <KpiCard
           emoji="🎯"
           label="Ticket Promedio"
-          value={`S/ ${avgTicketSoles}`}
+          value={formatMoney(avgTicketCents)}
           sublabel="+S/ 4.80 adicional por adiciones QR"
           trend="up"
           trendText="↑ +5.2% vs semana"
@@ -337,7 +321,7 @@ export function DashboardOwner() {
                   </span>
                   <span className="font-medium text-emerald-700">41.0%</span>
                 </div>
-                <div className="text-lg font-extrabold text-slate-800">S/ 3,120.00</div>
+                <div className="text-lg font-extrabold text-slate-800">{formatMoney(312000)}</div>
                 <div className="w-full bg-slate-200 h-1.5 rounded-full mt-2 overflow-hidden">
                   <div className="bg-emerald-500 h-full rounded-full" style={{ width: '41%' }} />
                 </div>
@@ -352,7 +336,7 @@ export function DashboardOwner() {
                   </span>
                   <span className="font-medium">37.5%</span>
                 </div>
-                <div className="text-lg font-extrabold text-purple-950">S/ 2,850.00</div>
+                <div className="text-lg font-extrabold text-purple-950">{formatMoney(285000)}</div>
                 <div className="w-full bg-purple-200/60 h-1.5 rounded-full mt-2 overflow-hidden">
                   <div className="bg-purple-600 h-full rounded-full" style={{ width: '37.5%' }} />
                 </div>
@@ -367,7 +351,7 @@ export function DashboardOwner() {
                   </span>
                   <span className="font-medium">21.5%</span>
                 </div>
-                <div className="text-lg font-extrabold text-blue-950">S/ 1,630.00</div>
+                <div className="text-lg font-extrabold text-blue-950">{formatMoney(163000)}</div>
                 <div className="w-full bg-blue-200/60 h-1.5 rounded-full mt-2 overflow-hidden">
                   <div className="bg-blue-600 h-full rounded-full" style={{ width: '21.5%' }} />
                 </div>
@@ -377,7 +361,7 @@ export function DashboardOwner() {
             <div className="bg-slate-50 p-3 rounded-xl border border-slate-200/60 flex items-center justify-between text-xs text-slate-600">
               <span className="font-medium">Total en arqueo auditado:</span>
               <span className="font-mono font-bold text-slate-800 text-sm">
-                S/ {(3120 + 2850 + 1630).toLocaleString('es-PE', { minimumFractionDigits: 2 })}
+                {formatMoney(312000 + 285000 + 163000)}
               </span>
             </div>
           </div>
@@ -527,7 +511,7 @@ export function DashboardOwner() {
                     </span>
                   </td>
                   <td className="py-3.5 text-right font-extrabold text-slate-900 font-mono">
-                    S/ {row.totalSpent.toFixed(2)}
+                    {formatMoney(row.totalSpentCents)}
                   </td>
                   <td className="py-3.5 text-center">
                     <span

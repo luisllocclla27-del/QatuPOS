@@ -4,27 +4,16 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   TrendingUp,
-  ShieldCheck,
-  Zap,
-  Server,
   CheckCircle2,
-  Users,
   Target,
-  BarChart3,
-  DollarSign,
   ArrowRight,
   Send,
   MessageCircle,
   Mail,
-  Building2,
   X,
   Sparkles,
   Globe,
-  Award,
-  Layers,
-  Clock,
 } from 'lucide-react';
-import { KpiCard } from './kpi-card';
 
 export function DashboardInvestor() {
   const [isModalOpen, setIsModalOpen] = useState(false);

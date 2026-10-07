@@ -7,12 +7,9 @@ import { DashboardOwner } from '@/components/dashboard-owner';
 import { DashboardInvestor } from '@/components/dashboard-investor';
 import { ResetBanner } from '@/components/reset-banner';
 import {
-  UserCheck,
-  TrendingUp,
   Store,
   ChefHat,
   Smartphone,
-  ExternalLink,
 } from 'lucide-react';
 
 export default function DashboardPage() {
