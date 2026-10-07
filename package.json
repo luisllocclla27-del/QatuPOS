@@ -18,6 +18,8 @@
     "test:api": "vitest run tests/integration/api.test.ts",
     "test:e2e": "playwright test",
     "build": "pnpm --filter @qatu/pos build",
+    "build:demo": "pnpm --filter @qatu/demo build",
+    "seed:demo": "tsx scripts/demo/seed.ts",
     "lint": "tsc --noEmit",
     "validate:sdd": "\"..\\.venv-sdd\\Scripts\\python.exe\" scripts/validate-planning.py",
     "operational:bootstrap": "tsx scripts/operational/bootstrap.ts",

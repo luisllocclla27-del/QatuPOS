@@ -1,0 +1,13 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "nextjs",
+  "installCommand": "corepack pnpm install --frozen-lockfile",
+  "buildCommand": "corepack pnpm --filter @qatu/demo build",
+  "outputDirectory": "apps/demo/.next",
+  "crons": [
+    {
+      "path": "/api/demo/reset",
+      "schedule": "*/30 * * * *"
+    }
+  ]
+}
