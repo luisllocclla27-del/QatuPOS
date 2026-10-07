@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { DEMO_TABLES, type DemoTableStatus, STATUS_COLORS } from '@/lib/demo-constants';
 import { createDemoBrowserClient } from '@/lib/supabase-browser';
@@ -12,15 +12,24 @@ export interface TableState {
 }
 
 export interface SalonMapProps {
-  onSelectTable: (n: number) => void;
+  onSelectTable: (n: number, status: DemoTableStatus) => void;
   selectedTable?: number | null;
   onNewOrder?: (tableNumber: number) => void;
+  onTableUpdate?: (tableNumber: number, status: DemoTableStatus) => void;
 }
 
-export function SalonMap({ onSelectTable, selectedTable, onNewOrder }: SalonMapProps) {
+export function SalonMap({ onSelectTable, selectedTable, onNewOrder, onTableUpdate }: SalonMapProps) {
   const [tables, setTables] = useState<TableState[]>(
     DEMO_TABLES.map(t => ({ number: t.number, status: t.initial_status, hasNewOrder: false }))
   );
+  const timersRef = useRef<Set<ReturnType<typeof setTimeout>>>(new Set());
+
+  useEffect(() => {
+    return () => {
+      timersRef.current.forEach(clearTimeout);
+      timersRef.current.clear();
+    };
+  }, []);
 
   useEffect(() => {
     try {
@@ -43,13 +52,18 @@ export function SalonMap({ onSelectTable, selectedTable, onNewOrder }: SalonMapP
               ? { ...t, status: status || t.status, hasNewOrder: Boolean(new_order) }
               : t
           ));
+          if (status) {
+            onTableUpdate?.(table_number, status);
+          }
           if (new_order) {
             onNewOrder?.(table_number);
-            setTimeout(() => {
+            const timer = setTimeout(() => {
               setTables(prev => prev.map(t =>
                 t.number === table_number ? { ...t, hasNewOrder: false } : t
               ));
+              timersRef.current.delete(timer);
             }, 3000);
+            timersRef.current.add(timer);
           }
         })
         .subscribe();
@@ -60,7 +74,7 @@ export function SalonMap({ onSelectTable, selectedTable, onNewOrder }: SalonMapP
     } catch {
       // Supabase credentials might not be configured in mock/test environment
     }
-  }, [onNewOrder]);
+  }, [onNewOrder, onTableUpdate]);
 
   const zones = ['Zona Laguna', 'Zona Jardín', 'Zona Techada', 'Zona VIP'] as const;
 
@@ -84,7 +98,7 @@ export function SalonMap({ onSelectTable, selectedTable, onNewOrder }: SalonMapP
                     key={table.number}
                     animate={table.hasNewOrder ? { scale: [1, 1.2, 1] } : {}}
                     transition={{ duration: 0.4 }}
-                    onClick={() => onSelectTable(table.number)}
+                    onClick={() => onSelectTable(table.number, table.status)}
                     className={`relative w-12 h-12 rounded-xl flex items-center justify-center text-white text-sm font-bold shadow transition-all hover:scale-105 active:scale-95 cursor-pointer ${
                       isSelected
                         ? 'ring-4 ring-brand-500 ring-offset-2 scale-105 shadow-md'

@@ -1,33 +1,47 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SalonMap } from '@/components/salon-map';
 import { TablePanel } from '@/components/table-panel';
 import { ResetBanner } from '@/components/reset-banner';
-import { generateDemoPin } from '@/lib/demo-constants';
+import { generateDemoPin, type DemoTableStatus } from '@/lib/demo-constants';
 import Link from 'next/link';
 
-export { generateDemoPin };
-
 export default function SalonPage() {
-  const [selectedTable, setSelectedTable] = useState<number | null>(null);
+  const [selectedTable, setSelectedTable] = useState<{ number: number; status: DemoTableStatus } | null>(null);
   const [pin, setPin] = useState<string | null>(null);
   const [showPinModal, setShowPinModal] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const toastTimersRef = useRef<Set<ReturnType<typeof setTimeout>>>(new Set());
+
+  useEffect(() => {
+    return () => {
+      toastTimersRef.current.forEach(clearTimeout);
+      toastTimersRef.current.clear();
+    };
+  }, []);
 
   const handleActivateQR = useCallback(() => {
     setPin(generateDemoPin());
     setShowPinModal(true);
   }, []);
 
+  const handleTableUpdate = useCallback((tableNumber: number, status: DemoTableStatus) => {
+    setSelectedTable(prev =>
+      prev && prev.number === tableNumber ? { ...prev, status } : prev
+    );
+  }, []);
+
   const handleNewOrder = useCallback((tableNumber: number) => {
     setToastMessage(`Mesa ${tableNumber} acaba de enviar un nuevo pedido por QR.`);
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setToastMessage(prev =>
         prev?.includes(`Mesa ${tableNumber}`) ? null : prev
       );
+      toastTimersRef.current.delete(timer);
     }, 5000);
+    toastTimersRef.current.add(timer);
   }, []);
 
   return (
@@ -79,9 +93,10 @@ export default function SalonPage() {
           </div>
 
           <SalonMap
-            onSelectTable={setSelectedTable}
-            selectedTable={selectedTable}
+            onSelectTable={(tableNumber, status) => setSelectedTable({ number: tableNumber, status })}
+            selectedTable={selectedTable?.number ?? null}
             onNewOrder={handleNewOrder}
+            onTableUpdate={handleTableUpdate}
           />
         </main>
 
@@ -89,7 +104,8 @@ export default function SalonPage() {
         <AnimatePresence>
           {selectedTable !== null && (
             <TablePanel
-              tableNumber={selectedTable}
+              tableNumber={selectedTable.number}
+              tableStatus={selectedTable.status}
               onClose={() => setSelectedTable(null)}
               onActivateQR={handleActivateQR}
             />
@@ -116,7 +132,7 @@ export default function SalonPage() {
             >
               <div className="text-5xl mb-4">🔑</div>
               <h3 className="font-bold text-2xl text-slate-800 mb-2">
-                Clave de Mesa {selectedTable}
+                Clave de Mesa {selectedTable?.number}
               </h3>
               <p className="text-slate-500 text-sm mb-6">
                 Entrégala verbalmente al comensal para que pueda ordenar
@@ -159,7 +175,11 @@ export default function SalonPage() {
               <div className="text-xs text-slate-300">{toastMessage}</div>
             </div>
             <button
-              onClick={() => setToastMessage(null)}
+              onClick={() => {
+                setToastMessage(null);
+                toastTimersRef.current.forEach(clearTimeout);
+                toastTimersRef.current.clear();
+              }}
               className="text-slate-400 hover:text-white text-sm p-1 ml-2 transition-colors cursor-pointer"
               aria-label="Cerrar notificación"
             >

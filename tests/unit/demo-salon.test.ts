@@ -1,3 +1,5 @@
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { generateDemoPin } from '../../apps/demo/src/lib/demo-constants';
 import { DEMO_TABLES, STATUS_COLORS } from '../../apps/demo/src/lib/demo-constants';
@@ -60,6 +62,16 @@ describe('Salon View & Mozo QR Flow (/salon)', () => {
         o.visit_id.endsWith(String(13).padStart(12, '0'))
       );
       expect(t13Orders.length).toBeGreaterThan(0);
+    });
+  });
+
+  describe('Salon Route Exports Cleanliness', () => {
+    it('does not export named utility exports from page.tsx route entrypoint', () => {
+      const pagePath = resolve(__dirname, '../../apps/demo/src/app/salon/page.tsx');
+      const pageContent = readFileSync(pagePath, 'utf-8');
+      expect(pageContent).not.toMatch(/export\s*\{\s*generateDemoPin\s*\}/);
+      expect(pageContent).not.toMatch(/export\s+const\s+generateDemoPin/);
+      expect(pageContent).toMatch(/export\s+default\s+function\s+SalonPage/);
     });
   });
 });
