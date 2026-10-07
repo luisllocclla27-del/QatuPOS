@@ -1,42 +1,46 @@
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import type { KdsOrder } from '../../apps/demo/src/components/kds-card';
+import {
+  type KdsOrder,
+  type KdsUrgency,
+  getUrgencyStatus,
+  elapsedMinutes,
+} from '../../apps/demo/src/components/kds-card';
 import { INITIAL_DEMO_STATE } from '../../apps/demo/src/lib/demo-seed';
 import { DEMO_TABLES } from '../../apps/demo/src/lib/demo-constants';
 
 describe('KDS Cocina en Tiempo Real (/cocina)', () => {
   describe('KdsOrder Interface and Urgency Calculation Logic', () => {
-    function computeUrgency(createdAt: string): { elapsed: number; urgency: 'green' | 'amber' | 'red' } {
-      const elapsed = Math.max(0, Math.floor((Date.now() - new Date(createdAt).getTime()) / 60000));
-      const urgency = elapsed >= 15 ? 'red' : elapsed >= 10 ? 'amber' : 'green';
-      return { elapsed, urgency };
-    }
+    it('calculates elapsed minutes accurately with elapsedMinutes', () => {
+      const pastTime = new Date(Date.now() - 7 * 60000).toISOString();
+      expect(elapsedMinutes(pastTime)).toBe(7);
+    });
 
     it('identifies order urgency as green when elapsed time is under 10 minutes', () => {
       const recent = new Date(Date.now() - 5 * 60000).toISOString();
-      const { elapsed, urgency } = computeUrgency(recent);
+      const { elapsed, urgency } = getUrgencyStatus(recent);
       expect(elapsed).toBe(5);
       expect(urgency).toBe('green');
     });
 
     it('identifies order urgency as amber when elapsed time is between 10 and 14 minutes', () => {
       const amberOrder = new Date(Date.now() - 12 * 60000).toISOString();
-      const { elapsed, urgency } = computeUrgency(amberOrder);
+      const { elapsed, urgency } = getUrgencyStatus(amberOrder);
       expect(elapsed).toBe(12);
       expect(urgency).toBe('amber');
     });
 
     it('identifies order urgency as red when elapsed time is 15 minutes or more', () => {
       const delayedOrder = new Date(Date.now() - 20 * 60000).toISOString();
-      const { elapsed, urgency } = computeUrgency(delayedOrder);
+      const { elapsed, urgency } = getUrgencyStatus(delayedOrder);
       expect(elapsed).toBe(20);
       expect(urgency).toBe('red');
     });
 
     it('safely handles future or identical timestamps without negative minutes', () => {
       const futureOrder = new Date(Date.now() + 10000).toISOString();
-      const { elapsed, urgency } = computeUrgency(futureOrder);
+      const { elapsed, urgency } = getUrgencyStatus(futureOrder);
       expect(elapsed).toBe(0);
       expect(urgency).toBe('green');
     });
@@ -99,6 +103,8 @@ describe('KDS Cocina en Tiempo Real (/cocina)', () => {
       expect(content).toContain("'use client'");
       expect(content).toContain('export function KdsCard');
       expect(content).toContain('export interface KdsOrder');
+      expect(content).toContain('export function elapsedMinutes');
+      expect(content).toContain('export function getUrgencyStatus');
       expect(content).toContain('📱 QR');
       expect(content).toContain('Preparando');
       expect(content).toContain('✓ Listo');
@@ -119,15 +125,42 @@ describe('KDS Cocina en Tiempo Real (/cocina)', () => {
       expect(content).toContain('new-kds-order');
       expect(content).toContain('order-status-update');
       expect(content).toContain('TV Display');
+      expect(content).toContain('[DEMO]');
+      expect(content).toContain('+ Simular Pedido QR');
+      expect(content).toContain('setCompletedOrders(finishedTickets.slice(0, 10))');
+      expect(content).toContain('ordersRef.current.some');
     });
 
-    it('ensures /api/demo/kds/route.ts exists for background state persistence', () => {
+    it('ensures /api/demo/kds/route.ts exists for background state persistence including preparing state', () => {
       const filePath = resolve(__dirname, '../../apps/demo/src/app/api/demo/kds/route.ts');
       const content = readFileSync(filePath, 'utf-8');
 
       expect(content).toContain('export async function POST');
       expect(content).toContain('branch_state');
       expect(content).toContain('prepared_quantity');
+      expect(content).toContain("status === 'preparing'");
+      expect(content).toContain("status === 'ready'");
+    });
+
+    it('correctly distinguishes fully completed orders from active tickets', () => {
+      const isCompletedOrder = (items: { status: 'pending' | 'preparing' | 'ready' }[]) =>
+        items.length > 0 && items.every(i => i.status === 'ready');
+
+      expect(isCompletedOrder([
+        { status: 'ready' },
+        { status: 'ready' },
+      ])).toBe(true);
+
+      expect(isCompletedOrder([
+        { status: 'ready' },
+        { status: 'preparing' },
+      ])).toBe(false);
+
+      expect(isCompletedOrder([
+        { status: 'pending' },
+      ])).toBe(false);
+
+      expect(isCompletedOrder([])).toBe(false);
     });
   });
 });

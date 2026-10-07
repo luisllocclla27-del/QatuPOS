@@ -11,8 +11,16 @@ export interface KdsOrder {
   items: { name: string; quantity: number; status: 'pending' | 'preparing' | 'ready'; emoji: string }[];
 }
 
-function elapsedMinutes(createdAt: string): number {
+export function elapsedMinutes(createdAt: string): number {
   return Math.max(0, Math.floor((Date.now() - new Date(createdAt).getTime()) / 60000));
+}
+
+export type KdsUrgency = 'green' | 'amber' | 'red';
+
+export function getUrgencyStatus(createdAt: string): { elapsed: number; urgency: KdsUrgency } {
+  const elapsed = elapsedMinutes(createdAt);
+  const urgency: KdsUrgency = elapsed >= 15 ? 'red' : elapsed >= 10 ? 'amber' : 'green';
+  return { elapsed, urgency };
 }
 
 export function KdsCard({
@@ -24,8 +32,7 @@ export function KdsCard({
   onPreparing: (id: string) => void;
   onReady: (id: string) => void;
 }) {
-  const elapsed = elapsedMinutes(order.created_at);
-  const urgency = elapsed >= 15 ? 'red' : elapsed >= 10 ? 'amber' : 'green';
+  const { elapsed, urgency } = getUrgencyStatus(order.created_at);
 
   return (
     <motion.div

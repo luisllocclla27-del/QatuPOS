@@ -34,7 +34,18 @@ export async function POST(req: Request) {
           ...o,
           lines: ((o.lines as any[]) || []).map((l: any) => ({
             ...l,
-            prepared_quantity: status === 'ready' ? l.quantity : l.prepared_quantity,
+            prepared_quantity:
+              status === 'ready'
+                ? l.quantity
+                : status === 'preparing'
+                  ? Math.max(1, l.prepared_quantity || 0)
+                  : (l.prepared_quantity || 0),
+            status:
+              status === 'ready'
+                ? 'ready'
+                : status === 'preparing'
+                  ? 'preparing'
+                  : (l.status || 'pending'),
           })),
         };
       }

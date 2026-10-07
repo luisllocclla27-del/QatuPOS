@@ -108,6 +108,16 @@ export default function CocinaPage() {
   const supabaseRef = useRef<ReturnType<typeof createDemoBrowserClient> | null>(null);
   const channelRef = useRef<any>(null);
   const alertTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const ordersRef = useRef<KdsOrder[]>([]);
+  const completedOrdersRef = useRef<KdsOrder[]>([]);
+
+  useEffect(() => {
+    ordersRef.current = orders;
+  }, [orders]);
+
+  useEffect(() => {
+    completedOrdersRef.current = completedOrders;
+  }, [completedOrders]);
 
   // Periodic tick every 10 seconds to refresh elapsed minutes calculation
   const [, setTick] = useState(0);
@@ -154,6 +164,15 @@ export default function CocinaPage() {
 
   // Notify new incoming order
   const handleIncomingOrder = useCallback((newOrder: KdsOrder) => {
+    // Deduplication check: skip if already present in active or completed tickets
+    if (
+      ordersRef.current.some(o => o.id === newOrder.id) ||
+      completedOrdersRef.current.some(o => o.id === newOrder.id)
+    ) {
+      return;
+    }
+
+    ordersRef.current = [...ordersRef.current, newOrder];
     setOrders(prev => {
       if (prev.some(o => o.id === newOrder.id)) return prev;
       return [...prev, newOrder];
@@ -205,14 +224,28 @@ export default function CocinaPage() {
                 items: (o.lines || []).map((l: any) => ({
                   name: l.product_name,
                   quantity: l.quantity,
-                  status: (l.prepared_quantity >= l.quantity ? 'ready' : (l.prepared_quantity > 0 ? 'preparing' : 'pending')) as 'pending' | 'preparing' | 'ready',
+                  status: (l.status === 'ready' || l.prepared_quantity >= l.quantity
+                    ? 'ready'
+                    : l.status === 'preparing' || l.prepared_quantity > 0
+                      ? 'preparing'
+                      : 'pending') as 'pending' | 'preparing' | 'ready',
                   emoji: DEMO_PRODUCTS.find(p => p.id === l.product_id)?.emoji || '🍽️',
                 })),
               };
             });
 
             if (loaded.length > 0) {
-              setOrders(loaded);
+              const activeTickets = loaded.filter(
+                o => o.items.length === 0 || o.items.some(i => i.status !== 'ready')
+              );
+              const finishedTickets = loaded.filter(
+                o => o.items.length > 0 && o.items.every(i => i.status === 'ready')
+              );
+
+              setOrders(activeTickets);
+              setCompletedOrders(finishedTickets.slice(0, 10));
+              ordersRef.current = activeTickets;
+              completedOrdersRef.current = finishedTickets.slice(0, 10);
               return;
             }
           }
@@ -222,7 +255,9 @@ export default function CocinaPage() {
       }
 
       // Fallback to initial demo orders
-      setOrders(getInitialDemoOrders());
+      const demoOrders = getInitialDemoOrders();
+      setOrders(demoOrders);
+      ordersRef.current = demoOrders;
     }
 
     loadOrders();
@@ -508,6 +543,7 @@ export default function CocinaPage() {
           >
             <Sparkles className="w-3.5 h-3.5" />
             <span>+ Simular Pedido QR</span>
+            <span className="text-[10px] bg-black/25 px-1 py-0.5 rounded font-mono font-bold">[DEMO]</span>
           </button>
 
           <ResetBanner />
